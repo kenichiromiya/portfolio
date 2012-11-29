@@ -3,7 +3,7 @@
 <title>Session</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <base href="<?=$base?>"/>
-<link rel="stylesheet" type="text/css" href="<?=$views?>css/style.css"/>
+<link rel="stylesheet" type="text/css" href="<?=$base?>css/style.css"/>
 </head>
 
 <body>
