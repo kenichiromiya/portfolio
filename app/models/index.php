@@ -13,6 +13,7 @@ class IndexModel extends Model {
                         $sql = "SELECT * FROM {$this->table} ";
                         $values = array();
                                 $sql .= "WHERE id LIKE ? ";
+                                $sql .= "ORDER BY createtime DESC";
                                 array_push($values,$req['id']."%");
                         $var['rows'] = $this->dbh->getAll($sql,$values);
 		} elseif ($req['id']) {
@@ -23,6 +24,7 @@ class IndexModel extends Model {
                         $var['row'] = $this->dbh->getRow($sql,$values);
                 } else {
                         $sql = "SELECT * FROM {$this->table} ";
+                        $sql .= "ORDER BY createtime DESC";
                         $values = array();
                        // $sql .= "ORDER BY id ";
                         if ($req['limit']) {
