@@ -1,7 +1,7 @@
 <div id="header">
 <div class="logo">
 <h1>
-<a href="<?=$base?>"><img src="<?=$base?>images/logo.png"/></a>
+<a href="<?=$base?>"><img src="<?=$base?>upload/logo.png"/></a>
 </h1>
 </div>
 

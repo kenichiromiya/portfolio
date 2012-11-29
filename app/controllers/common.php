@@ -8,8 +8,7 @@ class CommonController extends Controller
                 $this->req = $singleton->req;
                 $classname = ucwords($this->req['controller'])."Model";
                 $this->model =& new $classname();
-		$this->dir = preg_replace("/(\/.*?\/).*$/","$1",$_SERVER["REQUEST_URI"]);
-		$this->base = "http://".$_SERVER["HTTP_HOST"].$this->dir;
+		$this->base = BASE;
 		$this->sessionsmodel = new SessionsModel();
 		$var = $this->sessionsmodel->get($this->req);
 		$this->session = $var['session'];
@@ -18,7 +17,7 @@ class CommonController extends Controller
         public function get() {
                 $var = $this->model->get($this->req);
 		$var['req'] = $this->req;
-                $var['base'] = "http://".$_SERVER["HTTP_HOST"].$this->dir;
+                $var['base'] = BASE;
                 $var['views'] = "http://".$_SERVER["HTTP_HOST"].$this->dir."app/views/";
 		$var['session'] = $this->session;
                 //$file = $this->req['controller'].'.php';
