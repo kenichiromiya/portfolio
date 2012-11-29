@@ -53,6 +53,7 @@ foreach($rows as $row) {
 <?php } ?>
 </div>
 -->
+<?php include("footer.php")?>
 </div>
 
 </body>
