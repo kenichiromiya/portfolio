@@ -1,0 +1,38 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+   # RewriteCond %{REQUEST_METHOD} ^GET$ 
+   # RewriteCond %{REQUEST_FILENAME} !-f
+   # RewriteCond %{REQUEST_FILENAME} !-d
+    #RewriteCond %{REQUEST_FILENAME} !.jpg$
+
+    #RewriteCond %{REQUEST_METHOD} GET
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule (.*)$ $1 [L]
+
+    #RewriteRule (app/uploads.*)$ $1 [L]
+    #RewriteRule (app/views.*)$ $1 [L]
+    #RewriteRule (articles|accounts|comments|categories|sessions|uploads)/(index.php)*$ index.php?controller=$1 [QSA,L]
+    #RewriteRule (articles|accounts|comments|categories|sessions|uploads)/(.+)$ index.php?controller=$1&id=$2 [QSA,L]
+    #RewriteRule (index.php)*$ index.php?controller=articles [QSA,L]
+    #RewriteRule (.+)$ index.php?controller=articles&id=$1 [QSA,L]
+    #RewriteRule (.*(css|js|jpg|jpeg|png|gif))$ app/views/$1 [L]
+    #RewriteRule (.+)$ index.php [QSA,L]
+    #RewriteRule (.+)/(.+)/(.+)$ index.php?controller=$1&id=$2/$3 [QSA,L]
+    #RewriteRule (.+)/(.+)$ index.php?controller=$1&id=$2 [QSA,L]
+    #RewriteRule (.+)/$ index.php?controller=$1 [QSA,L]
+    #RewriteRule (.+)$ index.php?controller=index&id=$1 [QSA,L]
+    RewriteRule (accounts|sessions)/(.+)$ system/index.php?controller=$1&id=$2 [QSA,L]
+    RewriteRule (accounts|sessions)/$ system/index.php?controller=$1&id=$2 [QSA,L]
+    RewriteRule (.+)/(.+)$ system/index.php?controller=index&id=$1/$2 [QSA,L]
+    RewriteRule (.+)/$ system/index.php?controller=index&id=$1/ [QSA,L]
+    RewriteRule (.+)$ system/index.php?controller=index&id=$1 [QSA,L]
+    RewriteRule $ system/index.php?controller=index [QSA,L]
+</IfModule>
+
+#<Limit POST>
+#AuthUserFile .htpasswd
+#AuthGroupFile /dev/null
+#AuthName "Please enter your ID and password"
+#AuthType Basic
+#require valid-user
+#</Limit>

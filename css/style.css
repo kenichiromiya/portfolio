@@ -1,0 +1,212 @@
+body {
+font-size:0.9em;
+}
+a {
+text-decoration:none;
+}
+a:hover {
+text-decoration:underline;
+}
+blockquote{
+border:2px dotted #777;
+padding:10px;
+margin:10px;
+text-align:left;
+}
+
+h1 {
+}
+h2 {
+}
+h3 {
+}
+img {
+border-style:none;
+}
+/*
+#edit img {
+float:left;
+}
+*/
+form {
+display:inline;
+}
+caption {
+/*
+margin:0;
+background-color:#9999FF;
+*/
+text-align:left;
+}
+label {
+display: block;
+}
+
+table {
+        width: 100%;
+}
+
+th {
+text-align:left;
+}
+
+.dialog {
+position:absolute;
+width:500px;
+height:100px;
+left:50%;
+top:50%;
+margin-left:-250px;
+margin-top:-50px;
+        border-style:solid;
+        border-width:1px;
+display:none;
+/*background-color:ActiveBorder;*/
+}
+
+/*
+#edit {
+	height:1em;
+}
+*/
+.edit {
+	display:none;
+}
+
+#header {
+        clear: both;
+        width: 90%;
+	text-align:left;
+}
+#header .logo {
+    float:left;
+}
+#header .navi {
+    float:right;
+    text-align:right;
+}
+#main .container {
+	width:590px;
+	border-style:solid;
+	border-width:1px;
+	margin-bottom:10px; /*上下の間隔をあける*/
+}
+#sub .container {
+	width:190px;
+	border-style:solid;
+	border-width:1px;
+	margin-bottom:10px; /*上下の間隔をあける*/
+}
+#pagination {
+        clear: both;
+	width:590px;
+	text-align:left;
+}
+#footer {
+        clear: both;
+	width:90%;
+	text-align:center;
+}
+
+#navigation {
+        clear: both;
+        width: 90%;
+	text-align:left;
+}
+
+
+#sub .container ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+}
+
+#sub .container ul li {
+margin: 0em 0.5em 0.5em 0em;
+}
+#admin {
+width:100%;
+background-color:ActiveBorder;
+}
+
+#navigation ul{
+clear: both;
+list-style-type: none;
+margin: 0;
+padding: 0;
+}
+
+#navigation ul li{
+float: left;
+margin: 0em 0.5em 0.5em 0em;
+padding: 0px;
+}
+
+#wrapper {
+margin-right:auto;
+margin-left:auto;
+text-align: center;
+width:1000px;
+}
+
+#main {
+        clear: both;
+   float: left;
+   width: 590px;
+   text-align:left;
+}
+#container {
+	clear: both;
+}
+#sessions {
+	clear: both;
+	width:200px;
+margin-right:auto;
+margin-left:auto;
+   text-align:left;
+}
+.sessions
+ {
+	width:200px;
+}
+#forms {
+	clear: both;
+	width:200px;
+margin-right:auto;
+margin-left:auto;
+   text-align:left;
+}
+.forms
+ {
+	width:200px;
+}
+#accounts {
+	clear: both;
+	width:200px;
+margin-right:auto;
+margin-left:auto;
+   text-align:left;
+}
+.accounts
+ {
+	width:200px;
+}
+
+.item {
+  border: 1px;
+  border-style:solid;
+  width: 210px;
+  margin: 5px;
+  float: left;
+}
+
+#drag {
+  height:100px;
+  clear: both;
+  border: 1px;
+  border-style:solid;
+  border-color:blue;
+}
+.message {
+  margin: 100px;
+}
