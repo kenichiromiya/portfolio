@@ -38,13 +38,13 @@ class IndexModel extends Model {
 	public function post($req){
 		foreach($_FILES as $file) {
 			if ($file["name"]) {
-                                $dirname = "../upload";
+                                $dirname = "upload";
                                 $filename = $req['id'].$file["name"];
                                 $upload_file = "$dirname/$filename";
                                 if (!is_dir(dirname($upload_file))){
                                         mkdir(dirname($upload_file),0777,true);
                                 }
-                                $thumb_dirname = "../upload/thumb";
+                                $thumb_dirname = "upload/thumb";
                                 $upload_thumb_file = "$thumb_dirname/$filename";
                                 if (!is_dir(dirname($upload_thumb_file))){
                                         mkdir(dirname($upload_thumb_file),0777,true);
@@ -61,15 +61,15 @@ class IndexModel extends Model {
 			$sql = "DELETE FROM {$this->table} WHERE id = ?";
 			$this->dbh->query($sql,array($id));
 			$sql = "INSERT INTO {$this->table} (id,filename,account_id) VALUES(?,?,?)";
-			$this->dbh->query($sql,array($id,$filename,$req['session']['account_id']));
+			$this->dbh->query($sql,array($id,$filename,$req['account_id']));
 		}
 	}
 
         public function delete($req) {
                 $sql = "SELECT * FROM {$this->table} WHERE id = ?";
                 $row = $this->dbh->getRow($sql,array($req['id']));
-                unlink("../upload/{$row['filename']}");
-                unlink("../upload/thumb/{$row['filename']}");
+                unlink("upload/{$row['filename']}");
+                unlink("upload/thumb/{$row['filename']}");
                 $sql = "DELETE FROM {$this->table} WHERE id = ?";
                 $this->dbh->query($sql,array($req['id']));
 

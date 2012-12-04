@@ -1,3 +1,5 @@
+php_flag short_open_tag On
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
    # RewriteCond %{REQUEST_METHOD} ^GET$ 
@@ -21,12 +23,12 @@
     #RewriteRule (.+)/(.+)$ index.php?controller=$1&id=$2 [QSA,L]
     #RewriteRule (.+)/$ index.php?controller=$1 [QSA,L]
     #RewriteRule (.+)$ index.php?controller=index&id=$1 [QSA,L]
-    RewriteRule (accounts|sessions)/(.+)$ system/index.php?controller=$1&id=$2 [QSA,L]
-    RewriteRule (accounts|sessions)/$ system/index.php?controller=$1&id=$2 [QSA,L]
-    RewriteRule (.+)/(.+)$ system/index.php?controller=index&id=$1/$2 [QSA,L]
-    RewriteRule (.+)/$ system/index.php?controller=index&id=$1/ [QSA,L]
-    RewriteRule (.+)$ system/index.php?controller=index&id=$1 [QSA,L]
-    RewriteRule $ system/index.php?controller=index [QSA,L]
+    RewriteRule (accounts|sessions)/(.+)$ index.php?controller=$1&id=$2 [QSA,L]
+    RewriteRule (accounts|sessions)/$ index.php?controller=$1&id=$2 [QSA,L]
+    RewriteRule (.+)/(.+)$ index.php?controller=index&id=$1/$2 [QSA,L]
+    RewriteRule (.+)/$ index.php?controller=index&id=$1/ [QSA,L]
+    RewriteRule (.+)$ index.php?controller=index&id=$1 [QSA,L]
+    RewriteRule $ index.php?controller=index [QSA,L]
 </IfModule>
 
 #<Limit POST>

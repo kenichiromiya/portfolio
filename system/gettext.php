@@ -8,6 +8,6 @@ if (ereg('ja', $_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
 putenv("LANG=$language");
 setlocale(LC_ALL, $language);
 $domain = 'messages';
-bindtextdomain($domain, "../app/views/locale");
+bindtextdomain($domain, "app/views/locale");
 textdomain($domain);
 ?>

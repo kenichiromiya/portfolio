@@ -22,7 +22,8 @@ class DB
 
 	function connect() {
 		$dbh = new MyPDO('mysql:host='.MYSQL_CONNECT_HOST.';dbname='.MYSQL_DB_NAME, MYSQL_CONNECT_USER, MYSQL_CONNECT_PASS);
-		$dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
+		//$dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
+		$dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 		$query = "SET NAMES utf8";
 		$dbh->query($query);
 		$this->dbh = $dbh;
