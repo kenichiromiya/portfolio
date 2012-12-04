@@ -21,7 +21,10 @@ $column_a = array();
 foreach($rows as $row) {
 ?>
 <div class="item">
+<div class="image">
+<p><?=$row['title']?></p>
 <a href="<?=$base?><?=$row['id']?>"><img src="<?=$base?>upload/thumb/<?=$row['filename']?>"></a>
+</div>
 <?php if($session['account_id'] == $row['account_id']){ ?>
 <?php //if($session['account_id'] and preg_match("/".$session['account_id']."/",$req['id'])){ ?>
 <form action="<?=$base?><?=$row['id']?>" method="post">
