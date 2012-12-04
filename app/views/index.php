@@ -22,7 +22,9 @@ foreach($rows as $row) {
 ?>
 <div class="item">
 <div class="image">
+<?php if($row['title']){ ?>
 <p><?=$row['title']?></p>
+<?php } ?>
 <a href="<?=$base?><?=$row['id']?>"><img src="<?=$base?>upload/thumb/<?=$row['filename']?>"></a>
 </div>
 <?php if($session['account_id'] == $row['account_id']){ ?>
