@@ -13,6 +13,22 @@
 <div id="wrapper">
 
 <?php include("header.php")?>
+<div id="container">
+<div id="icon">
+<img src="<?=$base?>upload/accounts/thumb/<?=$icon?>">
+</div>
+<div id="accounts">
+<h1><?=$id?></h1>
+<a href="<?=$url?>"><?=$url?></a>
+<p>
+<?=$about?>
+</p>
+</div>
+
+</div>
+
+<?php if($session['account_id'] == $id){ ?>
+
 <div id="subcontainer">
 <form class="multi" action="<?=$id?>" method="post" enctype="multipart/form-data">
 <input type="hidden" name="_method" value="put">
@@ -45,6 +61,7 @@
 </form>
 
 </div>
+<?php } ?>
 <!--
 <div id="subcontainer">
 <form class="multi" action="<?=$id?>" method="post" enctype="multipart/form-data">

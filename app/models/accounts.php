@@ -17,7 +17,7 @@ class AccountsModel extends Model {
 		if (count($_FILES)){
 			$file = $_FILES['icon'];
 			$dirname = "upload/accounts/";
-			$filename = $req['id']."/".$file["name"];
+			$filename = $req['id']."/"."icon.jpeg";
 			$upload_file = "$dirname/$filename";
 			if (!is_dir(dirname($upload_file))){
 				mkdir(dirname($upload_file),0777,true);
@@ -32,10 +32,10 @@ class AccountsModel extends Model {
 				chmod($upload_file,0644);
 			}
 			$image = new Image();
-			$image->imageresize($upload_thumb_file,$upload_file,50,'');
+			$image->imageresize($upload_thumb_file,$upload_file,50,'','jpeg');
 			//$pathinfo = pathinfo($file["name"]);
 			//$icon = $req['id']."/".$pathinfo['filename'];
-			$icon = $req['id']."/".$file["name"];
+			$icon = $req['id']."/"."icon.jpeg";
 		} else {
 			$icon = "";
 		}

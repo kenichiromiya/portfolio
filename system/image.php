@@ -20,27 +20,39 @@ class Image {
 		return array($new_width,$new_height);
 	} 
 
-	public function imageresize($newfilename,$filename,$max_width = '',$max_height = '') {
+	public function imageresize($newfilename,$filename,$max_width = '',$max_height = '',$format = '') {
+		// 長辺指定だったら、max_widthとmax_heightが同じ
 		// 新規サイズを取得します
 		list($width, $height,$imagetype) = getimagesize($filename);
+		$new_width = $width;
+		$new_height = $height;
 
 		$ratio = $width/$height;
 
-		// 両方指定されてたら比率によって判断
+		// 両方指定されてたら元画像の長いほうを指定してリサイズ
 		if ($max_width && $max_height){
 			if ($ratio > 1) {
+				if ($width > $max_width) {
+					$new_width = $max_width;
+					$new_height = $max_width/$ratio;
+				}
+			} else {
+				if ($height > $max_height) {
+					$new_width = $max_height*$ratio;
+					$new_height = $max_height;
+				}
+			}
+		} elseif($max_width) {
+			error_log($width."#".$max_width);
+			if ($width > $max_width) {
 				$new_width = $max_width;
 				$new_height = $max_width/$ratio;
-			} else {
+			}
+		} elseif($max_height) {
+			if ($height > $max_height) {
 				$new_width = $max_height*$ratio;
 				$new_height = $max_height;
 			}
-		} elseif($max_width) {
-			$new_width = $max_width;
-			$new_height = $max_width/$ratio;
-		} elseif($max_height) {
-			$new_width = $max_height*$ratio;
-			$new_height = $max_height;
 		}
 
 		// 再サンプル
@@ -66,13 +78,13 @@ class Image {
 		if (!is_dir(dirname($newfilename))) {
 			mkdir(dirname($newfilename));
 		}
-		if (preg_match("/jpg|jpeg/i",$newfilename,$m)) {
+		if ($format == "jpeg" or preg_match("/jpg|jpeg/i",$newfilename,$m)) {
 			imagejpeg($image_p, $newfilename, 95);
 		}
-		if (preg_match("/gif/i",$newfilename,$m)) {
+		if ($format == "gif" or preg_match("/gif/i",$newfilename,$m)) {
 			imagegif($image_p, $newfilename);
 		}
-		if (preg_match("/png/i",$newfilename,$m)) {
+		if ($format == "png" or preg_match("/png/i",$newfilename,$m)) {
 			imagepng($image_p, $newfilename);
 		}
 	}

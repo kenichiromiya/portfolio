@@ -19,13 +19,21 @@
 <?php
 if($row){
 ?>
-<img src="<?=$base?>upload/<?=$row['filename']?>">
-<div>
+<img src="<?=$base?>upload/large/<?=$row['filename']?>">
+<h1>
 <?=$row['title']?>
-</div>
+</h1>
 <p>
 <?=$row['description']?>
 </p>
+<div class="account">
+<div class="icon">
+<a href="<?=$base?>accounts/<?=$row['account_id']?>"><img src="<?=$base?>upload/accounts/thumb/<?=$row['account_id']?>/icon.jpeg"></a>
+</div>
+<div class="account_id">
+<a href="<?=$base?>accounts/<?=$row['account_id']?>"><?=$row['account_id']?></a>
+</div>
+</div>
 <?php
 }
 ?>
