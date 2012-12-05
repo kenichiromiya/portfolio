@@ -24,8 +24,13 @@ foreach($rows as $row) {
 <div class="image">
 <?php if($row['title']){ ?>
 <p><?=$row['title']?></p>
-<img src="<?=$base?>upload/accounts/large/<?=$icon?>">
 <?php } ?>
+<?php
+if (!file_exists("upload/thumb/".$row['filename'])){
+	$image = new Image();
+	$image->imageresize("upload/thumb/".$row['filename'],"upload/".$row['filename'],200);
+}
+?>
 <a href="<?=$base?><?=$row['id']?>"><img src="<?=$base?>upload/thumb/<?=$row['filename']?>"></a>
 </div>
 <?php if($session['account_id'] == $row['account_id']){ ?>

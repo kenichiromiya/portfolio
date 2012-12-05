@@ -59,7 +59,7 @@ class IndexModel extends Model {
 					chmod($upload_file,0644);
 				}
 				$image = new Image();
-				$image->imageresize($upload_thumb_file,$upload_file,190);
+				$image->imageresize($upload_thumb_file,$upload_file,200);
 				$image->imageresize($upload_large_file,$upload_file,1000,1000);
 			}
 			$pathinfo = pathinfo($file["name"]);
