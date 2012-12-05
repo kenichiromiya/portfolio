@@ -14,7 +14,7 @@
 
 <?php include("header.php")?>
 <div id="subcontainer">
-<form class="multi" action="<?=$id?>" method="post" >
+<form class="multi" action="<?=$id?>" method="post" enctype="multipart/form-data">
 <input type="hidden" name="_method" value="put">
 <label for="id"><?=_('Username')?></label>
 <?php if ($id) { ?>
@@ -37,11 +37,23 @@
 <textarea id="about" name="about">
 <?=$about?>
 </textarea><br/>
+<img src="<?=$base?>upload/accounts/thumb/<?=$icon?>">
+<label for="icon"><?=_('Icon')?></label>
+<input id="icon" type="file" name="icon" value=""/>
 <label for="submit"><?=_('Submit')?></label>
 <input id="submit" type="submit" value="<?=_('Submit')?>"/><br/><br/>
 </form>
 
 </div>
+<!--
+<div id="subcontainer">
+<form class="multi" action="<?=$id?>" method="post" enctype="multipart/form-data">
+<input type="hidden" name="_method" value="put"/>
+<label for="submit"><?=_('Submit')?></label>
+<input id="submit" type="submit" value="<?=_('Submit')?>"/><br/><br/>
+</form>
+</div>
+-->
 
 </div>
 </div>
