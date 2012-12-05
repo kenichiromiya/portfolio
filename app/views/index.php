@@ -24,6 +24,7 @@ foreach($rows as $row) {
 <div class="image">
 <?php if($row['title']){ ?>
 <p><?=$row['title']?></p>
+<img src="<?=$base?>upload/accounts/large/<?=$icon?>">
 <?php } ?>
 <a href="<?=$base?><?=$row['id']?>"><img src="<?=$base?>upload/thumb/<?=$row['filename']?>"></a>
 </div>

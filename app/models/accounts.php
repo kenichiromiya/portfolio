@@ -27,12 +27,18 @@ class AccountsModel extends Model {
 			if (!is_dir(dirname($upload_thumb_file))){
 				mkdir(dirname($upload_thumb_file),0777,true);
 			}
+			$large_dirname = "upload/accounts/large";
+			$upload_large_file = "$large_dirname/$filename";
+			if (!is_dir(dirname($upload_large_file))){
+				mkdir(dirname($upload_large_file),0777,true);
+			}
 			if(move_uploaded_file($file["tmp_name"],$upload_file))
 			{
 				chmod($upload_file,0644);
 			}
 			$image = new Image();
 			$image->imageresize($upload_thumb_file,$upload_file,50,'','jpeg');
+			$image->imageresize($upload_large_file,$upload_file,100,'100','jpeg');
 			//$pathinfo = pathinfo($file["name"]);
 			//$icon = $req['id']."/".$pathinfo['filename'];
 			$icon = $req['id']."/"."icon.jpeg";

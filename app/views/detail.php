@@ -18,6 +18,10 @@
 <div id="container">
 <?php
 if($row){
+	if (!file_exists("upload/large/".$row['filename'])){
+		$image = new Image();
+		$image->imageresize("upload/large/".$row['filename'],"upload/".$row['filename'],1000,1000);
+	}
 ?>
 <img src="<?=$base?>upload/large/<?=$row['filename']?>">
 <h1>

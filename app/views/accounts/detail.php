@@ -15,7 +15,7 @@
 <?php include("header.php")?>
 <div id="container">
 <div id="icon">
-<img src="<?=$base?>upload/accounts/thumb/<?=$icon?>">
+<img src="<?=$base?>upload/accounts/large/<?=$icon?>">
 </div>
 <div id="accounts">
 <h1><?=$id?></h1>
@@ -53,7 +53,7 @@
 <textarea id="about" name="about">
 <?=$about?>
 </textarea><br/>
-<img src="<?=$base?>upload/accounts/thumb/<?=$icon?>">
+<!--img src="<?=$base?>upload/accounts/large/<?=$icon?>"-->
 <label for="icon"><?=_('Icon')?></label>
 <input id="icon" type="file" name="icon" value=""/>
 <label for="submit"><?=_('Submit')?></label>
