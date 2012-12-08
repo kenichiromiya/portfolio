@@ -15,7 +15,7 @@ $(document).ready(function () {
 					success: function(html){
 						$("#container").append(html);
 						var state = $("#container").html();
-						obj.data('start', obj.data('start')+10);
+						obj.data('start', obj.data('start')+12);
 						obj.data('loading', false);
 						history.replaceState(state, "", "");
 					}

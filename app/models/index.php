@@ -15,9 +15,9 @@ class IndexModel extends Model {
 			$sql .= "WHERE id LIKE ? ";
 			$sql .= "ORDER BY createtime DESC ";
 			if ($req['start']) {
-				$sql .= "LIMIT {$req['start']},10";
+				$sql .= "LIMIT {$req['start']},12";
 			} else {
-				$sql .= "LIMIT 10";
+				$sql .= "LIMIT 12";
 			}
 			array_push($values,$req['id']."%");
 			$var['rows'] = $this->dbh->getAll($sql,$values);
@@ -33,9 +33,9 @@ class IndexModel extends Model {
 			$values = array();
 			// $sql .= "ORDER BY id ";
 			if ($req['start']) {
-				$sql .= "LIMIT {$req['start']},10";
+				$sql .= "LIMIT {$req['start']},12";
 			} else {
-				$sql .= "LIMIT 10";
+				$sql .= "LIMIT 12";
 			}
 			$var['rows'] = $this->dbh->getAll($sql,$values);
 		}
