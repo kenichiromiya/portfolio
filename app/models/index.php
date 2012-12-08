@@ -10,28 +10,36 @@ class IndexModel extends Model {
                 $var = $req;
 
                 if (preg_match("#/$#",$req['id'])) {
-                        $sql = "SELECT * FROM {$this->table} ";
-                        $values = array();
-                                $sql .= "WHERE id LIKE ? ";
-                                $sql .= "ORDER BY createtime DESC";
-                                array_push($values,$req['id']."%");
-                        $var['rows'] = $this->dbh->getAll($sql,$values);
+			$sql = "SELECT * FROM {$this->table} ";
+			$values = array();
+			$sql .= "WHERE id LIKE ? ";
+			$sql .= "ORDER BY createtime DESC ";
+			if ($req['start']) {
+				$sql .= "LIMIT {$req['start']},10";
+			} else {
+				$sql .= "LIMIT 10";
+			}
+			array_push($values,$req['id']."%");
+			$var['rows'] = $this->dbh->getAll($sql,$values);
 		} elseif ($req['id']) {
-                        $sql = "SELECT * FROM {$this->table} ";
-                        $values = array();
-                                $sql .= "WHERE id = ? ";
-                                array_push($values,$req['id']);
-                        $var['row'] = $this->dbh->getRow($sql,$values);
-                } else {
-                        $sql = "SELECT * FROM {$this->table} ";
-                        $sql .= "ORDER BY createtime DESC";
-                        $values = array();
-                       // $sql .= "ORDER BY id ";
-                        if ($req['limit']) {
-                                $sql .= "LIMIT {$req['limit']}";
-                        }
-                        $var['rows'] = $this->dbh->getAll($sql,$values);
-                }
+			$sql = "SELECT * FROM {$this->table} ";
+			$values = array();
+			$sql .= "WHERE id = ? ";
+			array_push($values,$req['id']);
+			$var['row'] = $this->dbh->getRow($sql,$values);
+		} else {
+			$sql = "SELECT * FROM {$this->table} ";
+			$sql .= "ORDER BY createtime DESC ";
+			$values = array();
+			// $sql .= "ORDER BY id ";
+			if ($req['start']) {
+				$sql .= "LIMIT {$req['start']},10";
+			} else {
+				$sql .= "LIMIT 10";
+			}
+			$var['rows'] = $this->dbh->getAll($sql,$values);
+		}
+				error_log($sql);
                 return $var;
         }
 

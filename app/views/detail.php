@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="<?=$base?>css/style.css"/>
 <script type="text/javascript" src="<?=$base?>js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="<?=$base?>js/jquery.masonry.min.js""></script>
+<script type="text/javascript" src="<?=$base?>js/jquery.bottom-1.0.js"></script>
 <script type="text/javascript" src="<?=$base?>js/javascript.js"></script>
 </head>
 <body>

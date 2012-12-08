@@ -22,9 +22,11 @@ class CommonController extends Controller
 		$var['session'] = $this->session;
                 //$file = $this->req['controller'].'.php';
 		if(preg_match("#[^/]$#",$this->req['id'])) {
-                $file = 'detail.php';
+			$file = 'detail.php';
+		} elseif ($this->req['start']) {
+			$file = 'list.php';
 		} else {
-                $file = 'index.php';
+			$file = 'index.php';
 		}
 		if($this->req['controller'] != 'index'){
 			$file = $this->req['controller']."/".$file;

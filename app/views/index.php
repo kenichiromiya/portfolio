@@ -5,10 +5,12 @@
 <title><?=$config['title']?></title>
 <link rel="stylesheet" type="text/css" href="<?=$base?>css/style.css"/>
 <script type="text/javascript" src="<?=$base?>js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="<?=$base?>js/jquery.masonry.min.js""></script>
+<!--script type="text/javascript" src="<?=$base?>js/jquery.masonry.min.js""></script-->
+<script type="text/javascript" src="<?=$base?>js/jquery.bottom-1.0.js"></script>
 <script type="text/javascript" src="<?=$base?>js/javascript.js"></script>
+<script type="text/javascript" src="<?=$base?>js/bottom.js"></script>
 </head>
-<body>
+<body id="bottom">
 
 <div id="wrapper">
 <?php include("header.php")?>
@@ -16,9 +18,7 @@
 <div id="container">
 
 <?php
-if($rows){
-$column_a = array();
-foreach($rows as $row) {
+foreach($rows as $row) :
 ?>
 <div class="item">
 <div class="image">
@@ -33,21 +33,15 @@ if (!file_exists("upload/thumb/".$row['filename'])){
 ?>
 <a href="<?=$base?><?=$row['id']?>"><img src="<?=$base?>upload/thumb/<?=$row['filename']?>"></a>
 </div>
-<?php if($session['account_id'] == $row['account_id']){ ?>
+<?php if($session['account_id'] == $row['account_id']): ?>
 <?php //if($session['account_id'] and preg_match("/".$session['account_id']."/",$req['id'])){ ?>
 <form action="<?=$base?><?=$row['id']?>" method="post">
 <input type="hidden" name="_method" value="delete">
 <input type="submit" value="<?=_('Delete')?>">
 </form>
-<?php } ?>
+<?php endif; ?>
 </div>
-<?php
-}
-} else {
-?>
-<?php
-}
-?>
+<?php endforeach; ?>
 </div>
 <?php if($session['account_id'] and preg_match("/\/$/",$req['id'])){ ?>
 <div id="drag" draggable="true">
