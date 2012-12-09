@@ -157,22 +157,44 @@ margin-right:auto;
 margin-left:auto;
 width:400px;
 }
+.multi label {
+display: block;
+width: 100px;
+float: left;
+       margin-bottom: 10px;
+	text-align: left;
+	padding-right: 15px;
+}
+.multi input,.multi select {
+display: block;
+width: 200px;
+float: left;
+       margin-bottom: 10px;
+}
+.multi textarea {
+display: block;
+width: 400px;
+float: left;
+       margin-bottom: 10px;
+}
+/*
+.multi label[for="body"] {
+display: block;
+float: right;
+       margin-bottom: 10px;
+}
+.multi textarea {
+display: block;
+float: right;
+       margin-bottom: 10px;
+}
+*/
+.multi br { clear: left; }
 #main {
         clear: both;
    float: left;
    width: 590px;
    text-align:left;
-}
-#forms {
-	clear: both;
-	width:200px;
-margin-right:auto;
-margin-left:auto;
-   text-align:left;
-}
-.forms
- {
-	width:200px;
 }
 
 .item {
@@ -194,24 +216,6 @@ margin-left:auto;
   margin: 100px;
 }
 
-.multi {
-	clear: both;
-	width:200px;
-margin-right:auto;
-margin-left:auto;
-   text-align:left;
-}
-.multi label,.multi input,.multi select,.multi textarea {
-display: block;
-width: 150px;
-float: left;
-       margin-bottom: 10px;
-}
-.multi label {
-	text-align: right;
-	padding-right: 15px;
-}
-.multi br { clear: left; }
 
 .image {
   position: relative;  /* 基点を設定 */

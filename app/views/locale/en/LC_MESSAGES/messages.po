@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-30 00:56+0900\n"
+"POT-Creation-Date: 2012-12-09 11:33+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,48 +16,31 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/miyaa/git/portfolio/app/views/index.php:29
-#: /home/miyaa/git/portfolio/app/views/detail.php:54
-msgid "Delete"
-msgstr ""
-
-#: /home/miyaa/git/portfolio/app/views/index.php:43
-msgid "Drag to add a photo"
-msgstr ""
-
-#: /home/miyaa/git/portfolio/app/views/detail.php:39
+#: /home/miyaa/git/portfolio/app/views/detail.php:52
 msgid "Title"
 msgstr ""
 
-#: /home/miyaa/git/portfolio/app/views/detail.php:41
-msgid "Description"
+#: /home/miyaa/git/portfolio/app/views/detail.php:54
+msgid "Body"
 msgstr ""
 
-#: /home/miyaa/git/portfolio/app/views/detail.php:46
-#: /home/miyaa/git/portfolio/app/views/accounts/index.php:31
-#: /home/miyaa/git/portfolio/app/views/accounts/index.php:32
+#: /home/miyaa/git/portfolio/app/views/detail.php:59
 #: /home/miyaa/git/portfolio/app/views/sessions/index.php:28
 #: /home/miyaa/git/portfolio/app/views/sessions/edit.php:11
 #: /home/miyaa/git/portfolio/app/views/sessions/edit.php:12
+#: /home/miyaa/git/portfolio/app/views/accounts/detail.php:59
+#: /home/miyaa/git/portfolio/app/views/accounts/detail.php:60
+#: /home/miyaa/git/portfolio/app/views/accounts/detail.php:69
+#: /home/miyaa/git/portfolio/app/views/accounts/detail.php:70
+#: /home/miyaa/git/portfolio/app/views/accounts/index.php:43
+#: /home/miyaa/git/portfolio/app/views/accounts/index.php:44
 msgid "Submit"
 msgstr ""
 
-#: /home/miyaa/git/portfolio/app/views/accounts/index.php:16
-msgid "Username"
-msgstr ""
-
-#: /home/miyaa/git/portfolio/app/views/accounts/index.php:22
-#: /home/miyaa/git/portfolio/app/views/sessions/index.php:23
-#: /home/miyaa/git/portfolio/app/views/sessions/edit.php:7
-msgid "Password"
-msgstr ""
-
-#: /home/miyaa/git/portfolio/app/views/accounts/index.php:24
-msgid "Email"
-msgstr ""
-
-#: /home/miyaa/git/portfolio/app/views/accounts/index.php:26
-msgid "Role"
+#: /home/miyaa/git/portfolio/app/views/detail.php:67
+#: /home/miyaa/git/portfolio/app/views/index.php:40
+#: /home/miyaa/git/portfolio/app/views/list.php:21
+msgid "Delete"
 msgstr ""
 
 #: /home/miyaa/git/portfolio/app/views/sessions/index.php:12
@@ -74,9 +57,20 @@ msgstr ""
 msgid "Id"
 msgstr ""
 
+#: /home/miyaa/git/portfolio/app/views/sessions/index.php:23
+#: /home/miyaa/git/portfolio/app/views/sessions/edit.php:7
+#: /home/miyaa/git/portfolio/app/views/accounts/detail.php:41
+#: /home/miyaa/git/portfolio/app/views/accounts/index.php:23
+msgid "Password"
+msgstr ""
+
 #: /home/miyaa/git/portfolio/app/views/sessions/index.php:25
 #: /home/miyaa/git/portfolio/app/views/sessions/edit.php:9
 msgid "Persistent"
+msgstr ""
+
+#: /home/miyaa/git/portfolio/app/views/index.php:48
+msgid "Drag to add a photo"
 msgstr ""
 
 #: /home/miyaa/git/portfolio/app/views/header.php:10
@@ -93,6 +87,36 @@ msgstr ""
 
 #: /home/miyaa/git/portfolio/app/views/header.php:19
 msgid "Create an account"
+msgstr ""
+
+#: /home/miyaa/git/portfolio/app/views/accounts/detail.php:35
+#: /home/miyaa/git/portfolio/app/views/accounts/index.php:17
+msgid "Username"
+msgstr ""
+
+#: /home/miyaa/git/portfolio/app/views/accounts/detail.php:43
+#: /home/miyaa/git/portfolio/app/views/accounts/index.php:25
+msgid "Email"
+msgstr ""
+
+#: /home/miyaa/git/portfolio/app/views/accounts/detail.php:45
+#: /home/miyaa/git/portfolio/app/views/accounts/index.php:28
+msgid "Role"
+msgstr ""
+
+#: /home/miyaa/git/portfolio/app/views/accounts/detail.php:50
+#: /home/miyaa/git/portfolio/app/views/accounts/index.php:33
+msgid "URL"
+msgstr ""
+
+#: /home/miyaa/git/portfolio/app/views/accounts/detail.php:52
+#: /home/miyaa/git/portfolio/app/views/accounts/index.php:35
+msgid "About"
+msgstr ""
+
+#: /home/miyaa/git/portfolio/app/views/accounts/detail.php:57
+#: /home/miyaa/git/portfolio/app/views/accounts/index.php:40
+msgid "Icon"
 msgstr ""
 
 #~ msgid "Hello"

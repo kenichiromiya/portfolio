@@ -79,13 +79,8 @@ class Image {
 			mkdir(dirname($newfilename));
 		}
 		if ($format == "jpeg" or preg_match("/jpg|jpeg/i",$newfilename,$m)) {
-			imagejpeg($image_p, $newfilename);
+			imagejpeg($image_p, $newfilename,90);
 			//imagejpeg($image_p, $newfilename, 95);
-
-			$img = imagecreatefromjpeg($newfilename);
-			$matrix = array(array(-1, -1, -1), array(-1, 16, -1), array(-1, -1, -1));
-			imageconvolution($img, $matrix, 8, 0);
-
 		}
 		if ($format == "gif" or preg_match("/gif/i",$newfilename,$m)) {
 			imagegif($image_p, $newfilename);
@@ -93,6 +88,11 @@ class Image {
 		if ($format == "png" or preg_match("/png/i",$newfilename,$m)) {
 			imagepng($image_p, $newfilename);
 		}
+
+		$img = imagecreatefromjpeg($newfilename);
+		$matrix = array(array(-1, -1, -1), array(-1, 16, -1), array(-1, -1, -1));
+		imageconvolution($img, $matrix, 8, 0);
+
 	}
 }
 ?>

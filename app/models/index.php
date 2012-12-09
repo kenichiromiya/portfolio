@@ -13,6 +13,7 @@ class IndexModel extends Model {
 			$sql = "SELECT * FROM {$this->table} ";
 			$values = array();
 			$sql .= "WHERE id LIKE ? ";
+			$sql .= "AND filename != '' ";
 			$sql .= "ORDER BY createtime DESC ";
 			if ($req['start']) {
 				$sql .= "LIMIT {$req['start']},12";
@@ -29,6 +30,7 @@ class IndexModel extends Model {
 			$var['row'] = $this->dbh->getRow($sql,$values);
 		} else {
 			$sql = "SELECT * FROM {$this->table} ";
+			$sql .= "WHERE filename != '' ";
 			$sql .= "ORDER BY createtime DESC ";
 			$values = array();
 			// $sql .= "ORDER BY id ";

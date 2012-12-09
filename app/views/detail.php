@@ -18,18 +18,21 @@
 
 <div id="container">
 <?php
-if($row){
+if($row['filename']):
 	if (!file_exists("upload/large/".$row['filename'])){
 		$image = new Image();
 		$image->imageresize("upload/large/".$row['filename'],"upload/".$row['filename'],1000,1000);
 	}
 ?>
 <img src="<?=$base?>upload/large/<?=$row['filename']?>">
+<?php
+endif;
+?>
 <h1>
 <?=$row['title']?>
 </h1>
 <p>
-<?=$row['description']?>
+<?=$row['body']?>
 </p>
 <div class="account">
 <div class="icon">
@@ -39,23 +42,21 @@ if($row){
 <a href="<?=$base?>accounts/<?=$row['account_id']?>"><?=$row['account_id']?></a>
 </div>
 </div>
-<?php
-}
-?>
 
-<?php if($session['account_id'] == $row['account_id']){ ?>
+<?php 
+if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){ ?>
 <?php //if($session['account_id'] and preg_match("/".$session['account_id']."/",$req['id'])){ ?>
 
-<div id="forms">
-<form action="<?=$base?><?=$row['id']?>" method="post">
+<div id="subcontainer">
+<form class="multi" action="<?=$base?><?=$id?>" method="post">
 <input type="hidden" name="_method" value="put">
-<label class="label" for="title"><?=_('Title')?></label>
-<input class="forms" id="title" type="text" name="title" size="20" value="<?=$row['title']?>"/>
-<label class="label" for="description"><?=_('Description')?></label>
-<textarea class="forms" id="description" name="description">
-<?=$row['description']?>
-</textarea>
-<label class="label" for="submit"></label>
+<label for="title"><?=_('Title')?></label>
+<input id="title" type="text" name="title" size="20" value="<?=$row['title']?>"/><br/>
+<label for="body"><?=_('Body')?></label>
+<textarea id="body" name="body" rows="20" cols="40">
+<?=$row['body']?>
+</textarea><br/>
+<label for="submit"></label>
 <input id="submit" type="submit" value="<?=_('Submit')?>"/><br/>
 
 </form>

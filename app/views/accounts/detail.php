@@ -30,7 +30,7 @@
 <?php if($session['account_id'] == $id){ ?>
 
 <div id="subcontainer">
-<form class="multi" action="<?=$id?>" method="post" enctype="multipart/form-data">
+<form class="multi" action="<?=$base?>accounts/<?=$id?>" method="post" enctype="multipart/form-data">
 <input type="hidden" name="_method" value="put">
 <label for="id"><?=_('Username')?></label>
 <?php if ($id) { ?>
@@ -55,7 +55,7 @@
 </textarea><br/>
 <!--img src="<?=$base?>upload/accounts/large/<?=$icon?>"-->
 <label for="icon"><?=_('Icon')?></label>
-<input id="icon" type="file" name="icon" value=""/>
+<input id="icon" type="file" name="icon" value=""/><br/>
 <label for="submit"><?=_('Submit')?></label>
 <input id="submit" type="submit" value="<?=_('Submit')?>"/><br/><br/>
 </form>
