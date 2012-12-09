@@ -26,7 +26,8 @@
 			var obj = this;
 			$(obj).bind("scroll", function() {
 				if (obj == window) {
-					scrollHeight = $(document).height();
+					//scrollHeight = $(document).height();
+					scrollHeight = window.innerHeight ? window.innerHeight : $(window).height();
 				}
 				else {
 					scrollHeight = $(obj)[0].scrollHeight;
