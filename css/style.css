@@ -200,6 +200,7 @@ float: right;
 .item {
   border: 1px;
   border-style:solid;
+  width: 200px;
   margin: 10px;
  padding:0px;
   float: left;

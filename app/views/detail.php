@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-<title><?=$config['title']?></title>
+<title><?php echo TITLE; ?> - <?=$row['title']?></title>
 <link rel="stylesheet" type="text/css" href="<?=$base?>css/style.css"/>
 <script type="text/javascript" src="<?=$base?>js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="<?=$base?>js/jquery.masonry.min.js""></script>
@@ -16,6 +16,10 @@
 <?php include("header.php")?>
 
 <div id="container">
+<div id="twitter">
+<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
 <?php
 if($row['filename']):
 	if (!file_exists("upload/large/".$row['filename'])){
@@ -52,10 +56,10 @@ if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){
 <label for="title"><?=_('Title')?></label>
 <input id="title" type="text" name="title" size="20" value="<?=$row['title']?>"/><br/>
 <label for="body"><?=_('Body')?></label>
-<textarea id="body" name="body" rows="20" cols="40">
+<textarea id="body" name="body" rows="10" cols="20">
 <?=$row['body']?>
 </textarea><br/>
-<label for="submit"></label>
+<label for="submit"><?=_('Submit')?></label>
 <input id="submit" type="submit" value="<?=_('Submit')?>"/><br/>
 
 </form>
