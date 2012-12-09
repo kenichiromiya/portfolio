@@ -26,11 +26,13 @@
 			var obj = this;
 			$(obj).bind("scroll", function() {
 				if (obj == window) {
-					//scrollHeight = $(document).height();
-					scrollHeight = window.innerHeight ? window.innerHeight : $(window).height();
+					scrollHeight = $(document).height();
 				}
 				else {
 					scrollHeight = $(obj)[0].scrollHeight;
+				}
+				if ($.os.name == "iphone") {
+					scrollHeight = window.innerHeight;
 				}
 				scrollPosition = $(obj).height() + $(obj).scrollTop();
 				if ( (scrollHeight - scrollPosition) / scrollHeight <= options.proximity) {

@@ -12,7 +12,6 @@
 <body>
 
 <div id="wrapper">
-<?=$id?>
 
 <?php include("header.php")?>
 
