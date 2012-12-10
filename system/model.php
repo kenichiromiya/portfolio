@@ -53,8 +53,7 @@ class Model
 	}
 
         public function delete($req){
-                $sql = "DELETE FROM {$this->table} WHERE id = ?";
-                $this->dbh->query($sql,array($req['id']));
+		$this->dbh->delete($this->table,$req['id']);
                 //$sth = $this->dbh->prepare($sql);
 		//$sth->execute(array($req['id']));
         }

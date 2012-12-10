@@ -74,10 +74,12 @@ class IndexModel extends Model {
 			}
 			$pathinfo = pathinfo($file["name"]);
 			$id = $req['id'].$pathinfo['filename'];
-			$sql = "DELETE FROM {$this->table} WHERE id = ?";
-			$this->dbh->query($sql,array($id));
-			$sql = "INSERT INTO {$this->table} (id,filename,account_id) VALUES(?,?,?)";
-			$this->dbh->query($sql,array($id,$filename,$req['account_id']));
+			//$sql = "DELETE FROM {$this->table} WHERE id = ?";
+			//$this->dbh->query($sql,array($id));
+                	$this->dbh->delete($this->table,$id);
+                	$this->dbh->insert($this->table,array("id"=>$id,"filename"=>$filename,"account_id"=>$req['account_id']));
+			//$sql = "INSERT INTO {$this->table} (id,filename,account_id) VALUES(?,?,?)";
+			//$this->dbh->query($sql,array($id,$filename,$req['account_id']));
 		}
 	}
 
@@ -86,8 +88,9 @@ class IndexModel extends Model {
                 $row = $this->dbh->getRow($sql,array($req['id']));
                 unlink("upload/{$row['filename']}");
                 unlink("upload/thumb/{$row['filename']}");
-                $sql = "DELETE FROM {$this->table} WHERE id = ?";
-                $this->dbh->query($sql,array($req['id']));
+                $this->dbh->delete($this->table,$req['id']);
+                //$sql = "DELETE FROM {$this->table} WHERE id = ?";
+                //$this->dbh->query($sql,array($req['id']));
 
                 //$this->templatemodel->deletetemplate($this->param);
         }

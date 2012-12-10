@@ -27,13 +27,13 @@ class Controller
         }
 
         public function put() {
-                $this->model->put(array_merge(array('id'=>$this->req['id']),$this->req['post']));
+                $this->model->put($this->req);
                 header("Location:".$this->base.$this->req['controller']."/".$this->req['id']);
                 //header("Location:".$this->top.$this->req['controller']."/");
         }
         public function post() {
                 //$this->model->post($this->req['post']);
-                $this->model->post(array_merge(array('id'=>$this->req['id']),$this->req['post']));
+                $this->model->post($this->req);
                 header("Location:".$this->base);
         }
         public function delete() {
