@@ -13,7 +13,9 @@ class AccountsModel extends Model {
 	public function put($req) {
 		$sql = "SELECT COUNT(*) FROM {$this->table} WHERE id = ?";
 		$count = $this->dbh->getOne($sql,array($req['id']));
-		$password = md5($req['password']);
+		$param = $req['post'];
+		$param['password'] = md5($param['password']);
+		$password = md5($param['password']);
 		if (count($_FILES)){
 			$file = $_FILES['icon'];
 			$dirname = "upload/accounts/";
@@ -41,9 +43,7 @@ class AccountsModel extends Model {
 			$image->imageresize($upload_large_file,$upload_file,100,'100','jpeg');
 			//$pathinfo = pathinfo($file["name"]);
 			//$icon = $req['id']."/".$pathinfo['filename'];
-			$icon = $req['id']."/"."icon.jpeg";
-		} else {
-			$icon = "";
+			$param['icon'] = $req['id']."/"."icon.jpeg";
 		}
 		if ($count) {
 
@@ -55,17 +55,23 @@ class AccountsModel extends Model {
 			array_push($values,$req['id']);
 			$this->dbh->query($sql,$values);
 */
+			$this->dbh->update($this->table,$req['id'],$param);
+			/*
 			$sets = array("id = ?","password = ?","email = ?","role = ?","url = ?","about = ?","icon = ?");
 			$values = array($req['id'],$password,$req['email'],$req['role'],$req['url'],$req['about'],$icon);
 			$set = implode(",", $sets);
 			$sql = "UPDATE {$this->table} SET $set WHERE id = ?";
 			array_push($values,$req['id']);
 			$this->dbh->query($sql,$values);
+			*/
 
 		} else {
+			$this->dbh->insert($this->table,$param);
+/*
 			$sql = "INSERT INTO {$this->table} (id,password,email,role,url,about,icon) VALUES(?,?,?,?,?,?,?)";
 			$sth = $this->dbh->prepare($sql);
 			$sth->execute(array($req['id'],$password,$req['email'],$req['role'],$req['url'],$req['about'],$icon));
+*/
 		}
 	}
 }

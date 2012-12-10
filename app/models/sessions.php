@@ -37,9 +37,10 @@ class SessionsModel extends Model {
 				} else {
 					setcookie("session_id",$session_id,0,'/');
 				}
-				$sql = "INSERT INTO {$this->table} (id,account_id) VALUES(?,?)";
-				$sth = $this->dbh->prepare($sql);
-				$sth->execute(array($session_id,$req['id']));
+				//$sql = "INSERT INTO {$this->table} (id,account_id) VALUES(?,?)";
+				//$sth = $this->dbh->prepare($sql);
+				//$sth->execute(array($session_id,$req['id']));
+				$this->dbh->insert($this->table,array("id"=>$session_id,"account_id"=>$req['id']));
 			}
 			return $var;
 		} catch (PDOException $e) {
@@ -50,9 +51,7 @@ class SessionsModel extends Model {
 	function delete($req) {
 		//$session_id = $_COOKIE['session_id'];
 		try {
-			$sql = "DELETE FROM {$this->table} WHERE id = ?";
-			$sth = $this->dbh->prepare($sql);
-			$sth->execute(array($req['id']));
+			$this->dbh->delete($this->table,$req['id']);
 			setcookie("session_id","",time()+60*60*24*7,'/');
 			return TRUE;
 		} catch (PDOException $e) {

@@ -12,6 +12,16 @@ class CommonController extends Controller
 		$this->sessionsmodel = new SessionsModel();
 		$var = $this->sessionsmodel->get($this->req);
 		$this->session = $var['session'];
+		if ($this->req['controller'] == 'index'){
+			$this->controller = "";
+		} else {
+			$this->controller = $this->req['controller']."/";
+		}
+		if (preg_match("/\//",$this->req['id'])){
+			$this->dirname = dirname($this->req['id'])."/";
+		} else {
+			$this->dirname = "";
+		}
         }
 
         public function get() {
@@ -37,22 +47,18 @@ class CommonController extends Controller
         }
 
         public function put() {
-                $this->model->put(array_merge(array('id'=>$this->req['id']),$this->req['post']));
-                header("Location:".$this->base.$this->req['id']);
+                $this->model->put(array_merge(array('id'=>$this->req['id']),$this->req['post'],$this->req));
+                header("Location:".$this->base.$this->controller.$this->req['id']);
                 //header("Location:".$this->top.$this->req['controller']."/");
         }
         public function post() {
                 //$this->model->post($this->req['post']);
-                $this->model->post(array_merge(array('id'=>$this->req['id']),$this->req['post']));
-                header("Location:".$this->base);
+                $this->model->post(array_merge(array('id'=>$this->req['id']),$this->req['post'],$this->req));
+                header("Location:".$this->base.$this->controller.$this->dirname);
         }
         public function delete() {
                 $this->model->delete($this->req);
-                $dirname = dirname($this->req['id']);
-                if ($dirname){
-                        $dirname = $dirname."/";
-                }
-                header("Location:".$this->base.$dirname);
+                header("Location:".$this->base.$this->controller.$this->dirname);
         }
 }
 ?>

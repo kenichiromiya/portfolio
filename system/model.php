@@ -42,59 +42,14 @@ class Model
 		$count = $this->dbh->getOne($sql,$values);
 		// TODO ここでbodyとtitle加工
 		if ($count) {
-			$sets = array();
-			$values = array();
-			foreach ($req as $key => $value) {
-				if(!is_array($value)) {
-					array_push($sets,"$key = ?");
-					array_push($values,$value);
-				}
-			}
-
-			$set = implode(",", $sets);
-			$sql = "UPDATE {$this->table} SET $set WHERE id = ?";
-			array_push($values,$req['id']);
-			//print_r($values);
-			$this->dbh->query($sql,$values);
-			//echo $sql;
-			//print_r($values);
-			//$sth = $this->dbh->prepare($sql);
-			//$sth->execute($values);
+			$this->dbh->update($this->table,$req['id'],$req['post']);
 		} else {
-			$colnames = array();
-			$places = array();
-			$values = array();
-			foreach ($req as $key => $value) {
-				if(!is_array($value)) {
-					array_push($colnames,$key);
-					array_push($places,"?");
-					array_push($values,$value);
-				}
-			}
-			$colname = implode(",", $colnames);
-			$place = implode(",", $places);
-			//print_r($values);
-			//exit;
-			$sql = "INSERT INTO {$this->table} ($colname) VALUES($place)";
-			$this->dbh->query($sql,$values);
+			$this->dbh->insert($this->table,$param,$req['post']);
 		}
 	}
 
 	public function post($req){
-		$colnames = array();
-		$places = array();
-		$values = array();
-		foreach ($req as $key => $value) {
-			array_push($colnames,$key);
-			array_push($places,"?");
-			array_push($values,$value);
-		}
-		$colname = implode(",", $colnames);
-		$place = implode(",", $places);
-		$sql = "INSERT INTO {$this->table} ($colname) VALUES($place)";
-                $this->dbh->query($sql,$values);
-		//$sth = $this->dbh->prepare($sql);
-		//$sth->execute($values);
+		$this->dbh->insert($this->table,$param,$req['post']);
 	}
 
         public function delete($req){
