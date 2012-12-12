@@ -22,6 +22,10 @@ class CommonController extends Controller
 		} else {
 			$this->dirname = "";
 		}
+		$this->rule = array("email"=>array("type"=>"email"),
+			"url"=>array("type"=>"url"),
+			"about"=>array("required"=>true)
+		);
         }
 
         public function get() {
@@ -47,6 +51,8 @@ class CommonController extends Controller
         }
 
         public function put() {
+		$validator = new Validator($this->rule);
+		$validator->validate($this->req);
                 $this->model->put($this->req);
                 header("Location:".$this->base.$this->controller.$this->req['id']);
                 //header("Location:".$this->top.$this->req['controller']."/");

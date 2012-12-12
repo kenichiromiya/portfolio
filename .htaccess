@@ -11,18 +11,6 @@ php_flag short_open_tag On
     RewriteCond %{REQUEST_FILENAME} -f
     RewriteRule (.*)$ $1 [L]
 
-    #RewriteRule (app/uploads.*)$ $1 [L]
-    #RewriteRule (app/views.*)$ $1 [L]
-    #RewriteRule (articles|accounts|comments|categories|sessions|uploads)/(index.php)*$ index.php?controller=$1 [QSA,L]
-    #RewriteRule (articles|accounts|comments|categories|sessions|uploads)/(.+)$ index.php?controller=$1&id=$2 [QSA,L]
-    #RewriteRule (index.php)*$ index.php?controller=articles [QSA,L]
-    #RewriteRule (.+)$ index.php?controller=articles&id=$1 [QSA,L]
-    #RewriteRule (.*(css|js|jpg|jpeg|png|gif))$ app/views/$1 [L]
-    #RewriteRule (.+)$ index.php [QSA,L]
-    #RewriteRule (.+)/(.+)/(.+)$ index.php?controller=$1&id=$2/$3 [QSA,L]
-    #RewriteRule (.+)/(.+)$ index.php?controller=$1&id=$2 [QSA,L]
-    #RewriteRule (.+)/$ index.php?controller=$1 [QSA,L]
-    #RewriteRule (.+)$ index.php?controller=index&id=$1 [QSA,L]
     RewriteRule (accounts|sessions)/(.+)$ index.php?controller=$1&id=$2 [QSA,L]
     RewriteRule (accounts|sessions)/$ index.php?controller=$1&id=$2 [QSA,L]
     RewriteRule (.+)/(.+)$ index.php?controller=index&id=$1/$2 [QSA,L]

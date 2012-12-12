@@ -12,6 +12,10 @@ class Controller
 		$this->sessionsmodel = new SessionsModel();
 		$var = $this->sessionsmodel->get($this->req);
 		$this->session = $var['session'];
+		$rule = array("email"=>array("type"=>"email"),
+				"url"=>array("type"=>"url"),
+				"about"=>array("required"=>true)
+				);
         }
 
         public function get() {

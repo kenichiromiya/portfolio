@@ -38,8 +38,10 @@
 <?php } else { ?>
 <input type="text" id="id" name="id" size="20" value=""/><br/>
 <?php }?>
+<!--
 <label for="password"><?=_('Password')?></label>
 <input id="password" type="password" name="password" /><br/>
+-->
 <label for="email"><?=_('Email')?></label>
 <input id="email" type="text" name="email" value="<?=$email?>"/><br/>
 <label for="role"><?=_('Role')?></label>
