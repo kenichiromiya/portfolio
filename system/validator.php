@@ -2,8 +2,9 @@
 class Validator {
 
 	public $rule;
-        public function __construct($rule) {
-		$this->rule = $rule;
+	public $errors;
+        public function __construct() {
+		$this->errors = array();
         }
 
 	public function validate($param) {
@@ -12,17 +13,28 @@ class Validator {
 				switch($this->rule[$key]['type'])
 				{
 				case "url":
-					error_log("url!");
+					if (preg_match('/^(https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/', $value)) {
+					} else {
+						$this->errors[$key] ="Invalid URL";
+					}
 					break;
 				case "email":
-					error_log("email!");
+					if (preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/", $value)) {
+					} else {
+						$this->errors[$key] ="Invalid Email";
+					}
+
 					break;
 				default:
 				}
 			}
 		}
 		//return true;
-		return false;
+		if (count($this->errors)){
+			return false;
+		} else {
+			return true;
+		}
 	}
 }
 ?>

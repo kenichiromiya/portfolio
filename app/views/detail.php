@@ -35,7 +35,11 @@ endif;
 <?=$row['title']?>
 </h1>
 <p>
-<?=$row['body']?>
+<?php
+$markdown = new Markdown();
+$body = $markdown->parse($row['body']);
+?>
+<?=$row['description']?>
 </p>
 <div class="account">
 <div class="icon">
@@ -55,9 +59,9 @@ if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){
 <input type="hidden" name="_method" value="put">
 <label for="title"><?=_('Title')?></label>
 <input id="title" type="text" name="title" size="20" value="<?=$row['title']?>"/><br/>
-<label for="body"><?=_('Body')?></label>
-<textarea id="body" name="body" rows="10" cols="20">
-<?=$row['body']?>
+<label for="description"><?=_('Description')?></label>
+<textarea id="description" name="description" rows="10" cols="20">
+<?=$row['description']?>
 </textarea><br/>
 <label for="submit"><?=_('Submit')?></label>
 <input id="submit" type="submit" value="<?=_('Submit')?>"/><br/>

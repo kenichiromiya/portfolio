@@ -49,6 +49,9 @@ class IndexModel extends Model {
 		foreach($_FILES as $file) {
 			if ($file["name"]) {
                                 $dirname = "upload";
+                                if (!is_dir($dirname)){
+                                        mkdir($dirname,0777,true);
+                                }
                                 $filename = $req['id'].$file["name"];
                                 $upload_file = "$dirname/$filename";
                                 if (!is_dir(dirname($upload_file))){
