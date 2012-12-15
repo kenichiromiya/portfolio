@@ -23,27 +23,39 @@ class CommonController extends Controller
 			$this->dirname = "";
 		}
 		$this->validator = new Validator();
+		$this->var['req'] = $this->req;
+		$this->var['base'] = BASE;
+		$this->var['session'] = $this->session;
         }
 
         public function get() {
                 $var = $this->model->get($this->req);
-		$var['req'] = $this->req;
-                $var['base'] = BASE;
-                $var['views'] = "http://".$_SERVER["HTTP_HOST"].$this->dir."app/views/";
-		$var['session'] = $this->session;
+		$this->var = $this->var + $var;
                 //$file = $this->req['controller'].'.php';
-		if(preg_match("#[^/]$#",$this->req['id'])) {
-			$file = 'detail.php';
-		} elseif ($this->req['start']) {
-			$file = 'list.php';
+		if (preg_match("#\.(.*?)$#",$this->req['id'],$m)) {
+			if(preg_match("/jpeg|jpg/",$m[1])){
+				$extention = ".jpg";
+			}
 		} else {
-			$file = 'index.php';
+			$extention = "";
+		}
+		if ($this->req['mode']) {
+			$mode = ".".$this->req['mode'];
+		} else {
+			$mode = "";
+		}
+		if (preg_match("#[^/]$#",$this->req['id'])) {
+			$file = 'detail'.$extention.$mode.'.php';
+		} elseif ($this->req['start']) {
+			$file = 'list'.$mode.'.php';
+		} else {
+			$file = 'index'.$mode.'.php';
 		}
 		if($this->req['controller'] != 'index'){
 			$file = $this->req['controller']."/".$file;
 		}
                 $this->view = new View($file);
-                $contents = $this->view->getcontents($var);
+                $contents = $this->view->getcontents($this->var);
                 echo $contents;
         }
 

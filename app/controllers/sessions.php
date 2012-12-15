@@ -15,14 +15,11 @@ class SessionsController extends CommonController
 				header("Location:".$this->base);
 			}
 		} else {
-			$var = array_merge($var,$this->req);
-			$var['error'] = true;
-			$file = $this->req['controller'].'.php';
-			$this->view = new View($file);
-			$contents = $this->view->getcontents($var);
+			header("HTTP/1.1 401 Unauthorized");
+			$this->view = new View("sessions/index.php");
+			$contents = $this->view->getcontents($this->var);
 			echo $contents;
 		}
-		header("Location:".$this->base);
 	}
 
 	public function delete() {

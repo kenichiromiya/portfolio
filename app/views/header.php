@@ -7,7 +7,17 @@
 
 <div class="navi">
 <?php if($session['id']) { ?>
+<!--
 <a href="<?=$base?><?=$session['account_id']?>/"><?=_('Home')?></a>
+-->
+<a href="?mode=edit"><?=_('Edit')?></a>
+<a href="./?mode=add"><?=_('Add')?></a>
+<!--
+<form action="<?=$base?>" method="get">
+<input type="text" name="id">
+<input type="submit" value="<?=_('Add')?>">
+</form>
+-->
 <form action="<?=$base?>sessions/<?=$session['id']?>" method="post">
 <input type="hidden" name="_method" value="delete">
 <input type="submit" value="<?=_('Sign Out')?>">

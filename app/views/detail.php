@@ -20,62 +20,17 @@
 <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>
-<?php
-if($row['filename']):
-	if (!file_exists("upload/large/".$row['filename'])){
-		$image = new Image();
-		$image->imageresize("upload/large/".$row['filename'],"upload/".$row['filename'],1000,1000);
-	}
-?>
-<img src="<?=$base?>upload/large/<?=$row['filename']?>">
-<?php
-endif;
-?>
+
 <h1>
 <?=$row['title']?>
 </h1>
 <p>
 <?php
 $markdown = new Markdown();
-$body = $markdown->parse($row['body']);
+echo $markdown->parse($row['text']);
 ?>
-<?=$row['description']?>
 </p>
-<div class="account">
-<div class="icon">
-<a href="<?=$base?>accounts/<?=$row['account_id']?>"><img src="<?=$base?>upload/accounts/thumb/<?=$row['account_id']?>/icon.jpeg"></a>
-</div>
-<div class="account_id">
-<a href="<?=$base?>accounts/<?=$row['account_id']?>"><?=$row['account_id']?></a>
-</div>
-</div>
 
-<?php 
-if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){ ?>
-<?php //if($session['account_id'] and preg_match("/".$session['account_id']."/",$req['id'])){ ?>
-
-<div id="subcontainer">
-<form class="multi" action="<?=$base?><?=$id?>" method="post">
-<input type="hidden" name="_method" value="put">
-<label for="title"><?=_('Title')?></label>
-<input id="title" type="text" name="title" size="20" value="<?=$row['title']?>"/><br/>
-<label for="description"><?=_('Description')?></label>
-<textarea id="description" name="description" rows="10" cols="20">
-<?=$row['description']?>
-</textarea><br/>
-<label for="submit"><?=_('Submit')?></label>
-<input id="submit" type="submit" value="<?=_('Submit')?>"/><br/>
-
-</form>
-</div>
-
-<!--
-<form action="<?=$base?><?=$row['id']?>" method="post">
-<input type="hidden" name="_method" value="delete">
-<input type="submit" value="<?=_('Delete')?>">
-</form>
--->
-<?php } ?>
 </div>
 </div>
 

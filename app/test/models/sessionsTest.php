@@ -27,14 +27,24 @@ class sessionsTest extends PHPUnit_Framework_TestCase
 	{
 	}
 
+	public function testFailingPost()
+	{
+		$url = "http://localhost/portfolio/sessions/";
+
+		$array = array("id"=>"fail","password"=>"fail","persistent"=>"");
+		$postfields = http_build_query($array);
+		$status = curl_post($url,$postfields);
+		$this->assertEquals('401', $status);
+		//return $return;
+	}
 	public function testPost()
 	{
 		$url = "http://localhost/portfolio/sessions/";
 
 		$array = array("id"=>"test","password"=>"test","persistent"=>"");
 		$postfields = http_build_query($array);
-		$return = curl_post($url,$postfields);
-		print_r($return);
+		$status = curl_post($url,$postfields);
+		print_r($status);
 		//return $return;
 	}
 

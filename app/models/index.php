@@ -75,8 +75,10 @@ class IndexModel extends Model {
 				$image->imageresize($upload_thumb_file,$upload_file,200);
 				$image->imageresize($upload_large_file,$upload_file,1000,1000);
 			}
-			$pathinfo = pathinfo($file["name"]);
-			$id = $req['id'].$pathinfo['filename'];
+			//$pathinfo = pathinfo($file["name"]);
+			//$id = $req['id'].$pathinfo['filename'];
+			//$pathinfo = pathinfo($file["name"]);
+			$id = $req['id'].$file["name"];
 			//$sql = "DELETE FROM {$this->table} WHERE id = ?";
 			//$this->dbh->query($sql,array($id));
                 	$this->dbh->delete($this->table,$id);

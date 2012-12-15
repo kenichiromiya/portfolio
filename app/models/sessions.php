@@ -41,8 +41,10 @@ class SessionsModel extends Model {
 				//$sth = $this->dbh->prepare($sql);
 				//$sth->execute(array($session_id,$req['id']));
 				$this->dbh->insert($this->table,array("id"=>$session_id,"account_id"=>$req['id']));
+				return $var;
+			} else {
+				return FALSE;
 			}
-			return $var;
 		} catch (PDOException $e) {
 			return FALSE;
 		}
