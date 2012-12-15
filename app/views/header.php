@@ -1,8 +1,9 @@
 <div id="header">
-<div class="logo">
-<h1>
+<h1 class="logo">
 <a href="<?=$base?>"><img src="<?=$base?>upload/logo.png"/></a>
 </h1>
+<div class="menu">
+<a href="<?=$base?>about"><?=_('About')?></a>
 </div>
 
 <div class="navi">
@@ -18,7 +19,7 @@
 <input type="submit" value="<?=_('Add')?>">
 </form>
 -->
-<form action="<?=$base?>sessions/<?=$session['id']?>" method="post">
+<form id="signout" action="<?=$base?>sessions/<?=$session['id']?>" method="post">
 <input type="hidden" name="_method" value="delete">
 <input type="submit" value="<?=_('Sign Out')?>">
 </form>
@@ -28,5 +29,5 @@
 <a href="<?=$base?>sessions/"><?=_('Sign In')?></a>
 <a href="<?=$base?>accounts/"><?=_('Create an account')?></a>
 <?php } ?>
-</div>
-</div>
+</div><!--navi-->
+</div><!--header-->

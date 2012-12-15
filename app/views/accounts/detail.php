@@ -13,24 +13,24 @@
 <div id="wrapper">
 
 <?php include("header.php")?>
-<div id="container">
+<div id="subcontainer">
 <div id="icon">
 <img src="<?=$base?>upload/accounts/large/<?=$icon?>">
-</div>
-<div id="accounts">
+</div><!--icon-->
+<div class="account">
 <h1><?=$id?></h1>
 <a href="<?=$url?>"><?=$url?></a>
 <p>
 <?=$about?>
 </p>
-</div>
+</div><!--account-->
 
-</div>
+</div><!--subcontainer-->
 
 <?php if($session['account_id'] == $id){ ?>
 
 <div id="subcontainer">
-<form class="multi" action="<?=$base?>accounts/<?=$id?>" method="post" enctype="multipart/form-data">
+<form id="account" action="<?=$base?>accounts/<?=$id?>" method="post" enctype="multipart/form-data">
 <input type="hidden" name="_method" value="put">
 <label for="id"><?=_('Username')?></label>
 <?php if ($id) { ?>
@@ -51,9 +51,9 @@
 </select><br/>
 <label for="url"><?=_('URL')?></label>
 <input id="url" type="text" name="url" value="<?=$url?>"/><br/>
-<label for="about"><?=_('About')?></label>
-<textarea id="about" name="about">
-<?=$about?>
+<label for="profile"><?=_('Profile')?></label>
+<textarea id="profile" name="profile">
+<?=$profile?>
 </textarea><br/>
 <!--img src="<?=$base?>upload/accounts/large/<?=$icon?>"-->
 <label for="icon"><?=_('Icon')?></label>
@@ -62,17 +62,8 @@
 <input id="submit" type="submit" value="<?=_('Submit')?>"/><br/><br/>
 </form>
 
-</div>
+</div><!--subcontainer-->
 <?php } ?>
-<!--
-<div id="subcontainer">
-<form class="multi" action="<?=$id?>" method="post" enctype="multipart/form-data">
-<input type="hidden" name="_method" value="put"/>
-<label for="submit"><?=_('Submit')?></label>
-<input id="submit" type="submit" value="<?=_('Submit')?>"/><br/><br/>
-</form>
-</div>
--->
 
 </div>
 </div>

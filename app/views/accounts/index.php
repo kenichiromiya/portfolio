@@ -10,9 +10,7 @@
 <?php include("header.php")?>
 
 <div id="subcontainer">
-
-<div id="subcontainer">
-<form class="multi" action="<?=$id?>" method="post" enctype="multipart/form-data">
+<form id="account" action="<?=$id?>" method="post" enctype="multipart/form-data">
 <input type="hidden" name="_method" value="put">
 <label for="id"><?=_('Username')?></label>
 <?php if ($id) { ?>
@@ -24,30 +22,13 @@
 <input id="password" type="password" name="password" /><br/>
 <label for="email"><?=_('Email')?></label>
 <input id="email" type="text" name="email" value="<?=$email?>"/><br/>
-<!--
-<label for="role"><?=_('Role')?></label>
-<select id="role" name="role">
-<option value="admin"<?php if($role == 'admin') { echo 'selected=""'; }?>>admin</option>
-<option value="user"<?php if($role == 'user') { echo 'selected=""'; }?>>user</option>
-</select><br/>
-<label for="url"><?=_('URL')?></label>
-<input id="url" type="text" name="url" value="<?=$url?>"/><br/>
-<label for="about"><?=_('About')?></label>
-<textarea id="about" name="about">
-<?=$about?>
-</textarea><br/>
-<img src="<?=$base?>upload/accounts/thumb/<?=$icon?>">
-<label for="icon"><?=_('Icon')?></label>
-<input id="icon" type="file" name="icon" value=""/>
--->
 <label for="submit"><?=_('Submit')?></label>
 <input id="submit" type="submit" value="<?=_('Submit')?>"/><br/><br/>
 </form>
 
-</div>
-</div>
+</div><!--subcontainer-->
 
 
-</div>
+</div><!--wrapper-->
 </body>
 </html>

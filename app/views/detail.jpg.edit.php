@@ -15,11 +15,8 @@
 
 <?php include("header.php")?>
 
+<div id="main">
 <div id="container">
-<div id="twitter">
-<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-</div>
 
 <?php
 if($row['filename']):
@@ -32,23 +29,17 @@ if($row['filename']):
 <?php
 endif;
 ?>
-<!--
-<div class="account">
-<div class="icon">
-<a href="<?=$base?>accounts/<?=$row['account_id']?>"><img src="<?=$base?>upload/accounts/thumb/<?=$row['account_id']?>/icon.jpeg"></a>
-</div>
-<div class="account_id">
-<a href="<?=$base?>accounts/<?=$row['account_id']?>"><?=$row['account_id']?></a>
-</div>
-</div>
--->
+</div><!--container-->
 
-<?php 
+</div><!--main-->
+<div id="sub">
+<div id="container">
+
+<?php
 if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){ ?>
 <?php //if($session['account_id'] and preg_match("/".$session['account_id']."/",$req['id'])){ ?>
 
-<div id="subcontainer">
-<form class="multi" action="<?=$base?><?=$id?>" method="post">
+<form id="image" action="<?=$base?><?=$id?>" method="post">
 <input type="hidden" name="_method" value="put">
 <!--
 <label for="type"><?=_('Type')?></label>
@@ -58,7 +49,7 @@ if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){
 </select><br/>
 -->
 <label for="title"><?=_('Title')?></label>
-<input id="title" type="text" name="title" size="20" value="<?=$row['title']?>"/><br/>
+<input id="title" type="text" name="title" size="10" value="<?=$row['title']?>"/><br/>
 <label for="description"><?=_('Description')?></label>
 <textarea id="description" name="description" rows="10" cols="20">
 <?=$row['description']?>
@@ -73,7 +64,6 @@ if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){
 <input id="submit" type="submit" value="<?=_('Submit')?>"/><br/>
 
 </form>
-</div>
 
 <!--
 <form action="<?=$base?><?=$row['id']?>" method="post">
@@ -83,8 +73,11 @@ if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){
 -->
 <?php } ?>
 
-</div>
-</div>
+
+
+</div><!--container-->
+</div><!--sub-->
+</div><!--wrapper-->
 
 </body>
 </html>

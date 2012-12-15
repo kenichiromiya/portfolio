@@ -15,11 +15,8 @@
 
 <?php include("header.php")?>
 
+<div id="main">
 <div id="container">
-<div id="twitter">
-<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-</div>
 
 <?php
 if($row['filename']):
@@ -32,6 +29,15 @@ if($row['filename']):
 <?php
 endif;
 ?>
+</div><!--container-->
+
+</div><!--main-->
+<div id="sub">
+<div id="container">
+<div id="twitter">
+<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div><!--twitter-->
 <h1>
 <?=$row['title']?>
 </h1>
@@ -45,10 +51,11 @@ endif;
 <div class="account_id">
 <a href="<?=$base?>accounts/<?=$row['account_id']?>"><?=$row['account_id']?></a>
 </div>
-</div>
 
-</div>
-</div>
+</div><!--account-->
+</div><!--container-->
+</div><!--sub-->
+</div><!--wrapper-->
 
 </body>
 </html>

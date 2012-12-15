@@ -9,13 +9,12 @@
 <body>
 <div id="wrapper">
 <?php include("header.php")?>
-<?=_('Login')?>
 <div id="subcontainer">
 
 <?php if($error){?>
 <?=_('Wrong Username/Email and password combination.')?>
 <?php } ?>
-<form class="multi" method="post" action="<?=$base?>sessions/">
+<form id="session" method="post" action="<?=$base?>sessions/">
 <input type="hidden" name="_method" value="post">
 <input type="hidden" name="done" value="<?=$done?>">
 <label for="id"><?=_('Id')?></label>
@@ -27,7 +26,7 @@
 <label for="submit"></label>
 <input id="submit" type="submit" name="submit" value="<?=_('Submit')?>"/><br/>
 </form>
-</div>
+</div><!--subcontainer-->
 </div>
 </body>
 </html>
