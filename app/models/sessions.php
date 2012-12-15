@@ -23,8 +23,8 @@ class SessionsModel extends Model {
 	public function post($req) {
 		try {
 			$password = md5($req['password']);
-			$sql = "SELECT * FROM {$this->accountstable} WHERE id = ? and password = ?";
-			$var['account'] = $this->dbh->getRow($sql,array($req['id'],$password));
+			$sql = "SELECT * FROM {$this->accountstable} WHERE id = ? and password = ? and code = ?";
+			$var['account'] = $this->dbh->getRow($sql,array($req['account_id'],$password,''));
 
 			//print_r(array($req['id'],$password));
 			if ($var['account']){
@@ -40,7 +40,7 @@ class SessionsModel extends Model {
 				//$sql = "INSERT INTO {$this->table} (id,account_id) VALUES(?,?)";
 				//$sth = $this->dbh->prepare($sql);
 				//$sth->execute(array($session_id,$req['id']));
-				$this->dbh->insert($this->table,array("id"=>$session_id,"account_id"=>$req['id']));
+				$this->dbh->insert($this->table,array("id"=>$session_id,"account_id"=>$req['account_id']));
 				return $var;
 			} else {
 				return FALSE;

@@ -13,19 +13,24 @@ class Validator {
 				switch($this->rule[$key]['type'])
 				{
 				case "url":
-					if (preg_match('/^(https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/', $value)) {
+					if (preg_match('/^(https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$|^$/', $value)) {
 					} else {
 						$this->errors[$key] ="Invalid URL";
 					}
 					break;
 				case "email":
-					if (preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/", $value)) {
+					if (preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$|^$/", $value)) {
 					} else {
 						$this->errors[$key] ="Invalid Email";
 					}
 
 					break;
 				default:
+				}
+				if ($this->rule[$key]['required']) {
+					if ($value == "") {
+						$this->errors[$key] ="$key required";
+					}
 				}
 			}
 		}

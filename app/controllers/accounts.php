@@ -8,16 +8,30 @@ class AccountsController extends CommonController
         }
 
         public function put() {
-                $rule = array("email"=>array("type"=>"email"),
+                $rule = array(
+			"id"=>array("required"=>true),
+			"password"=>array("required"=>true),
+			"email"=>array("type"=>"email","required"=>true),
                         "url"=>array("type"=>"url"),
-                        "about"=>array("required"=>true)
                 );
 		$this->validator->rule = $rule;
 		if ($this->validator->validate($this->req['post'])) {
 			$this->model->put($this->req);
-			header("Location:".$this->base.$this->controller.$this->req['id']);
+			if($this->req['mode'] == 'signup') {
+				$this->view = new View("accounts/index.signup.php");
+				$contents = $this->view->getcontents($this->var);
+				echo $contents;
+			} elseif($this->req['mode'] == 'complete') {
+				header("Location:".$this->base."sessions/?account_id=".$this->req['id']);
+			} else {
+				header("Location:".$this->base."accounts/".$this->req['id']);
+			}
 		} else {
-			$errors = $this->validator->errors;
+                        header("HTTP/1.1 400 Bad Request");
+                        $this->view = new View("accounts/index.php");
+			$this->var['errors'] = $this->validator->errors;
+                        $contents = $this->view->getcontents($this->var);
+                        echo $contents;
 
 /*
 			$var = $this->req['post'];

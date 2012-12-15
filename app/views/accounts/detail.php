@@ -59,14 +59,13 @@
 <label for="icon"><?=_('Icon')?></label>
 <input id="icon" type="file" name="icon" value=""/><br/>
 <label for="submit"><?=_('Submit')?></label>
-<input id="submit" type="submit" value="<?=_('Submit')?>"/><br/><br/>
+<input id="submit" type="submit" value="<?=_('Submit')?>"/><br/>
 </form>
 
 </div><!--subcontainer-->
 <?php } ?>
 
-</div>
-</div>
+</div><!--wrapper-->
 
 </body>
 </html>

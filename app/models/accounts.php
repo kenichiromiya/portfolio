@@ -14,38 +14,55 @@ class AccountsModel extends Model {
 		$sql = "SELECT COUNT(*) FROM {$this->table} WHERE id = ?";
 		$count = $this->dbh->getOne($sql,array($req['id']));
 		$param = $req['post'];
-		$param['password'] = md5($param['password']);
-		$password = md5($param['password']);
-		if (count($_FILES)){
-			$file = $_FILES['icon'];
-			$dirname = "upload/accounts/";
-			$filename = $req['id']."/"."icon.jpeg";
-			$upload_file = "$dirname/$filename";
-			if (!is_dir(dirname($upload_file))){
-				mkdir(dirname($upload_file),0777,true);
-			}
-			$thumb_dirname = "upload/accounts/thumb";
-			$upload_thumb_file = "$thumb_dirname/$filename";
-			if (!is_dir(dirname($upload_thumb_file))){
-				mkdir(dirname($upload_thumb_file),0777,true);
-			}
-			$large_dirname = "upload/accounts/large";
-			$upload_large_file = "$large_dirname/$filename";
-			if (!is_dir(dirname($upload_large_file))){
-				mkdir(dirname($upload_large_file),0777,true);
-			}
-			if(move_uploaded_file($file["tmp_name"],$upload_file))
-			{
-				chmod($upload_file,0644);
-			}
-			$image = new Image();
-			$image->imageresize($upload_thumb_file,$upload_file,50,'','jpeg');
-			$image->imageresize($upload_large_file,$upload_file,100,'100','jpeg');
-			//$pathinfo = pathinfo($file["name"]);
-			//$icon = $req['id']."/".$pathinfo['filename'];
-			$param['icon'] = $req['id']."/"."icon.jpeg";
+		if(isset($param['password'])){
+			$param['password'] = md5($param['password']);
 		}
 		if ($count) {
+			// Account confirmation
+			if(isset($req['code'])) {
+				$values = array();
+				$sql = "SELECT * FROM {$this->table} ";
+				$sql .= "WHERE id = ? ";
+				array_push($values,$req['id']);
+				$row = $this->dbh->getRow($sql,$values);
+				if ($row['code'] == $req['code']) {
+					$param['code'] = "";
+					$this->dbh->update($this->table,$req['id'],$param);
+					return TRUE;
+				} else {
+					return FALSE;
+				}
+			}
+			// TODO only sign in
+			if (count($_FILES)){
+				$file = $_FILES['icon'];
+				$dirname = "upload/accounts/";
+				$filename = $req['id']."/"."icon.jpeg";
+				$upload_file = "$dirname/$filename";
+				if (!is_dir(dirname($upload_file))){
+					mkdir(dirname($upload_file),0777,true);
+				}
+				$thumb_dirname = "upload/accounts/thumb";
+				$upload_thumb_file = "$thumb_dirname/$filename";
+				if (!is_dir(dirname($upload_thumb_file))){
+					mkdir(dirname($upload_thumb_file),0777,true);
+				}
+				$large_dirname = "upload/accounts/large";
+				$upload_large_file = "$large_dirname/$filename";
+				if (!is_dir(dirname($upload_large_file))){
+					mkdir(dirname($upload_large_file),0777,true);
+				}
+				if(move_uploaded_file($file["tmp_name"],$upload_file))
+				{
+					chmod($upload_file,0644);
+				}
+				$image = new Image();
+				$image->imageresize($upload_thumb_file,$upload_file,50,'','jpeg');
+				$image->imageresize($upload_large_file,$upload_file,100,'100','jpeg');
+				//$pathinfo = pathinfo($file["name"]);
+				//$icon = $req['id']."/".$pathinfo['filename'];
+				$param['icon'] = $req['id']."/"."icon.jpeg";
+			}
 
 /*
 			$sets = array("icon = ?");
@@ -66,6 +83,11 @@ class AccountsModel extends Model {
 			*/
 
 		} else {
+			$code = rand();
+			$subject = _("Account confirmation");
+			$message = BASE."accounts/".$req['id']."?code=".$code."&mode=confirm";
+			mail($req['email'], $subject, $message);
+			$param['code'] = $code;
 			$this->dbh->insert($this->table,$param);
 /*
 			$sql = "INSERT INTO {$this->table} (id,password,email,role,url,about,icon) VALUES(?,?,?,?,?,?,?)";
@@ -75,4 +97,16 @@ class AccountsModel extends Model {
 		}
 	}
 }
+/*
+Twitter account confirmation
+
+Hi, miyaa
+
+Twitterアカウントを確認するにはこのリンクをクリックし、このメールアドレス(miyaa@yahoo.co.jp)を照合してください。
+http://twitter.com/account/confirm_email/miyaa/2ECF2-HCG39
+
+Thanks! ついったーチームより
+
+安全上の理由で、あなたのアカウントについてお伺いします。
+*/
 ?>
