@@ -17,15 +17,10 @@
 
 <div id="container">
 
-<h1>
-<?=$row['title']?>
-</h1>
-<p>
 <?php
 $markdown = new Markdown();
 echo $markdown->parse($row['text']);
 ?>
-</p>
 
 </div>
 </div>
