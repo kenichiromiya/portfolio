@@ -1,0 +1,21 @@
+#main {
+        width:80%;
+        margin-bottom:10px; /*上下の間隔をあける*/
+        text-align:left;
+        float:left;
+}
+#sub {
+        width:20%;
+        margin-bottom:10px; /*上下の間隔をあける*/
+        text-align:left;
+        float:left;
+}
+
+ul {
+	padding-left: 25px;
+}
+li {
+	/*padding: 0;
+	/*list-style:none; /*リストの●を消す*/
+}
+
