@@ -25,5 +25,6 @@ echo $markdown->parse($row['text']);
 </div>
 </div>
 
+<?php include("footer.php")?>
 </body>
 </html>

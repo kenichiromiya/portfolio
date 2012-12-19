@@ -3,6 +3,7 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <title><?=$config['title']?></title>
 <link rel="stylesheet" type="text/css" href="<?=$base?>css/style.css"/>
+<link rel="stylesheet" type="text/css" href="<?=$base?>css/accounts.css"/>
 <?=$head?>
 </head>
 <body>
@@ -11,8 +12,8 @@
 
 <?php
 ?>
-<div id="subcontainer">
-<form id="account" action="<?=$base?>accounts/?mode=signup" method="post">
+<div id="main">
+<form action="<?=$base?>accounts/?mode=signup" method="post">
 <input type="hidden" name="_method" value="put">
 <label for="id"><?=_('Username')?></label>
 <?php if ($id) { ?>
@@ -28,7 +29,7 @@
 <input id="submit" type="submit" value="<?=_('Submit')?>"/><br/><br/>
 </form>
 
-</div><!--subcontainer-->
+</div><!--main-->
 
 
 </div><!--wrapper-->

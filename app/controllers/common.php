@@ -4,14 +4,8 @@ class CommonController extends Controller
 {
 
         public function __construct() {
+		parent::__construct();
                 $singleton = Request::singleton();
-                $this->req = $singleton->req;
-                $classname = ucwords($this->req['controller'])."Model";
-                $this->model =& new $classname();
-		$this->base = BASE;
-		$this->sessionsmodel = new SessionsModel();
-		$var = $this->sessionsmodel->get($this->req);
-		$this->session = $var['session'];
 		if ($this->req['controller'] == 'index'){
 			$this->controller = "";
 		} else {
@@ -22,10 +16,6 @@ class CommonController extends Controller
 		} else {
 			$this->dirname = "";
 		}
-		$this->validator = new Validator();
-		$this->var['req'] = $this->req;
-		$this->var['base'] = BASE;
-		$this->var['session'] = $this->session;
         }
 
         public function get() {
@@ -61,17 +51,17 @@ class CommonController extends Controller
 
         public function put() {
                 $this->model->put($this->req);
-                header("Location:".$this->base.$this->controller.$this->req['id']);
+                header("Location:".BASE.$this->controller.$this->req['id']);
                 //header("Location:".$this->top.$this->req['controller']."/");
         }
         public function post() {
                 //$this->model->post($this->req['post']);
                 $this->model->post($this->req);
-                header("Location:".$this->base.$this->controller.$this->dirname);
+                header("Location:".BASE.$this->controller.$this->dirname);
         }
         public function delete() {
                 $this->model->delete($this->req);
-                header("Location:".$this->base.$this->controller.$this->dirname);
+                header("Location:".BASE.$this->controller.$this->dirname);
         }
 }
 ?>

@@ -4,6 +4,7 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <title><?php echo TITLE; ?> - <?=$row['title']?></title>
 <link rel="stylesheet" type="text/css" href="<?=$base?>css/style.css"/>
+<link rel="stylesheet" type="text/css" href="<?=$base?>css/detail.jpg.css"/>
 <script type="text/javascript" src="<?=$base?>js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="<?=$base?>js/jquery.masonry.min.js""></script>
 <script type="text/javascript" src="<?=$base?>js/jquery.bottom-1.0.js"></script>
@@ -15,8 +16,8 @@
 
 <?php include("header.php")?>
 
-<div id="main">
 <div id="container">
+<div id="main">
 
 <?php
 if($row['filename']):
@@ -29,18 +30,18 @@ if($row['filename']):
 <?php
 endif;
 ?>
-</div><!--container-->
 
 </div><!--main-->
 <div id="sub">
-<div id="container">
 
 <?php
 if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){ ?>
 <?php //if($session['account_id'] and preg_match("/".$session['account_id']."/",$req['id'])){ ?>
 
-<form id="image" action="<?=$base?><?=$id?>" method="post">
+<div id="image">
+<form action="<?=$base?><?=$id?>" method="post">
 <input type="hidden" name="_method" value="put">
+<input type="hidden" name="type" value="image">
 <!--
 <label for="type"><?=_('Type')?></label>
 <select id="type" name="type">
@@ -64,6 +65,7 @@ if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){
 <input id="submit" type="submit" value="<?=_('Submit')?>"/><br/>
 
 </form>
+</div><!--form-->
 
 <!--
 <form action="<?=$base?><?=$row['id']?>" method="post">
@@ -75,8 +77,8 @@ if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){
 
 
 
-</div><!--container-->
 </div><!--sub-->
+</div><!--container-->
 </div><!--wrapper-->
 
 </body>

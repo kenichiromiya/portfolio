@@ -4,14 +4,15 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <base href="<?=$base?>"/>
 <link rel="stylesheet" type="text/css" href="<?=$base?>css/style.css"/>
+<link rel="stylesheet" type="text/css" href="<?=$base?>css/sessions.css"/>
 </head>
 
 <body>
 <div id="wrapper">
 <?php include("header.php")?>
-<div id="subcontainer">
 
-<form id="session" method="post" action="<?=$base?>sessions/">
+<div id="main">
+<form method="post" action="<?=$base?>sessions/">
 <input type="hidden" name="_method" value="post">
 <input type="hidden" name="done" value="<?=$done?>">
 <label for="account_id"><?=_('Id')?></label>
@@ -23,7 +24,7 @@
 <label for="submit"></label>
 <input id="submit" type="submit" name="submit" value="<?=_('Submit')?>"/><br/>
 </form>
-</div><!--subcontainer-->
-</div>
+</div><!--main-->
+</div><!--wrapper-->
 </body>
 </html>

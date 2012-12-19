@@ -4,6 +4,7 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <title><?php echo TITLE; ?> - <?=$row['title']?></title>
 <link rel="stylesheet" type="text/css" href="<?=$base?>css/style.css"/>
+<link rel="stylesheet" type="text/css" href="<?=$base?>css/detail.jpg.css"/>
 <script type="text/javascript" src="<?=$base?>js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="<?=$base?>js/jquery.masonry.min.js""></script>
 <script type="text/javascript" src="<?=$base?>js/jquery.bottom-1.0.js"></script>
@@ -15,9 +16,10 @@
 
 <?php include("header.php")?>
 
-<div id="main">
 <div id="container">
+<div id="main">
 
+<div id="frame">
 <?php
 if($row['filename']):
 	if (!file_exists("upload/large/".$row['filename'])){
@@ -29,11 +31,10 @@ if($row['filename']):
 <?php
 endif;
 ?>
-</div><!--container-->
 
+</div><!--frame-->
 </div><!--main-->
 <div id="sub">
-<div id="container">
 <div id="twitter">
 <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
@@ -53,9 +54,10 @@ endif;
 </div>
 
 </div><!--account-->
-</div><!--container-->
 </div><!--sub-->
+</div><!--container-->
 </div><!--wrapper-->
 
+<?php include("footer.php")?>
 </body>
 </html>

@@ -1,5 +1,6 @@
 body {
 font-size:0.9em;
+	margin:0px;
 }
 a {
 text-decoration:none;
@@ -7,19 +8,19 @@ text-decoration:none;
 a:hover {
 text-decoration:underline;
 }
+
 blockquote{
-border:2px dotted #777;
-padding:10px;
-margin:10px;
-text-align:left;
+border:1px dotted #777;
 }
 
 h1 {
 color:#6666CC;
 }
 h2 {
+color:#6666CC;
 }
 h3 {
+color:#6666CC;
 }
 img {
 border-style:none;
@@ -40,172 +41,74 @@ background-color:#9999FF;
 text-align:left;
 }
 
-table {
-        width: 100%;
-}
-
-th {
-text-align:left;
-}
-
-.dialog {
-position:absolute;
-width:500px;
-height:100px;
-left:50%;
-top:50%;
-margin-left:-250px;
-margin-top:-50px;
-        border-style:solid;
-        border-width:1px;
-display:none;
-/*background-color:ActiveBorder;*/
-}
-
-/*
-#edit {
-	height:1em;
-}
-*/
-.edit {
-	display:none;
-}
 
 #header {
-        clear: both;
+	clear: both;
 	text-align:left;
-vertical-align:top;
 }
 #header .logo {
-        width: 150px;
-    float:left;
-    text-align:left;
-display:inline;
-}
-#header .menu {
-height:50px;
- line-height:50px;
-    float:left;
-    text-align:left;
+	width: 150px;
+	float:left;
+	text-align:left;
+	display:inline;
 }
 #header .navi {
-height:50px;
- line-height:50px;
-    float:right;
-    text-align:right;
-}
-#pagination {
-        clear: both;
-	width:590px;
-	text-align:left;
+	height:50px;
+	line-height:50px;
+	float:right;
+	text-align:right;
 }
 #footer {
         clear: both;
-	width:90%;
-	text-align:center;
-}
-
-#navigation {
-        clear: both;
-        width: 90%;
-	text-align:left;
-}
-
-
-
-#navigation ul{
-clear: both;
-list-style-type: none;
-margin: 0;
-padding: 0;
-}
-
-#navigation ul li{
-float: left;
-margin: 0em 0.5em 0.5em 0em;
-padding: 0px;
+        width:100%;
+	height:100px;
+        background-color:gray;
+        color:white;
+	padding:5px;
+        text-align:center;
 }
 
 #wrapper {
 margin-right:auto;
 margin-left:auto;
 text-align: center;
-width:900px;
+width:80%;
 }
 
-#main {
-	width:590px;
-	margin-bottom:10px; /*上下の間隔をあける*/
-	text-align:left;
-}
-#sub {
-	width:190px;
-	margin-bottom:10px; /*上下の間隔をあける*/
-	text-align:left;
-	float:right;
-}
 #container {
 	clear: both;
 	text-align:left;
 }
-#subcontainer {
+#frame {
+	text-align:center;
+}
+#pages {
+	border: 1px;
+	border-style:solid;
+	border-color:blue;
 	clear: both;
 	text-align:left;
-margin-right:auto;
-margin-left:auto;
-width:400px;
-}
-#account label,#session label {
-display: block;
-width: 100px;
-float: left;
-       margin-bottom: 10px;
-	text-align: left;
-	padding-right: 15px;
+	margin: 5px;
 }
 
-#text label {
-display: block;
-width: 100px;
-float: left;
-       margin-bottom: 10px;
+#image form label {
+	display: block;
+	width: 50px;
+	float: left;
+	margin-bottom: 10px;
 	text-align: left;
 	padding-right: 15px;
 }
-
-form#image label {
-display: block;
-width: 50px;
-float: left;
-       margin-bottom: 10px;
-	text-align: left;
-	padding-right: 15px;
-}
-/*
-.multi label[for="body"] {
-display: block;
-float: right;
-       margin-bottom: 10px;
-}
-.multi textarea {
-display: block;
-float: right;
-       margin-bottom: 10px;
-}
-*/
 br { clear: left; }
-#main {
-        clear: both;
-   float: left;
-   width: 590px;
-   text-align:left;
+
+.images {
 }
 
-.item {
+.image {
   border: 1px;
   border-style:solid;
   width: 200px;
-  margin: 10px;
+  margin: 5px;
  padding:0px;
   float: left;
 }
@@ -216,23 +119,25 @@ br { clear: left; }
   border: 1px;
   border-style:solid;
   border-color:blue;
+  margin: 5px;
+  text-align:center;
 }
 .message {
   margin: 100px;
 }
 
 
-.image {
+.thumb {
   position: relative;  /* 基点を設定 */
 }
 
-.image  img {
+.thumb  img {
   top: 0;
   left: 0;
   z-index: 1; /* 一番下に配置 */
 }
 
-.image p {
+.thumb p {
   margin: 0;
   padding-top: 10px;
   padding-bottom: 10px;

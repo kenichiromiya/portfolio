@@ -8,25 +8,20 @@ class Controller
                 $this->req = $singleton->req;
                 $classname = ucwords($this->req['controller'])."Model";
                 $this->model =& new $classname();
-		$this->base = "http://".$_SERVER["HTTP_HOST"].dirname($_SERVER["SCRIPT_NAME"])."/";
 		$this->sessionsmodel = new SessionsModel();
 		$var = $this->sessionsmodel->get($this->req);
 		$this->session = $var['session'];
-		$rule = array("email"=>array("type"=>"email"),
-				"url"=>array("type"=>"url"),
-				"about"=>array("required"=>true)
-				);
+		$this->validator = new Validator();
+                $this->var['req'] = $this->req;
+                $this->var['base'] = BASE;
+                $this->var['session'] = $this->session;
         }
 
         public function get() {
                 $var = $this->model->get($this->req);
-		$var['req'] = $this->req;
-		$var['base'] = "http://".$_SERVER["HTTP_HOST"].dirname($_SERVER["SCRIPT_NAME"])."/";
-		$var['views'] = "http://".$_SERVER["HTTP_HOST"].dirname($_SERVER["SCRIPT_NAME"])."/app/views/";
-		$var['session'] = $this->session;
                 $file = $this->req['controller'].'.php';
                 $this->view = new View($file);
-                $contents = $this->view->getcontents($var);
+                $contents = $this->view->getcontents($this->var);
                 echo $contents;
         }
 

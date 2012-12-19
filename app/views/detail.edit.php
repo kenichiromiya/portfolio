@@ -4,6 +4,7 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <title><?php echo TITLE; ?> - <?=$row['title']?></title>
 <link rel="stylesheet" type="text/css" href="<?=$base?>css/style.css"/>
+<link rel="stylesheet" type="text/css" href="<?=$base?>css/detail.css"/>
 <script type="text/javascript" src="<?=$base?>js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="<?=$base?>js/jquery.masonry.min.js""></script>
 <script type="text/javascript" src="<?=$base?>js/jquery.bottom-1.0.js"></script>
@@ -21,8 +22,9 @@
 if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){ ?>
 <?php //if($session['account_id'] and preg_match("/".$session['account_id']."/",$req['id'])){ ?>
 
-<form id="text" action="<?=$base?><?=$id?>" method="post">
+<form action="<?=$base?><?=$id?>" method="post">
 <input type="hidden" name="_method" value="put">
+<input type="hidden" name="type" value="page">
 <!--
 <label for="type"><?=_('Type')?></label>
 <select id="type" name="type">
@@ -39,7 +41,7 @@ if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){
 </textarea><br/>
 -->
 <label for="text"><?=_('Text')?></label>
-<textarea id="text" name="text" rows="20" cols="80">
+<textarea id="text" name="text" rows="20" cols="100">
 <?=$row['text']?>
 </textarea><br/>
 <label for="submit"><?=_('Submit')?></label>

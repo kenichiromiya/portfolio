@@ -9,11 +9,10 @@ class IndexModel extends Model {
         public function get($req){
                 $var = $req;
 
-                if (preg_match("#/$#",$req['id'])) {
+                if (preg_match("#/$|^$#",$req['id'])) {
 			$sql = "SELECT * FROM {$this->table} ";
 			$values = array();
-			$sql .= "WHERE id LIKE ? ";
-			$sql .= "AND filename != '' ";
+			$sql .= "WHERE id LIKE ? AND type = 'image'";
 			$sql .= "ORDER BY createtime DESC ";
 			if ($req['start']) {
 				$sql .= "LIMIT {$req['start']},12";
@@ -21,7 +20,34 @@ class IndexModel extends Model {
 				$sql .= "LIMIT 12";
 			}
 			array_push($values,$req['id']."%");
-			$var['rows'] = $this->dbh->getAll($sql,$values);
+			//array_push($values,$req['id']."%.jpg",$req['id']."%.jpeg");
+			//$var['rows'] = $this->dbh->getAll($sql);
+			$var['image']['rows'] = $this->dbh->getAll($sql,$values);
+			$sql = "SELECT * FROM {$this->table} ";
+			$values = array();
+			$sql .= "WHERE id LIKE ? AND type = 'page'";
+			$sql .= "ORDER BY createtime DESC ";
+			if ($req['start']) {
+				$sql .= "LIMIT {$req['start']},12";
+			} else {
+				$sql .= "LIMIT 12";
+			}
+			array_push($values,$req['id']."%");
+			$var['page']['rows'] = $this->dbh->getAll($sql,$values);
+/*
+			$sql = "SELECT * FROM {$this->table} ";
+			$values = array();
+			$sql .= "WHERE id LIKE ? or id LIKE ?";
+			$sql .= "ORDER BY createtime DESC ";
+			if ($req['start']) {
+				$sql .= "LIMIT {$req['start']},12";
+			} else {
+				$sql .= "LIMIT 12";
+			}
+			$var['pages'] = $this->dbh->getAll($sql,$values);
+*/
+			$var['documents'] = array();
+			$var['folders'] = array();
 		} elseif ($req['id']) {
 			$sql = "SELECT * FROM {$this->table} ";
 			$values = array();
@@ -30,7 +56,6 @@ class IndexModel extends Model {
 			$var['row'] = $this->dbh->getRow($sql,$values);
 		} else {
 			$sql = "SELECT * FROM {$this->table} ";
-			$sql .= "WHERE filename != '' ";
 			$sql .= "ORDER BY createtime DESC ";
 			$values = array();
 			// $sql .= "ORDER BY id ";
@@ -74,15 +99,16 @@ class IndexModel extends Model {
 				$image = new Image();
 				$image->imageresize($upload_thumb_file,$upload_file,200);
 				$image->imageresize($upload_large_file,$upload_file,1000,1000);
+				$id = $req['id'].$file["name"];
+				$type = 'image';
+				//$sql = "DELETE FROM {$this->table} WHERE id = ?";
+				//$this->dbh->query($sql,array($id));
+				$this->dbh->delete($this->table,$id);
+				$this->dbh->insert($this->table,array("id"=>$id,"filename"=>$filename,"type"=>$type,"account_id"=>$req['account_id']));
 			}
 			//$pathinfo = pathinfo($file["name"]);
 			//$id = $req['id'].$pathinfo['filename'];
 			//$pathinfo = pathinfo($file["name"]);
-			$id = $req['id'].$file["name"];
-			//$sql = "DELETE FROM {$this->table} WHERE id = ?";
-			//$this->dbh->query($sql,array($id));
-                	$this->dbh->delete($this->table,$id);
-                	$this->dbh->insert($this->table,array("id"=>$id,"filename"=>$filename,"account_id"=>$req['account_id']));
 			//$sql = "INSERT INTO {$this->table} (id,filename,account_id) VALUES(?,?,?)";
 			//$this->dbh->query($sql,array($id,$filename,$req['account_id']));
 		}

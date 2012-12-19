@@ -1,1 +1,5 @@
-app/define.php
+system/define.php
+upload/
+build/
+dump.*
+messages.pot
