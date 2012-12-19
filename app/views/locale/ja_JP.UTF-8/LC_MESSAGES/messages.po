@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-15 20:03+0900\n"
+"POT-Creation-Date: 2012-12-16 01:30+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,37 +15,33 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/miyaa/git/portfolio/app/views/sessions/index.php:15
-msgid "Wrong Username/Email and password combination."
-msgstr ""
-
-#: /home/miyaa/git/portfolio/app/views/sessions/index.php:20
+#: /home/miyaa/git/portfolio/app/views/sessions/index.php:17
 #: /home/miyaa/git/portfolio/app/views/sessions/edit.php:5
 msgid "Id"
 msgstr ""
 
-#: /home/miyaa/git/portfolio/app/views/sessions/index.php:22
+#: /home/miyaa/git/portfolio/app/views/sessions/index.php:19
 #: /home/miyaa/git/portfolio/app/views/sessions/edit.php:7
 #: /home/miyaa/git/portfolio/app/views/accounts/detail.php:42
-#: /home/miyaa/git/portfolio/app/views/accounts/index.php:24
+#: /home/miyaa/git/portfolio/app/views/accounts/index.php:23
 msgid "Password"
 msgstr "パスワード"
 
-#: /home/miyaa/git/portfolio/app/views/sessions/index.php:24
+#: /home/miyaa/git/portfolio/app/views/sessions/index.php:21
 #: /home/miyaa/git/portfolio/app/views/sessions/edit.php:9
 msgid "Persistent"
 msgstr "ログイン状態を記憶する"
 
-#: /home/miyaa/git/portfolio/app/views/sessions/index.php:27
+#: /home/miyaa/git/portfolio/app/views/sessions/index.php:24
 #: /home/miyaa/git/portfolio/app/views/sessions/edit.php:11
 #: /home/miyaa/git/portfolio/app/views/sessions/edit.php:12
 #: /home/miyaa/git/portfolio/app/views/detail.edit.php:45
 #: /home/miyaa/git/portfolio/app/views/detail.edit.php:46
 #: /home/miyaa/git/portfolio/app/views/accounts/detail.php:61
 #: /home/miyaa/git/portfolio/app/views/accounts/detail.php:62
+#: /home/miyaa/git/portfolio/app/views/accounts/index.php:27
 #: /home/miyaa/git/portfolio/app/views/accounts/index.php:28
-#: /home/miyaa/git/portfolio/app/views/accounts/index.php:29
-#: /home/miyaa/git/portfolio/app/views/accounts/detail.confirm.php:21
+#: /home/miyaa/git/portfolio/app/views/accounts/detail.confirm.php:22
 #: /home/miyaa/git/portfolio/app/views/detail.jpg.edit.php:63
 #: /home/miyaa/git/portfolio/app/views/detail.jpg.edit.php:64
 msgid "Submit"
@@ -67,9 +62,25 @@ msgstr "削除"
 msgid "Drag to add a photo"
 msgstr ""
 
+#: /home/miyaa/git/portfolio/app/views/footer.php:2
+msgid "About"
+msgstr "このサイトについて"
+
+#: /home/miyaa/git/portfolio/app/views/footer.php:3
+msgid "Terms"
+msgstr "利用規約"
+
+#: /home/miyaa/git/portfolio/app/views/footer.php:4
+msgid "Help"
+msgstr "ヘルプ"
+
+#: /home/miyaa/git/portfolio/app/views/footer.php:5
+msgid "Contact"
+msgstr "お問い合わせ"
+
 #: /home/miyaa/git/portfolio/app/views/index.add.php:24
-#: /home/miyaa/git/portfolio/app/views/header.php:15
-#: /home/miyaa/git/portfolio/app/views/header.php:19
+#: /home/miyaa/git/portfolio/app/views/header.php:14
+#: /home/miyaa/git/portfolio/app/views/header.php:18
 msgid "Add"
 msgstr "追加"
 
@@ -100,37 +111,33 @@ msgstr "タイトル"
 msgid "Description"
 msgstr "説明"
 
-#: /home/miyaa/git/portfolio/app/views/header.php:6
-msgid "About"
-msgstr "このサイトについて"
-
-#: /home/miyaa/git/portfolio/app/views/header.php:12
+#: /home/miyaa/git/portfolio/app/views/header.php:11
 msgid "Home"
 msgstr ""
 
-#: /home/miyaa/git/portfolio/app/views/header.php:14
+#: /home/miyaa/git/portfolio/app/views/header.php:13
 msgid "Edit"
 msgstr "編集"
 
-#: /home/miyaa/git/portfolio/app/views/header.php:24
+#: /home/miyaa/git/portfolio/app/views/header.php:23
 msgid "Sign Out"
 msgstr "ログアウト"
 
-#: /home/miyaa/git/portfolio/app/views/header.php:29
+#: /home/miyaa/git/portfolio/app/views/header.php:28
 msgid "Sign In"
 msgstr "ログイン"
 
-#: /home/miyaa/git/portfolio/app/views/header.php:30
+#: /home/miyaa/git/portfolio/app/views/header.php:29
 msgid "Create an account"
 msgstr "アカウント作成"
 
 #: /home/miyaa/git/portfolio/app/views/accounts/detail.php:35
-#: /home/miyaa/git/portfolio/app/views/accounts/index.php:18
+#: /home/miyaa/git/portfolio/app/views/accounts/index.php:17
 msgid "Username"
 msgstr "ユーザー名"
 
 #: /home/miyaa/git/portfolio/app/views/accounts/detail.php:45
-#: /home/miyaa/git/portfolio/app/views/accounts/index.php:26
+#: /home/miyaa/git/portfolio/app/views/accounts/index.php:25
 msgid "Email"
 msgstr "Email"
 
@@ -144,11 +151,15 @@ msgstr ""
 
 #: /home/miyaa/git/portfolio/app/views/accounts/detail.php:54
 msgid "Profile"
-msgstr ""
+msgstr "プロフィール"
 
 #: /home/miyaa/git/portfolio/app/views/accounts/detail.php:59
 msgid "Icon"
-msgstr ""
+msgstr "アイコン"
+
+#: /home/miyaa/git/portfolio/app/views/accounts/index.signup.php:13
+msgid "Send Email"
+msgstr "Email"
 
 #: /home/miyaa/git/portfolio/app/views/accounts/detail.confirm.php:17
 #: /home/miyaa/git/portfolio/app/models/accounts.php:87
@@ -173,7 +184,6 @@ msgstr "アカウントの確認"
 #~ msgid "Post Comment"
 #~ msgstr "コメントを投稿"
 
-#, fuzzy
 #~ msgid "Recent Pages"
 #~ msgstr "ページの削除"
 
@@ -212,10 +222,6 @@ msgstr "アカウントの確認"
 
 #~ msgid "Save"
 #~ msgstr "保存"
-
-#, fuzzy
-#~ msgid "Theme"
-#~ msgstr "テンプレート"
 
 #~ msgid "Categories"
 #~ msgstr "カテゴリ"
@@ -277,7 +283,6 @@ msgstr "アカウントの確認"
 #~ msgid "Use"
 #~ msgstr "使う"
 
-#, fuzzy
 #~ msgid "Titile"
 #~ msgstr "タイトル"
 
@@ -304,9 +309,6 @@ msgstr "アカウントの確認"
 
 #~ msgid "New Upload"
 #~ msgstr "新規アップロード"
-
-#~ msgid "Contents"
-#~ msgstr "コメント"
 
 #~ msgid "Edit Item"
 #~ msgstr "アイテムの編集"
@@ -361,9 +363,6 @@ msgstr "アカウントの確認"
 
 #~ msgid "Edit Category"
 #~ msgstr "カテゴリの編集"
-
-#~ msgid "Hello"
-#~ msgstr "こんばんわ"
 
 #~ msgid "How are you"
 #~ msgstr "eeee"
