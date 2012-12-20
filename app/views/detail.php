@@ -3,11 +3,11 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <title><?php echo TITLE; ?> - <?=$row['title']?></title>
-<link rel="stylesheet" type="text/css" href="<?=$base?>css/style.css"/>
-<script type="text/javascript" src="<?=$base?>js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="<?=$base?>js/jquery.masonry.min.js""></script>
-<script type="text/javascript" src="<?=$base?>js/jquery.bottom-1.0.js"></script>
-<script type="text/javascript" src="<?=$base?>js/javascript.js"></script>
+<link rel="stylesheet" type="text/css" href="<?=BASE?>/css/style.css"/>
+<script type="text/javascript" src="<?=BASE?>/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="<?=BASE?>/js/jquery.masonry.min.js""></script>
+<script type="text/javascript" src="<?=BASE?>/js/jquery.bottom-1.0.js"></script>
+<script type="text/javascript" src="<?=BASE?>/js/javascript.js"></script>
 </head>
 <body>
 

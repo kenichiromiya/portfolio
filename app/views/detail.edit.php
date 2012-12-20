@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <title><?php echo TITLE; ?> - <?=$row['title']?></title>
-<link rel="stylesheet" type="text/css" href="<?=$base?>css/style.css"/>
-<link rel="stylesheet" type="text/css" href="<?=$base?>css/detail.css"/>
-<script type="text/javascript" src="<?=$base?>js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="<?=$base?>js/jquery.masonry.min.js""></script>
-<script type="text/javascript" src="<?=$base?>js/jquery.bottom-1.0.js"></script>
-<script type="text/javascript" src="<?=$base?>js/javascript.js"></script>
+<link rel="stylesheet" type="text/css" href="<?=BASE?>/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="<?=BASE?>/css/detail.css"/>
+<script type="text/javascript" src="<?=BASE?>/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="<?=BASE?>/js/jquery.masonry.min.js""></script>
+<script type="text/javascript" src="<?=BASE?>/js/jquery.bottom-1.0.js"></script>
+<script type="text/javascript" src="<?=BASE?>/js/javascript.js"></script>
 </head>
 <body>
 
@@ -22,7 +22,7 @@
 if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){ ?>
 <?php //if($session['account_id'] and preg_match("/".$session['account_id']."/",$req['id'])){ ?>
 
-<form action="<?=$base?><?=$id?>" method="post">
+<form action="<?=BASE?><?=$id?>" method="post">
 <input type="hidden" name="_method" value="put">
 <input type="hidden" name="type" value="page">
 <!--
@@ -50,7 +50,7 @@ if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){
 </form>
 <?php } ?>
 <!--
-<form action="<?=$base?><?=$row['id']?>" method="post">
+<form action="<?=BASE?><?=$row['id']?>" method="post">
 <input type="hidden" name="_method" value="delete">
 <input type="submit" value="<?=_('Delete')?>">
 </form>

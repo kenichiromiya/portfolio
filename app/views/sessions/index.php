@@ -2,9 +2,8 @@
 <head>
 <title>Session</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-<base href="<?=$base?>"/>
-<link rel="stylesheet" type="text/css" href="<?=$base?>css/style.css"/>
-<link rel="stylesheet" type="text/css" href="<?=$base?>css/sessions.css"/>
+<link rel="stylesheet" type="text/css" href="<?=BASE?>/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="<?=BASE?>/css/sessions.css"/>
 </head>
 
 <body>
@@ -12,7 +11,7 @@
 <?php include("header.php")?>
 
 <div id="main">
-<form method="post" action="<?=$base?>sessions/">
+<form method="post" action="<?=BASE?>/sessions/">
 <input type="hidden" name="_method" value="post">
 <input type="hidden" name="done" value="<?=$done?>">
 <label for="account_id"><?=_('Id')?></label>

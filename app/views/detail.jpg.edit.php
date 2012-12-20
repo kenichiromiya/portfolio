@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <title><?php echo TITLE; ?> - <?=$row['title']?></title>
-<link rel="stylesheet" type="text/css" href="<?=$base?>css/style.css"/>
-<link rel="stylesheet" type="text/css" href="<?=$base?>css/detail.jpg.css"/>
-<script type="text/javascript" src="<?=$base?>js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="<?=$base?>js/jquery.masonry.min.js""></script>
-<script type="text/javascript" src="<?=$base?>js/jquery.bottom-1.0.js"></script>
-<script type="text/javascript" src="<?=$base?>js/javascript.js"></script>
+<link rel="stylesheet" type="text/css" href="<?=BASE?>/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="<?=BASE?>/css/detail.jpg.css"/>
+<script type="text/javascript" src="<?=BASE?>/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="<?=BASE?>/js/jquery.masonry.min.js""></script>
+<script type="text/javascript" src="<?=BASE?>/js/jquery.bottom-1.0.js"></script>
+<script type="text/javascript" src="<?=BASE?>/js/javascript.js"></script>
 </head>
 <body>
 
@@ -18,7 +18,7 @@
 
 <div id="container">
 <div id="main">
-
+<div id="frame">
 <?php
 if($row['filename']):
 	if (!file_exists("upload/large/".$row['filename'])){
@@ -26,11 +26,11 @@ if($row['filename']):
 		$image->imageresize("upload/large/".$row['filename'],"upload/".$row['filename'],1000,1000);
 	}
 ?>
-<img src="<?=$base?>upload/large/<?=$row['filename']?>">
+<img src="<?=BASE?>/upload/large/<?=$row['filename']?>">
 <?php
 endif;
 ?>
-
+</div><!--frame-->
 </div><!--main-->
 <div id="sub">
 
@@ -39,7 +39,7 @@ if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){
 <?php //if($session['account_id'] and preg_match("/".$session['account_id']."/",$req['id'])){ ?>
 
 <div id="image">
-<form action="<?=$base?><?=$id?>" method="post">
+<form action="<?=BASE?><?=$id?>" method="post">
 <input type="hidden" name="_method" value="put">
 <input type="hidden" name="type" value="image">
 <!--
@@ -68,7 +68,7 @@ if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){
 </div><!--form-->
 
 <!--
-<form action="<?=$base?><?=$row['id']?>" method="post">
+<form action="<?=BASE?><?=$row['id']?>" method="post">
 <input type="hidden" name="_method" value="delete">
 <input type="submit" value="<?=_('Delete')?>">
 </form>
@@ -80,6 +80,6 @@ if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){
 </div><!--sub-->
 </div><!--container-->
 </div><!--wrapper-->
-
+<?php include("footer.php")?>
 </body>
 </html>
