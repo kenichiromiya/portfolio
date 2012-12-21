@@ -17,14 +17,14 @@ class AccountsController extends CommonController
 		$this->validator->rule = $rule;
 		if ($this->validator->validate($this->req['post'])) {
 			$this->model->put($this->req);
-			if($this->req['mode'] == 'signup') {
-				$this->view = new View("accounts/index.signup.php");
+			if($this->req['mode'] == 'send') {
+				$this->view = new View("accounts/index.send.php");
 				$contents = $this->view->getcontents($this->var);
 				echo $contents;
 			} elseif($this->req['mode'] == 'complete') {
-				header("Location:".$this->base."sessions/?account_id=".$this->req['id']);
+				header("Location:".BASE."sessions/?account_id=".$this->req['id']);
 			} else {
-				header("Location:".$this->base."accounts/".$this->req['id']);
+				header("Location:".BASE."accounts/".$this->req['id']);
 			}
 		} else {
                         header("HTTP/1.1 400 Bad Request");

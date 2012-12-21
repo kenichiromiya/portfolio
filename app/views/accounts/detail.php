@@ -3,34 +3,28 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <title><?=$config['title']?></title>
-<link rel="stylesheet" type="text/css" href="<?=$base?>css/style.css"/>
-<script type="text/javascript" src="<?=$base?>js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="<?=$base?>js/jquery.masonry.min.js""></script>
-<script type="text/javascript" src="<?=$base?>js/javascript.js"></script>
+<link rel="stylesheet" type="text/css" href="<?=BASE?>css/style.css"/>
+<link rel="stylesheet" type="text/css" href="<?=BASE?>css/accounts.css"/>
+<script type="text/javascript" src="<?=BASE?>js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="<?=BASE?>js/javascript.js"></script>
 </head>
 <body>
 
 <div id="wrapper">
 
 <?php include("header.php")?>
-<div id="subcontainer">
-<div id="icon">
-<img src="<?=$base?>upload/accounts/large/<?=$icon?>">
-</div><!--icon-->
-<div class="account">
+<div id="main">
+<div id="account">
+<img src="<?=BASE?>upload/accounts/large/<?=$icon?>">
 <h1><?=$id?></h1>
 <a href="<?=$url?>"><?=$url?></a>
 <p>
 <?=$about?>
 </p>
 </div><!--account-->
-
-</div><!--subcontainer-->
-
 <?php if($session['account_id'] == $id){ ?>
 
-<div id="subcontainer">
-<form id="account" action="<?=$base?>accounts/<?=$id?>" method="post" enctype="multipart/form-data">
+<form action="<?=BASE?>accounts/<?=$id?>" method="post" enctype="multipart/form-data">
 <input type="hidden" name="_method" value="put">
 <label for="id"><?=_('Username')?></label>
 <?php if ($id) { ?>
@@ -55,16 +49,15 @@
 <textarea id="profile" name="profile">
 <?=$profile?>
 </textarea><br/>
-<!--img src="<?=$base?>upload/accounts/large/<?=$icon?>"-->
 <label for="icon"><?=_('Icon')?></label>
 <input id="icon" type="file" name="icon" value=""/><br/>
 <label for="submit"><?=_('Submit')?></label>
 <input id="submit" type="submit" value="<?=_('Submit')?>"/><br/>
 </form>
 
-</div><!--subcontainer-->
 <?php } ?>
 
+</div><!--main-->
 </div><!--wrapper-->
 
 </body>

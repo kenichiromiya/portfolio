@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <title><?php echo TITLE; ?> - <?=$row['title']?></title>
-<link rel="stylesheet" type="text/css" href="<?=BASE?>/css/style.css"/>
-<link rel="stylesheet" type="text/css" href="<?=BASE?>/css/detail.jpg.css"/>
-<script type="text/javascript" src="<?=BASE?>/js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="<?=BASE?>/js/jquery.masonry.min.js""></script>
-<script type="text/javascript" src="<?=BASE?>/js/jquery.bottom-1.0.js"></script>
-<script type="text/javascript" src="<?=BASE?>/js/javascript.js"></script>
+<link rel="stylesheet" type="text/css" href="<?=BASE?>css/style.css"/>
+<link rel="stylesheet" type="text/css" href="<?=BASE?>css/detail.jpg.css"/>
+<script type="text/javascript" src="<?=BASE?>js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="<?=BASE?>js/jquery.masonry.min.js""></script>
+<script type="text/javascript" src="<?=BASE?>js/jquery.bottom-1.0.js"></script>
+<script type="text/javascript" src="<?=BASE?>js/javascript.js"></script>
 </head>
 <body>
 
@@ -26,7 +26,7 @@ if($row['filename']):
 		$image->imageresize("upload/large/".$row['filename'],"upload/".$row['filename'],1000,1000);
 	}
 ?>
-<img src="<?=BASE?>/upload/large/<?=$row['filename']?>">
+<img src="<?=BASE?>upload/large/<?=$row['filename']?>">
 <?php
 endif;
 ?>

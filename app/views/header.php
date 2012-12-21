@@ -1,30 +1,23 @@
 <div id="header">
 <h1 class="logo">
-<a href="<?=BASE?>"><img src="<?=BASE?>/upload/logo.png"/></a>
+<a href="<?=BASE?>"><img src="<?=BASE?>upload/logo.png"/></a>
 </h1>
 <div class="menu">
 </div>
 
 <div class="navi">
 <?php if($session['id']) { ?>
-<a href="<?=BASE?>/<?=$session['account_id']?>/"><?=$session['account_id']?></a>
+<a href="<?=BASE?>accounts/<?=$session['account_id']?>"><?=$session['account_id']?></a>
 <a href="?mode=edit"><?=_('Edit')?></a>
-<!--<a href="./?mode=add"><?=_('Add')?></a>-->
-<!--
-<form action="<?=$base?>" method="get">
-<input type="text" name="id">
-<input type="submit" value="<?=_('Add')?>">
-</form>
--->
-<form id="signout" action="<?=BASE?>/sessions/<?=$session['id']?>" method="post">
+<form action="<?=BASE?>sessions/<?=$session['id']?>" method="post">
 <input type="hidden" name="_method" value="delete">
 <input type="submit" value="<?=_('Sign Out')?>">
 </form>
 <?php
 } else {
 ?>
-<a href="<?=BASE?>/sessions/"><?=_('Sign In')?></a>
-<a href="<?=BASE?>/accounts/"><?=_('Create an account')?></a>
+<a href="<?=BASE?>sessions/"><?=_('Sign In')?></a>
+<a href="<?=BASE?>accounts/"><?=_('Create an account')?></a>
 <?php } ?>
 </div><!--navi-->
 </div><!--header-->

@@ -12,6 +12,12 @@ class IndexModel extends Model {
                 if (preg_match("#/$|^$#",$req['id'])) {
 			$sql = "SELECT * FROM {$this->table} ";
 			$values = array();
+			$sql .= "WHERE id = ? ";
+			array_push($values,$req['id']);
+			$var['row'] = $this->dbh->getRow($sql,$values);
+
+			$sql = "SELECT * FROM {$this->table} ";
+			$values = array();
 			$sql .= "WHERE id LIKE ? AND type = 'image'";
 			$sql .= "ORDER BY createtime DESC ";
 			if ($req['start']) {
@@ -23,16 +29,17 @@ class IndexModel extends Model {
 			//array_push($values,$req['id']."%.jpg",$req['id']."%.jpeg");
 			//$var['rows'] = $this->dbh->getAll($sql);
 			$var['image']['rows'] = $this->dbh->getAll($sql,$values);
+
 			$sql = "SELECT * FROM {$this->table} ";
 			$values = array();
-			$sql .= "WHERE id LIKE ? AND type = 'page'";
+			$sql .= "WHERE id != ? AND id LIKE ? AND type = 'page'";
 			$sql .= "ORDER BY createtime DESC ";
 			if ($req['start']) {
 				$sql .= "LIMIT {$req['start']},12";
 			} else {
 				$sql .= "LIMIT 12";
 			}
-			array_push($values,$req['id']."%");
+			array_push($values,$req['id'],$req['id']."%");
 			$var['page']['rows'] = $this->dbh->getAll($sql,$values);
 /*
 			$sql = "SELECT * FROM {$this->table} ";
@@ -103,8 +110,11 @@ class IndexModel extends Model {
 				$type = 'image';
 				//$sql = "DELETE FROM {$this->table} WHERE id = ?";
 				//$this->dbh->query($sql,array($id));
+				$size = getimagesize($upload_file);
+				$width = $size[0];
+				$height = $size[1];
 				$this->dbh->delete($this->table,$id);
-				$this->dbh->insert($this->table,array("id"=>$id,"filename"=>$filename,"type"=>$type,"account_id"=>$req['account_id']));
+				$this->dbh->insert($this->table,array("id"=>$id,"filename"=>$filename,"width"=>$width,"height"=>$height,"type"=>$type,"account_id"=>$req['account_id']));
 			}
 			//$pathinfo = pathinfo($file["name"]);
 			//$id = $req['id'].$pathinfo['filename'];

@@ -2,8 +2,8 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <title><?=$config['title']?></title>
-<link rel="stylesheet" type="text/css" href="<?=$base?>css/style.css"/>
-<link rel="stylesheet" type="text/css" href="<?=$base?>css/accounts.css"/>
+<link rel="stylesheet" type="text/css" href="<?=BASE?>css/style.css"/>
+<link rel="stylesheet" type="text/css" href="<?=BASE?>css/accounts.css"/>
 <?=$head?>
 </head>
 <body>
@@ -13,7 +13,7 @@
 <?php
 ?>
 <div id="main">
-<form action="<?=$base?>accounts/?mode=signup" method="post">
+<form action="<?=$base?>accounts/?mode=send" method="post">
 <input type="hidden" name="_method" value="put">
 <label for="id"><?=_('Username')?></label>
 <?php if ($id) { ?>

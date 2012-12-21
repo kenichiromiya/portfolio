@@ -6,16 +6,6 @@ class CommonController extends Controller
         public function __construct() {
 		parent::__construct();
                 $singleton = Request::singleton();
-		if ($this->req['controller'] == 'index'){
-			$this->controller = "";
-		} else {
-			$this->controller = $this->req['controller']."/";
-		}
-		if (preg_match("/\//",$this->req['id'])){
-			$this->dirname = dirname($this->req['id'])."/";
-		} else {
-			$this->dirname = "";
-		}
         }
 
         public function get() {

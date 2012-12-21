@@ -12,7 +12,7 @@ class SessionsController extends CommonController
 			if ($this->req['done']) {
 				header("Location:".urldecode($this->req['done']));
 			} else {
-				header("Location:".$this->base);
+				header("Location:".BASE);
 			}
 		} else {
 			header("HTTP/1.1 401 Unauthorized");
@@ -24,7 +24,7 @@ class SessionsController extends CommonController
 
 	public function delete() {
 		$this->model->delete($this->req);
-		header("Location:".$this->base);
+		header("Location:".BASE);
 	}
 
 }
