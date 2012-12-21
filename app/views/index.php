@@ -19,7 +19,7 @@
 
 <div id="container">
 <div id="main">
-<div class="page">
+<div id="page">
 <?php
 $markdown = new Markdown();
 echo $markdown->parse($row['text']);
@@ -30,7 +30,7 @@ echo $markdown->parse($row['text']);
 <?=_('Drag to add a photo')?>
 </div><!--drag-->
 <?php } ?>
-<div class="items" >
+<div id="items" >
 <?php
 /*
 foreach($page['rows'] as $row) :
