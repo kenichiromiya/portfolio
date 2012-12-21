@@ -11,12 +11,12 @@ php_flag short_open_tag On
     RewriteCond %{REQUEST_FILENAME} -f
     RewriteRule (.*)$ $1 [L]
 
-    RewriteRule (accounts|sessions)/(.+)$ index.php?controller=$1&id=/$2 [QSA,L]
-    RewriteRule (accounts|sessions)/$ index.php?controller=$1&id=/$2 [QSA,L]
-    RewriteRule (.+)/(.+)$ index.php?controller=index&id=/$1/$2 [QSA,L]
-    RewriteRule (.+)/$ index.php?controller=index&id=/$1/ [QSA,L]
-    RewriteRule (.+)$ index.php?controller=index&id=/$1 [QSA,L]
-    RewriteRule $ index.php?controller=index&id=/ [QSA,L]
+    RewriteRule (accounts|sessions)/(.+)$ index.php?controller=$1&id=$2 [QSA,L]
+    RewriteRule (accounts|sessions)/$ index.php?controller=$1&id=$2 [QSA,L]
+    RewriteRule (.+)/(.+)$ index.php?controller=index&id=$1/$2 [QSA,L]
+    RewriteRule (.+)/$ index.php?controller=index&id=$1/ [QSA,L]
+    RewriteRule (.+)$ index.php?controller=index&id=$1 [QSA,L]
+    RewriteRule $ index.php?controller=index&id= [QSA,L]
 </IfModule>
 
 #<Limit POST>

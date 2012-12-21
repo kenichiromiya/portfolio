@@ -1,13 +1,12 @@
 $(document).ready(function () {
 
-/*
 	$(function(){
-		$('#container').masonry({
-			// options
-			itemSelector : '.item',
-			columnWidth :230 
+		$('.items').masonry({
+			itemSelector : '.item'
 		});
-	});
+	})
+
+/*
 	var $container = $('#container');
 	$container.imagesLoaded(function(){
 		$container.masonry({
@@ -28,20 +27,19 @@ $(document).ready(function () {
         // XHR で送信
         //url = document.URL.replace(/\/[a-zA-z0-9_]+$/,"/");
         //url = document.URL+"<?=$session['account_id']?>";
-        url = document.URL;
-        $.ajax({
-            url: url,
-            type: "POST",
-            data: fd,
-            processData: false,
-            contentType: false,
-	    success: function(html){
-		alert(html);
-	    },
-complete: function(html){
-		alert(url);
-}
-        });
+	url = document.URL;
+	$.ajax({
+		url: url,
+		type: "POST",
+		data: fd,
+		processData: false,
+		contentType: false,
+		success: function(html){
+		},
+		complete: function(html){
+			document.location = url;
+		}
+	});
     };
 
 

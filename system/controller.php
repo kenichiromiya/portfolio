@@ -15,6 +15,16 @@ class Controller
                 $this->var['req'] = $this->req;
                 $this->var['base'] = BASE;
                 $this->var['session'] = $this->session;
+                if ($this->req['controller'] == 'index'){
+                        $this->controller = "";
+                } else {
+                        $this->controller = $this->req['controller']."/";
+                }
+                if (preg_match("/\//",$this->req['id'])){
+                        $this->dirname = dirname($this->req['id'])."/";
+                } else {
+                        $this->dirname = "";
+                }
         }
 
         public function get() {
@@ -27,17 +37,17 @@ class Controller
 
         public function put() {
                 $this->model->put($this->req);
-                header("Location:".$this->base.$this->req['controller']."/".$this->req['id']);
+		header("Location:".BASE.$this->controller.$this->req['id']);
                 //header("Location:".$this->top.$this->req['controller']."/");
         }
         public function post() {
                 //$this->model->post($this->req['post']);
                 $this->model->post($this->req);
-                header("Location:".$this->base);
+		header("Location:".BASE.$this->controller.$this->dirname);
         }
         public function delete() {
                 $this->model->delete($this->req);
-                header("Location:".$this->base);
+		header("Location:".BASE.$this->controller.$this->dirname);
         }
 }
 ?>

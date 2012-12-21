@@ -5,6 +5,9 @@
 	margin-left:auto;
 	width:400px;
 }
+#account {
+	text-align: center;
+}
 form label {
 	display: block;
 	width: 100px;

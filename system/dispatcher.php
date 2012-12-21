@@ -26,18 +26,6 @@ class Dispatcher {
                                 $controller->get();
                                 break;
                 }
-
-		//print_r($var);
-		/*
-		$templatename = isset($this->param['controller']) ? $this->param['controller'] : 'index';
-
-		if (!file_exists("views/".$templatename.".php")) {
-			$templatename = "index";
-		}
-		$filename = $templatename.".php";
-		$view = new View();
-		$view->display($filename,$var);
-		*/
 	}
 }
 ?>

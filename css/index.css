@@ -1,21 +1,22 @@
 #main {
-        width:80%;
+        width:850px;
         margin-bottom:10px; /*上下の間隔をあける*/
         text-align:left;
         float:left;
 }
 #sub {
-        width:20%;
+        width:150px;
         margin-bottom:10px; /*上下の間隔をあける*/
         text-align:left;
         float:left;
 }
 
 ul {
-	padding-left: 25px;
+	padding-left: 5px;
 }
 li {
 	/*padding: 0;
 	/*list-style:none; /*リストの●を消す*/
+	list-style:none; 
 }
 
