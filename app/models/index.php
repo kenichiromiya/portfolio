@@ -12,19 +12,20 @@ class IndexModel extends Model {
                 if (preg_match("#/$|^$#",$req['id'])) {
 			$sql = "SELECT * FROM {$this->table} ";
 			$values = array();
-			$sql .= "WHERE id = ? ";
+			$sql .= "WHERE id = ? AND type = 'page' ";
 			array_push($values,$req['id']);
 			$var['row'] = $this->dbh->getRow($sql,$values);
 
 			$sql = "SELECT * FROM {$this->table} ";
 			$values = array();
-			$sql .= "WHERE id LIKE ? AND type = 'image'";
+			$sql .= "WHERE id LIKE ? AND type = 'image' ";
 			$sql .= "ORDER BY createtime DESC ";
 			if ($req['start']) {
 				$sql .= "LIMIT {$req['start']},12";
 			} else {
 				$sql .= "LIMIT 12";
 			}
+			error_log($sql);
 			array_push($values,$req['id']."%");
 			//array_push($values,$req['id']."%.jpg",$req['id']."%.jpeg");
 			//$var['rows'] = $this->dbh->getAll($sql);
@@ -32,7 +33,7 @@ class IndexModel extends Model {
 
 			$sql = "SELECT * FROM {$this->table} ";
 			$values = array();
-			$sql .= "WHERE id != ? AND id LIKE ? AND type = 'page'";
+			$sql .= "WHERE id != ? AND id LIKE ? AND type = 'page' ";
 			$sql .= "ORDER BY createtime DESC ";
 			if ($req['start']) {
 				$sql .= "LIMIT {$req['start']},12";

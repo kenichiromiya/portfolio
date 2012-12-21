@@ -1,8 +1,8 @@
 <?php
-foreach($rows as $row) :
+foreach($image['rows'] as $row) :
 ?>
 <div class="item">
-<div class="image">
+<div class="thumb">
 <?php if($row['title']){ ?>
 <p><?=$row['title']?></p>
 <?php } ?>
