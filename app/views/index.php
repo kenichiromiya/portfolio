@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="<?=BASE?>css/style.css"/>
 <link rel="stylesheet" type="text/css" href="<?=BASE?>css/index.css"/>
 <script type="text/javascript" src="<?=BASE?>js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="<?=BASE?>js/jquery.masonry.min.js""></script>
+<script type="text/javascript" src="<?=BASE?>js/jquery.masonry.min.js"></script>
 <script type="text/javascript" src="<?=BASE?>js/jquery.bottom-1.0.js"></script>
 <script type="text/javascript" src="<?=BASE?>js/jquery.browser.min.js"></script>
 <script type="text/javascript" src="<?=BASE?>js/javascript.js"></script>
@@ -52,7 +52,7 @@ if (!file_exists("upload/thumb/".$row['filename'])){
 $ratio = $row['width']/$row['height'];
 
 $width = 200;
-$height = 200/$ratio;
+$height = round(200/$ratio);
 
 ?>
 <a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>upload/thumb/<?=$row['filename']?>" width="<?=$width?>" height="<?=$height?>"></a>
