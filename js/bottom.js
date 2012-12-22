@@ -14,7 +14,6 @@ $(document).ready(function () {
 					cache: false,
 					success: function(html){
 						$("#items").append(html);
-						$("#items").masonry('reload');
 						var state = $("#items").html();
 						obj.data('start', obj.data('start')+12);
 						obj.data('loading', false);

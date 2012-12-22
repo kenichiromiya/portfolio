@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <title><?=$config['title']?></title>
@@ -7,10 +7,11 @@
 <link rel="stylesheet" type="text/css" href="<?=BASE?>css/index.css"/>
 <script type="text/javascript" src="<?=BASE?>js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="<?=BASE?>js/jquery.masonry.min.js"></script>
-<script type="text/javascript" src="<?=BASE?>js/jquery.bottom-1.0.js"></script>
+<script type="text/javascript" src="<?=BASE?>js/jquery.infinitescroll.min.js"></script>
+<!--script type="text/javascript" src="<?=BASE?>js/jquery.bottom-1.0.js"></script-->
 <script type="text/javascript" src="<?=BASE?>js/jquery.browser.min.js"></script>
 <script type="text/javascript" src="<?=BASE?>js/javascript.js"></script>
-<script type="text/javascript" src="<?=BASE?>js/bottom.js"></script>
+<!--script type="text/javascript" src="<?=BASE?>js/bottom.js"></script-->
 </head>
 <body id="bottom">
 
@@ -67,6 +68,9 @@ $height = round(200/$ratio);
 </div><!--item-->
 <?php endforeach; ?>
 </div><!--items-->
+<nav id="page-nav">
+	<a href="?page=<?=$next?>"></a>
+</nav>
 </div><!--main-->
 <div id="sub">
 <div id="pages">

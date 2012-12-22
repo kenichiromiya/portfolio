@@ -1,10 +1,43 @@
 $(document).ready(function () {
 
 	$(function(){
-		$('#items').masonry({
-			itemSelector : '.item'
+		var $items = $('#items');
+		$items.imagesLoaded( function(){
+			$items.masonry({
+				itemSelector : '.item'
+			});
+		});
+		$items.infinitescroll({
+			navSelector  : '#page-nav',    // ページのナビゲーションを選択 
+			nextSelector : '#page-nav a',  // 次ページへのリンク
+			itemSelector : '.item',     // 持ってくる要素のclass
+			loading: {
+				finishedMsg: '', //次のページがない場合に表示するテキスト
+				img: '' //ローディング画像のパス
+			}
+		},
+
+		function( newElements ) {
+
+			var $newElems = $( newElements ).css({ opacity: 0 });
+
+			$newElems.imagesLoaded(function(){
+				$newElems.animate({ opacity: 1 });
+				$items.masonry( 'appended', $newElems, true ); 
+				//var state = $("#items").html();
+				//history.replaceState(state, "", "");
+			});
 		});
 	})
+/*
+                $(window).on('popstate', function(jqevent) {
+                        if(jqevent.originalEvent.state){
+                                $("#items").children().remove();
+                                $("#items").append(jqevent.originalEvent.state);
+                        }
+                });
+*/
+
 
 /*
 	var $container = $('#container');

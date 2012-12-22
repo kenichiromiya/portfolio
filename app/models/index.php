@@ -20,12 +20,12 @@ class IndexModel extends Model {
 			$values = array();
 			$sql .= "WHERE id LIKE ? AND type = 'image' ";
 			$sql .= "ORDER BY createtime DESC ";
-			if ($req['start']) {
-				$sql .= "LIMIT {$req['start']},12";
+			if ($req['page']) {
+				$start = ($req['page']-1) * PER_PAGE;
+				$sql .= "LIMIT ".$start.",".PER_PAGE;
 			} else {
-				$sql .= "LIMIT 12";
+				$sql .= "LIMIT ".PER_PAGE;
 			}
-			error_log($sql);
 			array_push($values,$req['id']."%");
 			//array_push($values,$req['id']."%.jpg",$req['id']."%.jpeg");
 			//$var['rows'] = $this->dbh->getAll($sql);
@@ -35,10 +35,11 @@ class IndexModel extends Model {
 			$values = array();
 			$sql .= "WHERE id != ? AND id LIKE ? AND type = 'page' ";
 			$sql .= "ORDER BY createtime DESC ";
-			if ($req['start']) {
-				$sql .= "LIMIT {$req['start']},12";
+			if ($req['page']) {
+				$start = ($req['page']-1) * PER_PAGE;
+				$sql .= "LIMIT ".$start.",".PER_PAGE;
 			} else {
-				$sql .= "LIMIT 12";
+				$sql .= "LIMIT ".PER_PAGE;
 			}
 			array_push($values,$req['id'],$req['id']."%");
 			$var['page']['rows'] = $this->dbh->getAll($sql,$values);
