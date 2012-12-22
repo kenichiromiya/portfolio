@@ -57,7 +57,7 @@ $width = 200;
 $height = round(200/$ratio);
 
 ?>
-<a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>upload/thumb/<?=$row['filename']?>""></a>
+<a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>upload/thumb/<?=$row['filename']?>" width="<?=$width?>" height="<?=$height?>"></a>
 </div><!--thumb-->
 <?php if($session['account_id'] == $row['account_id']): ?>
 <?php //if($session['account_id'] and preg_match("/".$session['account_id']."/",$req['id'])){ ?>
