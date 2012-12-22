@@ -1,6 +1,9 @@
 body {
 	font-size:0.9em;
 	margin:0px;
+	margin-right:auto;
+	margin-left:auto;
+	text-align: center;
 }
 a {
 	text-decoration:none;

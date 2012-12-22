@@ -1,13 +1,44 @@
 $(document).ready(function () {
 
 	$(function(){
+/*
+		alert(window.history.next);
+		if(window.history.next){
+		} else {
+			$.jStorage.deleteKey("items");
+			$.jStorage.deleteKey("page");
+		}
+*/
+/*
+		if ($.jStorage.get("click")){
+			$.jStorage.set("click", false);
+		} else {
+			$.jStorage.deleteKey("items");
+			$.jStorage.deleteKey("page");
+		}
+		var value = $.jStorage.get("items");
+		if (value){
+			$("#items").children().remove();
+			$("#items").html(value);
+		}
+		var page = $.jStorage.get("page");
+		if (page) {
+		} else {
+			page = 1;
+		}
+
+*/
 		var $items = $('#items');
 		$items.imagesLoaded( function(){
 			$items.masonry({
 				itemSelector : '.item'
 			});
 		});
+/*
 		$items.infinitescroll({
+			//state: {
+			//	currPage: page,
+			//},
 			navSelector  : '#page-nav',    // ページのナビゲーションを選択 
 			nextSelector : '#page-nav a',  // 次ページへのリンク
 			itemSelector : '.item',     // 持ってくる要素のclass
@@ -19,25 +50,30 @@ $(document).ready(function () {
 
 		function( newElements ) {
 
+			//$.jStorage.set("items", $("#items").html());
+			//var opts = $('#items').data('infinitescroll').options;
+			//$.jStorage.set("page", opts.state.currPage);
 			var $newElems = $( newElements ).css({ opacity: 0 });
 
 			$newElems.imagesLoaded(function(){
 				$newElems.animate({ opacity: 1 });
 				$items.masonry( 'appended', $newElems, true ); 
-				//var state = $("#items").html();
-				//history.replaceState(state, "", "");
+                                //var state = $items;
+                                //history.replaceState(state, "", "");
 			});
 		});
+*/
 	})
 /*
                 $(window).on('popstate', function(jqevent) {
                         if(jqevent.originalEvent.state){
                                 $("#items").children().remove();
+                                //$("#items").html(jqevent.originalEvent.state);
                                 $("#items").append(jqevent.originalEvent.state);
+				alert("aaa");
                         }
                 });
 */
-
 
 /*
 	var $container = $('#container');
@@ -75,6 +111,15 @@ $(document).ready(function () {
 	});
     };
 
+   //var value = $.jStorage.get("items");
+/*
+    $(".lightbox").live("click",function (e) {
+	//$.jStorage.set("items", $("#items").html());
+	$("iframe").attr("src",$(this).attr("href"));
+	 e.preventDefault();
+	//$.jStorage.set("click", true);
+    });
+*/
 
     $("#multiple").bind("change", function () {
         // 選択されたファイル情報を取得

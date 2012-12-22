@@ -27,7 +27,7 @@ class CommonController extends Controller
 		if (preg_match("#[^/]$#",$this->req['id'])) {
 			$file = 'detail'.$extention.$mode.'.php';
 		} else {
-			$page = isset($this->req['page']) ? $this->req['page'] : 0;
+			$page = isset($this->req['page']) ? $this->req['page'] : 1;
 			$this->var['next'] = $page+1;
 			$file = 'index'.$mode.'.php';
 		}
