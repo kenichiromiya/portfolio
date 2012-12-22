@@ -28,12 +28,14 @@ $(document).ready(function () {
 		}
 
 */
+/*
 		var $items = $('#items');
 		$items.imagesLoaded( function(){
 			$items.masonry({
 				itemSelector : '.item'
 			});
 		});
+*/
 /*
 		$items.infinitescroll({
 			//state: {
