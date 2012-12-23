@@ -27,7 +27,7 @@ if($row['filename']):
 		$image->imageresize("upload/large/".$row['filename'],"upload/".$row['filename'],1000,1000);
 	}
 ?>
-<img src="<?=BASE?>upload/large/<?=$row['filename']?>">
+<a href="<?=BASE?>upload/<?=$row['filename']?>"><img src="<?=BASE?>upload/large/<?=$row['filename']?>"></a>
 <?php
 endif;
 ?>

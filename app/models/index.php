@@ -13,7 +13,8 @@ class IndexModel extends Model {
 			$sql = "SELECT * FROM {$this->table} ";
 			$values = array();
 			$sql .= "WHERE id = ? AND type = 'page' ";
-			array_push($values,$req['id']);
+			$id = ($req['id']) ? $req['id'] : 'index';
+			array_push($values,$id);
 			$var['row'] = $this->dbh->getRow($sql,$values);
 
 			$sql = "SELECT * FROM {$this->table} ";
@@ -35,13 +36,15 @@ class IndexModel extends Model {
 			$values = array();
 			$sql .= "WHERE id != ? AND id LIKE ? AND type = 'page' ";
 			$sql .= "ORDER BY createtime DESC ";
+/*
 			if ($req['page']) {
 				$start = ($req['page']-1) * PER_PAGE;
 				$sql .= "LIMIT ".$start.",".PER_PAGE;
 			} else {
 				$sql .= "LIMIT ".PER_PAGE;
 			}
-			array_push($values,$req['id'],$req['id']."%");
+*/
+			array_push($values,$id,$req['id']."%");
 			$var['page']['rows'] = $this->dbh->getAll($sql,$values);
 /*
 			$sql = "SELECT * FROM {$this->table} ";
