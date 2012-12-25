@@ -9,7 +9,7 @@
 <body>
 <div id="wrapper">
 <?php include("header.php")?>
-<div id="contents">
+<div id="container">
 
 <div id="main">
 <form method="post" action="<?=BASE?>sessions/">
@@ -25,7 +25,7 @@
 <input id="submit" type="submit" name="submit" value="<?=_('Submit')?>"/><br/>
 </form>
 </div><!--main-->
-</div><!--contents-->
+</div><!--container-->
 </div><!--wrapper-->
 </body>
 </html>

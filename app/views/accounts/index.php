@@ -12,6 +12,7 @@
 
 <?php
 ?>
+<div id="container">
 <div id="main">
 <form action="<?=$base?>accounts/?mode=send" method="post">
 <input type="hidden" name="_method" value="put">
@@ -30,6 +31,7 @@
 </form>
 
 </div><!--main-->
+</div><!--container-->
 
 
 </div><!--wrapper-->
