@@ -50,10 +50,10 @@ foreach($rows as $row) :
 <?php } ?>
 <?php if($row['type'] == 'image') :?>
 <?php
-//if (!file_exists("upload/thumb/".$row['filename'])){
+if (!file_exists("upload/thumb/".$row['filename'])){
 	$image = new Image();
 	$image->resize("upload/thumb/".$row['filename'],"upload/".$row['filename'],200,300);
-//}
+}
 $ratio = $row['width']/$row['height'];
 
 $width = 200;
