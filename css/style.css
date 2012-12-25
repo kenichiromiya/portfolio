@@ -99,6 +99,8 @@ br { clear: left; }
   border-style:solid;
   margin: 5px;
  padding:0px;
+  width: 200px;
+  height: 300px;
   float: left;
 }
 .page {
@@ -145,4 +147,8 @@ vertical-align:middle;
   z-index: 2;  /* 画像の上に配置 */
   font-size: 100%;
   text-align:left;
+}
+.thumb form {
+  position: absolute;  /* 親要素を基点に配置 */
+  top:0;
 }

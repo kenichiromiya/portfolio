@@ -64,7 +64,6 @@ $height = round(200/$ratio);
 <?php else: ?>
 <a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>images/docu_txt.png" width="200" height="200"></a>
 <?php endif; ?>
-</div><!--thumb-->
 <?php if($session['account_id'] == $row['account_id']): ?>
 <?php //if($session['account_id'] and preg_match("/".$session['account_id']."/",$req['id'])){ ?>
 <form action="<?=BASE?><?=$row['id']?>" method="post">
@@ -72,6 +71,7 @@ $height = round(200/$ratio);
 <input type="submit" value="<?=_('Delete')?>">
 </form>
 <?php endif; ?>
+</div><!--thumb-->
 </div><!--item-->
 <?php endforeach; ?>
 </div><!--items-->
