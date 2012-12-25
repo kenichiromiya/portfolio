@@ -61,7 +61,7 @@ img {
 }
 
 #wrapper {
-	width:1000px;
+	width:850px;
 	margin-right:auto;
 	margin-left:auto;
 	text-align: center;
@@ -97,7 +97,6 @@ br { clear: left; }
 .item {
   border: 1px;
   border-style:solid;
-  width: 200px;
   margin: 5px;
  padding:0px;
   float: left;
@@ -117,8 +116,14 @@ br { clear: left; }
   text-align:center;
 }
 
+.test {
+}
 .thumb {
   position: relative;  /* 基点を設定 */
+  width: 200px;
+  height: 300px;
+display:table-cell;
+vertical-align:middle;
 }
 
 .thumb  img {

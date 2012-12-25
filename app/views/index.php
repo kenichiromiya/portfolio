@@ -28,6 +28,8 @@ echo $markdown->parse($row['text']);
 ?>
 </div><!--page-->
 <?php if($session['role'] == "admin" or preg_match("#^".$session['account_id']."/$#",$req['id'])){?>
+<input id="location" type="text" size="15">
+<button onclick='location.href="<?=BASE?><?=$id?>"+$("#location").val()+"?mode=edit"'><?=_('Add')?></button>
 <div id="drag" draggable="true">
 <?=_('Drag to add a photo')?>
 </div><!--drag-->
@@ -39,18 +41,19 @@ foreach($page['rows'] as $row) :
 ?>
 <?php endforeach; */?>
 <?php
-foreach($image['rows'] as $row) :
+foreach($rows as $row) :
 ?>
 <div class="item">
 <div class="thumb">
 <?php if($row['title']){ ?>
 <p><?=$row['title']?></p>
 <?php } ?>
+<?php if($row['type'] == 'image') :?>
 <?php
-if (!file_exists("upload/thumb/".$row['filename'])){
+//if (!file_exists("upload/thumb/".$row['filename'])){
 	$image = new Image();
-	$image->imageresize("upload/thumb/".$row['filename'],"upload".$row['filename'],200);
-}
+	$image->resize("upload/thumb/".$row['filename'],"upload/".$row['filename'],200,300);
+//}
 $ratio = $row['width']/$row['height'];
 
 $width = 200;
@@ -58,6 +61,9 @@ $height = round(200/$ratio);
 
 ?>
 <a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>upload/thumb/<?=$row['filename']?>" width="<?=$width?>" height="<?=$height?>"></a>
+<?php else: ?>
+<a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>images/docu_txt.png" width="200" height="200"></a>
+<?php endif; ?>
 </div><!--thumb-->
 <?php if($session['account_id'] == $row['account_id']): ?>
 <?php //if($session['account_id'] and preg_match("/".$session['account_id']."/",$req['id'])){ ?>
@@ -73,21 +79,6 @@ $height = round(200/$ratio);
 	<a href="?page=<?=$next?>"><?=_('Next')?></a>
 </div>
 </div><!--main-->
-<div id="sub">
-<div id="pages">
-<?php if($session['role'] == "admin" or preg_match("#^".$session['account_id']."/$#",$req['id'])){?>
-<input id="location" type="text" size="15">
-<button onclick='location.href="<?=BASE?><?=$id?>"+$("#location").val()+"?mode=edit"'><?=_('Add')?></button>
-<?php } ?>
-<ul>
-<?php
-foreach($page['rows'] as $row) :
-?>
-<li><a href="<?=BASE?><?=$row['id']?>"><?=$row['title']?></a></li>
-<?php endforeach; ?>
-</ul>
-</div><!--pages-->
-</div><!--sub-->
 <?php //if($session['account_id'] and preg_match("/\/$/",$req['id'])){ ?>
 
 <!--

@@ -1,16 +1,18 @@
 #main {
         width:850px;
         margin-bottom:10px; /*上下の間隔をあける*/
+        margin-right:auto;
+        margin-left:auto;
         text-align:left;
-        float:left;
 }
+/*
 #sub {
         width:150px;
-        margin-bottom:10px; /*上下の間隔をあける*/
+        margin-bottom:10px;
         text-align:left;
         float:left;
 }
-
+*/
 ul {
 	padding-left: 5px;
 }

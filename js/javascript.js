@@ -28,10 +28,12 @@ $(document).ready(function () {
 		}
 
 */
+/*
 		var $items = $('#items');
 		$items.masonry({
 			itemSelector : '.item'
 		});
+*/
 /*
 		$items.infinitescroll({
 			//state: {

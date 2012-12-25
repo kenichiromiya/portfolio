@@ -25,6 +25,7 @@ if($session['role'] == "admin" or preg_match("/^".$session['account_id']."/",$re
 <form action="<?=BASE?><?=$id?>" method="post">
 <input type="hidden" name="_method" value="put">
 <input type="hidden" name="type" value="page">
+<input type="hidden" name="account_id" value="<?=$session['account_id']?>">
 <!--
 <label for="type"><?=_('Type')?></label>
 <select id="type" name="type">

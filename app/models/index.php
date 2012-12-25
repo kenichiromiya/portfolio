@@ -12,14 +12,14 @@ class IndexModel extends Model {
                 if (preg_match("#/$|^$#",$req['id'])) {
 			$sql = "SELECT * FROM {$this->table} ";
 			$values = array();
-			$sql .= "WHERE id = ? AND type = 'page' ";
+			$sql .= "WHERE id = ? ";
 			$id = ($req['id']) ? $req['id'] : 'index';
 			array_push($values,$id);
 			$var['row'] = $this->dbh->getRow($sql,$values);
 
 			$sql = "SELECT * FROM {$this->table} ";
 			$values = array();
-			$sql .= "WHERE id LIKE ? AND type = 'image' ";
+			$sql .= "WHERE id LIKE ? ";
 			$sql .= "ORDER BY createtime DESC ";
 			if ($req['page']) {
 				$start = ($req['page']-1) * PER_PAGE;
@@ -28,35 +28,15 @@ class IndexModel extends Model {
 				$sql .= "LIMIT ".PER_PAGE;
 			}
 			array_push($values,$req['id']."%");
-			//array_push($values,$req['id']."%.jpg",$req['id']."%.jpeg");
-			//$var['rows'] = $this->dbh->getAll($sql);
-			$var['image']['rows'] = $this->dbh->getAll($sql,$values);
+			$var['rows'] = $this->dbh->getAll($sql,$values);
+/*
 
 			$sql = "SELECT * FROM {$this->table} ";
 			$values = array();
 			$sql .= "WHERE id != ? AND id LIKE ? AND type = 'page' ";
 			$sql .= "ORDER BY createtime DESC ";
-/*
-			if ($req['page']) {
-				$start = ($req['page']-1) * PER_PAGE;
-				$sql .= "LIMIT ".$start.",".PER_PAGE;
-			} else {
-				$sql .= "LIMIT ".PER_PAGE;
-			}
-*/
 			array_push($values,$id,$req['id']."%");
 			$var['page']['rows'] = $this->dbh->getAll($sql,$values);
-/*
-			$sql = "SELECT * FROM {$this->table} ";
-			$values = array();
-			$sql .= "WHERE id LIKE ? or id LIKE ?";
-			$sql .= "ORDER BY createtime DESC ";
-			if ($req['start']) {
-				$sql .= "LIMIT {$req['start']},12";
-			} else {
-				$sql .= "LIMIT 12";
-			}
-			$var['pages'] = $this->dbh->getAll($sql,$values);
 */
 			$var['documents'] = array();
 			$var['folders'] = array();
