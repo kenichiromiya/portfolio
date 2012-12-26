@@ -28,7 +28,7 @@ if (!file_exists("upload/accounts/large/<?=$icon?>")){
 <h1><?=$id?></h1>
 <a href="<?=$url?>"><?=$url?></a>
 <p>
-<?=$about?>
+<?=$profile?>
 </p>
 </div><!--account-->
 <?php if($session['account_id'] == $id){ ?>
