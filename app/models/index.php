@@ -63,6 +63,21 @@ class IndexModel extends Model {
                 return $var;
         }
 
+        public function put($req){
+                $values = array();
+                $sql = "SELECT COUNT(*) FROM {$this->table} WHERE id = ?";
+                array_push($values,$req['id']);
+                $count = $this->dbh->getOne($sql,$values);
+                $param = $req['post'];
+		$id = ($req['id']) ? $req['id'] : 'index';
+                $param['id'] = $id;
+                if ($count) {
+                        $this->dbh->update($this->table,$id,$req['post']);
+                } else {
+                        $this->dbh->insert($this->table,$param);
+                }
+        }
+
 	public function post($req){
 		foreach($_FILES as $file) {
 			if ($file["name"]) {

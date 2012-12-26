@@ -6,10 +6,10 @@
 <link rel="stylesheet" type="text/css" href="<?=BASE?>css/style.css"/>
 <link rel="stylesheet" type="text/css" href="<?=BASE?>css/index.css"/>
 <script type="text/javascript" src="<?=BASE?>js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="<?=BASE?>js/jquery.masonry.min.js"></script>
+<!--script type="text/javascript" src="<?=BASE?>js/jquery.masonry.min.js"></script-->
 <!--<script type="text/javascript" src="<?=BASE?>js/jquery.infinitescroll.min.js"></script>-->
 <!--script type="text/javascript" src="<?=BASE?>js/jquery.bottom-1.0.js"></script-->
-<script type="text/javascript" src="<?=BASE?>js/jquery.browser.min.js"></script>
+<!--script type="text/javascript" src="<?=BASE?>js/jquery.browser.min.js"></script-->
 <!--<script type="text/javascript" src="<?=BASE?>js/jstorage.js"></script>-->
 <script type="text/javascript" src="<?=BASE?>js/javascript.js"></script>
 <!--script type="text/javascript" src="<?=BASE?>js/bottom.js"></script-->
