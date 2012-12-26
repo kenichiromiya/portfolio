@@ -17,7 +17,7 @@ class IndexModel extends Model {
 			array_push($values,$id);
 			$var['row'] = $this->dbh->getRow($sql,$values);
 
-			$sql = "SELECT * FROM {$this->table} ";
+			$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM {$this->table} ";
 			$values = array();
 			$sql .= "WHERE id LIKE ? ";
 			$sql .= "ORDER BY createtime DESC ";
@@ -29,6 +29,7 @@ class IndexModel extends Model {
 			}
 			array_push($values,$req['id']."%");
 			$var['rows'] = $this->dbh->getAll($sql,$values);
+			$var['count'] = $this->dbh->rowCount();
 /*
 
 			$sql = "SELECT * FROM {$this->table} ";

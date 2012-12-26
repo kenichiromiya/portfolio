@@ -2,8 +2,6 @@
 
 class Dispatcher {
 	public function __construct() {
-		//$request = New Request();
-		//$this->req = $request->sanitize();
 		$singleton = Request::singleton();
 		$this->req = $singleton->req;
 	}

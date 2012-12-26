@@ -51,6 +51,8 @@ if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){
 -->
 <label for="title"><?=_('Title')?></label>
 <input id="title" type="text" name="title" size="10" value="<?=$row['title']?>"/><br/>
+<label for="tags"><?=_('Tags')?></label>
+<input id="tags" type="text" name="tags" size="10" value="<?=$row['tags']?>"/><br/>
 <label for="description"><?=_('Description')?></label>
 <textarea id="description" name="description" rows="10" cols="20">
 <?=$row['description']?>

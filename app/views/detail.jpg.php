@@ -43,10 +43,21 @@ endif;
 <?=$row['title']?>
 </h1>
 <p>
+<?=$row['tags']?>
+</p>
+<p>
 <?=$row['description']?>
 </p>
 <div class="account">
 <div class="icon">
+<?php
+/*
+if (!file_exists("upload/accounts/thumb/<?=$row['account_id']?>/icon.jpeg")){
+	$image = new Image();
+	$image->resize("upload/accounts/thumb/<?=$row['account_id']?>/icon.jpeg","images/pic_noimage110_dgray.jpg",50,50);
+}
+*/
+?>
 <a href="<?=BASE?>accounts/<?=$row['account_id']?>"><img src="<?=BASE?>upload/accounts/thumb/<?=$row['account_id']?>/icon.jpeg"></a>
 </div>
 <div class="account_id">

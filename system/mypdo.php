@@ -67,5 +67,12 @@ class MyPDO extends PDO
 		$row = $sth->fetch();
 		return $row[0];
 	}
+	public function rowCount(){
+		$query = "SELECT FOUND_ROWS()";
+		$sth = $this->prepare($query);
+		$sth->execute($params);
+		$row = $sth->fetch();
+		return $row[0];
+	}
 }
 ?>

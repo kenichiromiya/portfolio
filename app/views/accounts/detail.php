@@ -13,8 +13,17 @@
 <div id="wrapper">
 
 <?php include("header.php")?>
+<div id="container">
 <div id="main">
 <div id="account">
+<?php
+/*
+if (!file_exists("upload/accounts/large/<?=$icon?>")){
+        $image = new Image();
+        $image->resize("upload/accounts/large/<?=$icon?>","images/pic_noimage110_dgray.jpg",100,100);
+}
+*/
+?>
 <img src="<?=BASE?>upload/accounts/large/<?=$icon?>">
 <h1><?=$id?></h1>
 <a href="<?=$url?>"><?=$url?></a>
@@ -40,7 +49,7 @@
 <input id="email" type="text" name="email" value="<?=$email?>"/><br/>
 <label for="role"><?=_('Role')?></label>
 <select id="role" name="role">
-<option value="admin"<?php if($role == 'admin') { echo 'selected=""'; }?>>admin</option>
+<!--option value="admin"<?php if($role == 'admin') { echo 'selected=""'; }?>>admin</option-->
 <option value="user"<?php if($role == 'user') { echo 'selected=""'; }?>>user</option>
 </select><br/>
 <label for="url"><?=_('URL')?></label>
@@ -58,6 +67,7 @@
 <?php } ?>
 
 </div><!--main-->
+</div><!--container-->
 </div><!--wrapper-->
 
 </body>

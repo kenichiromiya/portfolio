@@ -28,10 +28,10 @@ class AccountsModel extends Model {
 				if ($row['code'] == $req['code']) {
 					$param['code'] = "";
 					$this->dbh->update($this->table,$req['id'],$param);
-					return TRUE;
 				} else {
 					return FALSE;
 				}
+				$upload_file = "images/pic_noimage110_dgray.jpg";
 			}
 			// TODO only sign in
 			if (count($_FILES)){
@@ -42,6 +42,13 @@ class AccountsModel extends Model {
 				if (!is_dir(dirname($upload_file))){
 					mkdir(dirname($upload_file),0777,true);
 				}
+				if(move_uploaded_file($file["tmp_name"],$upload_file))
+				{
+					chmod($upload_file,0644);
+				}
+			}
+			if ($upload_file) {
+				$filename = $req['id']."/"."icon.jpeg";
 				$thumb_dirname = "upload/accounts/thumb";
 				$upload_thumb_file = "$thumb_dirname/$filename";
 				if (!is_dir(dirname($upload_thumb_file))){
@@ -52,13 +59,9 @@ class AccountsModel extends Model {
 				if (!is_dir(dirname($upload_large_file))){
 					mkdir(dirname($upload_large_file),0777,true);
 				}
-				if(move_uploaded_file($file["tmp_name"],$upload_file))
-				{
-					chmod($upload_file,0644);
-				}
 				$image = new Image();
-				$image->imageresize($upload_thumb_file,$upload_file,50,'','jpeg');
-				$image->imageresize($upload_large_file,$upload_file,100,'100','jpeg');
+				$image->resize($upload_thumb_file,$upload_file,50,50);
+				$image->resize($upload_large_file,$upload_file,100,100);
 				//$pathinfo = pathinfo($file["name"]);
 				//$icon = $req['id']."/".$pathinfo['filename'];
 				$param['icon'] = $req['id']."/"."icon.jpeg";

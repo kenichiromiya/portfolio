@@ -55,13 +55,17 @@ img {
 	padding:5px;
         text-align:center;
 }
+#pagination {
+        clear: both;
+        text-align:center;
+}
 
 #header form {
 	display:inline;
 }
 
 #wrapper {
-	width:1060px;
+	width:1000px;
 	margin-right:auto;
 	margin-left:auto;
 	text-align: center;
@@ -70,6 +74,7 @@ img {
 #container {
 	clear: both;
 	text-align:left;
+	min-height:666px;
 }
 #frame {
 	text-align:center;
@@ -81,6 +86,17 @@ img {
 	clear: both;
 	text-align:left;
 	margin: 5px;
+}
+#trends {
+	border: 1px;
+	border-style:solid;
+	border-color:black;
+	clear: both;
+	text-align:left;
+	margin: 5px;
+	padding: 5px;
+-moz-box-shadow: 3px 3px 3px #AAA;    /* firefox　*/
+-webkit-box-shadow: 3px 3px 3px #AAA;  /* safari、chorme */
 }
 
 br { clear: left; }
@@ -102,6 +118,8 @@ br { clear: left; }
   width: 200px;
   height: 300px;
   float: left;
+-moz-box-shadow: 3px 3px 3px #AAA;    /* firefox　*/
+-webkit-box-shadow: 3px 3px 3px #AAA;  /* safari、chorme */
 }
 .page {
   margin: 5px;

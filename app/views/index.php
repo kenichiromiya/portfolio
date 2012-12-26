@@ -27,7 +27,7 @@ $markdown = new Markdown();
 echo $markdown->parse($row['text']);
 ?>
 </div><!--page-->
-<?php if($session['role'] == "admin" or preg_match("#^".$session['account_id']."/$#",$req['id'])){?>
+<?php if($editable){?>
 <input id="location" type="text" size="15">
 <button onclick='location.href="<?=BASE?><?=$id?>"+$("#location").val()+"?mode=edit"'><?=_('Add')?></button>
 <div id="drag" draggable="true">
@@ -64,7 +64,7 @@ $height = round(200/$ratio);
 <?php else: ?>
 <a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>images/docu_txt.png" width="200" height="200"></a>
 <?php endif; ?>
-<?php if($session['account_id'] == $row['account_id']): ?>
+<?php if($editable): ?>
 <?php //if($session['account_id'] and preg_match("/".$session['account_id']."/",$req['id'])){ ?>
 <form action="<?=BASE?><?=$row['id']?>" method="post">
 <input type="hidden" name="_method" value="delete">
@@ -75,9 +75,12 @@ $height = round(200/$ratio);
 </div><!--item-->
 <?php endforeach; ?>
 </div><!--items-->
+<!--
 <div id="page-nav">
 	<a href="?page=<?=$next?>"><?=_('Next')?></a>
 </div>
+-->
+<?php include("pagination.php")?>
 </div><!--main-->
 <?php //if($session['account_id'] and preg_match("/\/$/",$req['id'])){ ?>
 
@@ -90,6 +93,11 @@ $height = round(200/$ratio);
 <?php } ?>
 </div>
 -->
+<div id="sub">
+<div id="trends">
+<?=_('Trends')?>
+</div><!--pages-->
+</div><!--sub-->
 </div><!--container-->
 </div><!--wrapper-->
 <?php include("footer.php")?>

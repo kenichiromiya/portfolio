@@ -6,6 +6,9 @@ class CommonController extends Controller
         public function __construct() {
 		parent::__construct();
                 $singleton = Request::singleton();
+		if ($this->session['role'] == "admin" or preg_match("#^".$this->session['account_id']."/#",$this->req['id'])) {
+			$this->var['editable'] = TRUE;
+		}
         }
 
         public function get() {
