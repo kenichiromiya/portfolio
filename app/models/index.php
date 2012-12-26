@@ -10,16 +10,16 @@ class IndexModel extends Model {
                 $var = $req;
 
                 if (preg_match("#/$|^$#",$req['id'])) {
+			$id = ($req['id']) ? $req['id'] : 'index';
 			$sql = "SELECT * FROM {$this->table} ";
 			$values = array();
 			$sql .= "WHERE id = ? ";
-			$id = ($req['id']) ? $req['id'] : 'index';
 			array_push($values,$id);
 			$var['row'] = $this->dbh->getRow($sql,$values);
 
 			$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM {$this->table} ";
 			$values = array();
-			$sql .= "WHERE id LIKE ? ";
+			$sql .= "WHERE id != ? AND id LIKE ? ";
 			$sql .= "ORDER BY createtime DESC ";
 			if ($req['page']) {
 				$start = ($req['page']-1) * PER_PAGE;
@@ -27,7 +27,7 @@ class IndexModel extends Model {
 			} else {
 				$sql .= "LIMIT ".PER_PAGE;
 			}
-			array_push($values,$req['id']."%");
+			array_push($values,$id,$req['id']."%");
 			$var['rows'] = $this->dbh->getAll($sql,$values);
 			$var['count'] = $this->dbh->rowCount();
 /*
