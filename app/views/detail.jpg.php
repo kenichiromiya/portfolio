@@ -48,6 +48,7 @@ endif;
 <p>
 <?=$row['description']?>
 </p>
+<?=_('Uploaded by')?>
 <div class="account">
 <div class="icon">
 <?php

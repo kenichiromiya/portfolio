@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-27 01:03+0900\n"
+"POT-Creation-Date: 2012-12-27 02:25+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -130,6 +130,10 @@ msgstr "はろ"
 
 #: /home/miyaa/git/portfolio/app/views/footer.php:6
 msgid "Contact"
+msgstr ""
+
+#: /home/miyaa/git/portfolio/app/views/detail.jpg.php:51
+msgid "Uploaded by"
 msgstr ""
 
 #: /home/miyaa/git/portfolio/app/views/pagination.php:6
