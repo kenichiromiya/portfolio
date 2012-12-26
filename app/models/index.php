@@ -64,12 +64,12 @@ class IndexModel extends Model {
         }
 
         public function put($req){
+		$id = ($req['id']) ? $req['id'] : 'index';
                 $values = array();
                 $sql = "SELECT COUNT(*) FROM {$this->table} WHERE id = ?";
-                array_push($values,$req['id']);
+                array_push($values,$id);
                 $count = $this->dbh->getOne($sql,$values);
                 $param = $req['post'];
-		$id = ($req['id']) ? $req['id'] : 'index';
                 $param['id'] = $id;
                 if ($count) {
                         $this->dbh->update($this->table,$id,$req['post']);
