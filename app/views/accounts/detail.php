@@ -69,6 +69,7 @@ if (!file_exists("upload/accounts/large/<?=$icon?>")){
 </div><!--main-->
 </div><!--container-->
 </div><!--wrapper-->
+<?php include("footer.php")?>
 
 </body>
 </html>
