@@ -21,7 +21,7 @@
 
 <div id="container">
 <div id="main">
-<div id="page">
+<div class="page">
 <?php
 $markdown = new Markdown();
 echo $markdown->parse($row['text']);

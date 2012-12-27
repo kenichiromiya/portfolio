@@ -1,9 +1,13 @@
+html {
+	background-color:gray;
+}
 body {
 	font-size:0.9em;
 	margin:0px;
 	margin-right:auto;
 	margin-left:auto;
 	text-align: center;
+	background-color:white;
 }
 a {
 	text-decoration:none;
@@ -47,17 +51,17 @@ img {
 	text-align:right;
 }
 #footer {
-        clear: both;
-        width:100%;
+	clear: both;
+	width:100%;
 	height:100px;
-        background-color:gray;
-        color:white;
+	background-color:gray;
+	color:white;
 	padding:5px;
-        text-align:center;
+	text-align:center;
 }
 #pagination {
-        clear: both;
-        text-align:center;
+	clear: both;
+	text-align:center;
 }
 
 #header form {
@@ -69,12 +73,12 @@ img {
 	margin-right:auto;
 	margin-left:auto;
 	text-align: center;
+	min-height:700px;
 }
 
 #container {
 	clear: both;
 	text-align:left;
-	min-height:666px;
 }
 #frame {
 	text-align:center;
@@ -95,78 +99,78 @@ img {
 	text-align:left;
 	margin: 5px;
 	padding: 5px;
--moz-box-shadow: 3px 3px 3px #AAA;    /* firefox　*/
--webkit-box-shadow: 3px 3px 3px #AAA;  /* safari、chorme */
+	-moz-box-shadow: 3px 3px 3px #AAA;    /* firefox　*/
+	-webkit-box-shadow: 3px 3px 3px #AAA;  /* safari、chorme */
 }
 
 br { clear: left; }
 
 
 .image {
-  border: 1px;
-  border-style:solid;
-  width: 200px;
-  margin: 5px;
- padding:0px;
-  float: left;
+	border: 1px;
+	border-style:solid;
+	width: 200px;
+	margin: 5px;
+	padding:0px;
+	float: left;
 }
 .item {
-  border: 1px;
-  border-style:solid;
-  margin: 5px;
- padding:0px;
-  width: 200px;
-  height: 300px;
-  float: left;
--moz-box-shadow: 3px 3px 3px #AAA;    /* firefox　*/
--webkit-box-shadow: 3px 3px 3px #AAA;  /* safari、chorme */
+	border: 1px;
+	border-style:solid;
+	margin: 5px;
+	padding:0px;
+	width: 200px;
+	height: 300px;
+	float: left;
+	-moz-box-shadow: 3px 3px 3px #AAA;    /* firefox　*/
+	-webkit-box-shadow: 3px 3px 3px #AAA;  /* safari、chorme */
 }
 .page {
-  margin: 5px;
- padding:0px;
+	margin-left: 10px;
+	padding:0px;
 }
 
 #drag {
-  height:100px;
-  clear: both;
-  border: 1px;
-  border-style:solid;
-  border-color:blue;
-  margin: 5px;
-  text-align:center;
+	height:100px;
+	clear: both;
+	border: 1px;
+	border-style:solid;
+	border-color:blue;
+	margin: 5px;
+	text-align:center;
 }
 
 .test {
 }
 .thumb {
-  position: relative;  /* 基点を設定 */
-  width: 200px;
-  height: 300px;
-display:table-cell;
-vertical-align:middle;
+	position: relative;  /* 基点を設定 */
+	width: 200px;
+	height: 300px;
+	display:table-cell;
+	vertical-align:middle;
 }
 
 .thumb  img {
-  top: 0;
-  left: 0;
-  z-index: 1; /* 一番下に配置 */
+	top: 0;
+	left: 0;
+	z-index: 1; /* 一番下に配置 */
 }
 
 .thumb p {
-  margin: 0;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  width: 100%;
-  position: absolute;  /* 親要素を基点に配置 */
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* 背景黒で透明度50% */
-  color: white;
-  z-index: 2;  /* 画像の上に配置 */
-  font-size: 100%;
-  text-align:left;
+	margin: 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	width: 100%;
+	position: absolute;  /* 親要素を基点に配置 */
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.5); /* 背景黒で透明度50% */
+	color: white;
+	z-index: 2;  /* 画像の上に配置 */
+	font-size: 100%;
+	text-align:left;
 }
 .thumb form {
-  position: absolute;  /* 親要素を基点に配置 */
-  top:0;
+	position: absolute;  /* 親要素を基点に配置 */
+	top:0;
 }

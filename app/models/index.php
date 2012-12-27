@@ -9,7 +9,21 @@ class IndexModel extends Model {
         public function get($req){
                 $var = $req;
 
-                if (preg_match("#/$|^$#",$req['id'])) {
+                if ($req['tag']) {
+			$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM {$this->table} ";
+			$values = array();
+			$sql .= "WHERE tags LIKE ? ";
+			$sql .= "ORDER BY createtime DESC ";
+			if ($req['page']) {
+				$start = ($req['page']-1) * PER_PAGE;
+				$sql .= "LIMIT ".$start.",".PER_PAGE;
+			} else {
+				$sql .= "LIMIT ".PER_PAGE;
+			}
+			array_push($values,"%".$req['tag']."%");
+			$var['rows'] = $this->dbh->getAll($sql,$values);
+			$var['count'] = $this->dbh->rowCount();
+		} elseif (preg_match("#/$|^$#",$req['id'])) {
 			$id = ($req['id']) ? $req['id'] : 'index';
 			$sql = "SELECT * FROM {$this->table} ";
 			$values = array();
@@ -46,7 +60,8 @@ class IndexModel extends Model {
 			$values = array();
 			$sql .= "WHERE id = ? ";
 			array_push($values,$req['id']);
-			$var['row'] = $this->dbh->getRow($sql,$values);
+			$row = $this->dbh->getRow($sql,$values);
+			$var['row'] = $row;
 		} else {
 			$sql = "SELECT * FROM {$this->table} ";
 			$sql .= "ORDER BY createtime DESC ";

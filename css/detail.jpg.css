@@ -1,20 +1,20 @@
 #main {
-        width:80%;
-        margin-bottom:10px; /*上下の間隔をあける*/
-        text-align:left;
-        float:left;
+	width:800px;
+	margin-bottom:10px; /*上下の間隔をあける*/
+	text-align:left;
+	float:left;
 }
 #sub {
-        width:20%;
-        margin-bottom:10px; /*上下の間隔をあける*/
-        text-align:left;
-        float:left;
+	width:200px;
+	margin-bottom:10px; /*上下の間隔をあける*/
+	text-align:left;
+	float:left;
 }
 form label {
-        display: block;
-        width: 50px;
-        float: left;
-        margin-bottom: 10px;
-        text-align: left;
-        padding-right: 15px;
+	display: block;
+	width: 50px;
+	float: left;
+	margin-bottom: 10px;
+	text-align: left;
+	padding-right: 15px;
 }
