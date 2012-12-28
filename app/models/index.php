@@ -134,7 +134,8 @@ class IndexModel extends Model {
 				$width = $size[0];
 				$height = $size[1];
 				$this->dbh->delete($this->table,$id);
-				$this->dbh->insert($this->table,array("id"=>$id,"filename"=>$filename,"width"=>$width,"height"=>$height,"type"=>$type,"account_id"=>$req['account_id']));
+				$created = date('Y-m-d H:i:s');
+				$this->dbh->insert($this->table,array("id"=>$id,"filename"=>$filename,"width"=>$width,"height"=>$height,"type"=>$type,"account_id"=>$req['account_id'],"created"=>$created));
 			}
 			//$pathinfo = pathinfo($file["name"]);
 			//$id = $req['id'].$pathinfo['filename'];
