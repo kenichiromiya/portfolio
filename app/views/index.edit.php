@@ -2,12 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-<title><?php echo TITLE; ?> - <?=$row['title']?></title>
+<title><?php echo TITLE; ?> - <?=$title?></title>
 <link rel="stylesheet" type="text/css" href="<?=BASE?>css/style.css"/>
 <link rel="stylesheet" type="text/css" href="<?=BASE?>css/detail.css"/>
 <script type="text/javascript" src="<?=BASE?>js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="<?=BASE?>js/jquery.masonry.min.js""></script>
-<script type="text/javascript" src="<?=BASE?>js/jquery.bottom-1.0.js"></script>
 <script type="text/javascript" src="<?=BASE?>js/javascript.js"></script>
 </head>
 <body>
@@ -34,16 +32,18 @@ if($session['role'] == "admin" or preg_match("/^".$session['account_id']."/",$re
 </select><br/>
 -->
 <label for="title"><?=_('Title')?></label>
-<input id="title" type="text" name="title" size="60" value="<?=$row['title']?>"/><br/>
+<input id="title" type="text" name="title" size="60" value="<?=$title?>"/><br/>
+<label for="tags"><?=_('Tags')?></label>
+<input id="tags" type="text" name="tags" value="<?=$tags?>"/><br/>
 <!--
 <label for="description"><?=_('Description')?></label>
 <textarea id="description" name="description" rows="10" cols="20">
-<?=$row['description']?>
+<?=$description?>
 </textarea><br/>
 -->
 <label for="text"><?=_('Text')?></label>
 <textarea id="text" name="text" rows="20" cols="100">
-<?=$row['text']?>
+<?=$text?>
 </textarea><br/>
 <label for="submit"><?=_('Submit')?></label>
 <input id="submit" type="submit" value="<?=_('Submit')?>"/><br/>
@@ -51,7 +51,7 @@ if($session['role'] == "admin" or preg_match("/^".$session['account_id']."/",$re
 </form>
 <?php } ?>
 <!--
-<form action="<?=BASE?><?=$row['id']?>" method="post">
+<form action="<?=BASE?><?=$id?>" method="post">
 <input type="hidden" name="_method" value="delete">
 <input type="submit" value="<?=_('Delete')?>">
 </form>

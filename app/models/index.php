@@ -29,7 +29,9 @@ class IndexModel extends Model {
 			$values = array();
 			$sql .= "WHERE id = ? ";
 			array_push($values,$id);
-			$var['row'] = $this->dbh->getRow($sql,$values);
+			if ($row = $this->dbh->getRow($sql,$values)) {
+				$var = $var + $row;
+			}
 
 			$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM {$this->table} ";
 			$values = array();
@@ -60,8 +62,9 @@ class IndexModel extends Model {
 			$values = array();
 			$sql .= "WHERE id = ? ";
 			array_push($values,$req['id']);
-			$row = $this->dbh->getRow($sql,$values);
-			$var['row'] = $row;
+			if ($row = $this->dbh->getRow($sql,$values)) {
+				$var = $var + $row;
+			}
 		} else {
 			$sql = "SELECT * FROM {$this->table} ";
 			$sql .= "ORDER BY createtime DESC ";
@@ -74,7 +77,6 @@ class IndexModel extends Model {
 			}
 			$var['rows'] = $this->dbh->getAll($sql,$values);
 		}
-				error_log($sql);
                 return $var;
         }
 

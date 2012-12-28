@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-<title><?php echo TITLE; ?> - <?=$row['title']?></title>
+<title><?php echo TITLE; ?> - <?=$title?></title>
 <link rel="stylesheet" type="text/css" href="<?=BASE?>css/style.css"/>
 <link rel="stylesheet" type="text/css" href="<?=BASE?>css/detail.jpg.css"/>
 <script type="text/javascript" src="<?=BASE?>js/jquery-1.7.1.min.js"></script>
@@ -21,16 +21,16 @@
 <div id="frame">
 
 <h1>
-<?=$row['title']?>
+<?=$title?>
 </h1>
 <?php
-if($row['filename']):
-	if (!file_exists("upload/large/".$row['filename'])){
+if($filename):
+	if (!file_exists("upload/large/".$filename)){
 		$image = new Image();
-		$image->imageresize("upload/large/".$row['filename'],"upload/".$row['filename'],1000,1000);
+		$image->imageresize("upload/large/".$filename,"upload/".$filename,1000,1000);
 	}
 ?>
-<a href="<?=BASE?>upload/<?=$row['filename']?>"><img src="<?=BASE?>upload/large/<?=$row['filename']?>"></a>
+<a href="<?=BASE?>upload/<?=$filename?>"><img src="<?=BASE?>upload/large/<?=$filename?>"></a>
 <?php
 endif;
 ?>
@@ -39,22 +39,12 @@ endif;
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div><!--twitter-->
 <p>
-<?=_('Tags')?>:
-<?php
-foreach (explode(" ",$row['tags']) as $tag){
-?>
-<a href="<?=BASE?>?tag=<?=$tag?>"><?=$tag?></a>
-<?php
-}
-?>
-</p>
-<p>
-<?=$row['description']?>
+<?=$description?>
 </p>
 </div><!--frame-->
 </div><!--main-->
 <div id="sub">
-<?php include("sub.php")?>
+<?php include("meta.php")?>
 </div><!--sub-->
 </div><!--container-->
 </div><!--wrapper-->

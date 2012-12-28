@@ -24,7 +24,7 @@
 <div class="page">
 <?php
 $markdown = new Markdown();
-echo $markdown->parse($row['text']);
+echo $markdown->parse($text);
 ?>
 </div><!--page-->
 <?php if($editable){?>
@@ -94,7 +94,7 @@ $height = round(200/$ratio);
 </div>
 -->
 <div id="sub">
-<?php include("sub.php")?>
+<?php include("meta.php")?>
 </div><!--sub-->
 </div><!--container-->
 </div><!--wrapper-->
