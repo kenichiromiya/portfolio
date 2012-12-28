@@ -1,3 +1,6 @@
+<?php
+include_once "app/functions/markdown.php";
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -20,10 +23,6 @@
 
 <div id="container">
 <div id="main">
-<?php
-if($session['role'] == "admin" or preg_match("/^".$session['account_id']."/",$req['id'])){ ?>
-<?php //if($session['account_id'] and preg_match("/".$session['account_id']."/",$req['id'])){ ?>
-
 <form action="<?=BASE?><?=$id?>" method="post">
 <input type="hidden" name="_method" value="put">
 <input type="hidden" name="type" value="page">
@@ -51,16 +50,26 @@ if($session['role'] == "admin" or preg_match("/^".$session['account_id']."/",$re
 <input id="submit" type="submit" value="<?=_('Submit')?>"/><br/>
 
 </form>
-<?php } ?>
-<!--
-<form action="<?=BASE?><?=$row['id']?>" method="post">
-<input type="hidden" name="_method" value="delete">
-<input type="submit" value="<?=_('Delete')?>">
-</form>
--->
+<div class="page">
+<?php
+echo Markdown($row['text']);
+//$markdown = new Markdown();
+//echo $markdown->parse($row['text']);
+?>
+</div><!--page-->
+<div id="twitter">
+<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div><!--twitter-->
+
 </div><!--main-->
+<div id="sub">
+<?php include("sub.php")?>
+</div>
+
 </div><!--container-->
 </div><!--wrapper-->
+
 <?php include("footer.php")?>
 </body>
 </html>

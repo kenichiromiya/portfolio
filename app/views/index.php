@@ -94,9 +94,7 @@ $height = round(200/$ratio);
 </div>
 -->
 <div id="sub">
-<div id="trends">
-<?=_('Trends')?>
-</div><!--pages-->
+<?php include("sub.php")?>
 </div><!--sub-->
 </div><!--container-->
 </div><!--wrapper-->

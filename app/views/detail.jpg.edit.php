@@ -18,27 +18,6 @@
 
 <div id="container">
 <div id="main">
-<div id="frame">
-<?php
-if($row['filename']):
-	if (!file_exists("upload/large/".$row['filename'])){
-		$image = new Image();
-		$image->imageresize("upload/large/".$row['filename'],"upload/".$row['filename'],1000,1000);
-	}
-?>
-<img src="<?=BASE?>upload/large/<?=$row['filename']?>">
-<?php
-endif;
-?>
-</div><!--frame-->
-</div><!--main-->
-<div id="sub">
-
-<?php
-if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){ ?>
-<?php //if($session['account_id'] and preg_match("/".$session['account_id']."/",$req['id'])){ ?>
-
-<div id="image">
 <form action="<?=BASE?><?=$id?>" method="post">
 <input type="hidden" name="_method" value="put">
 <input type="hidden" name="type" value="image">
@@ -50,11 +29,11 @@ if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){
 </select><br/>
 -->
 <label for="title"><?=_('Title')?></label>
-<input id="title" type="text" name="title" size="10" value="<?=$row['title']?>"/><br/>
+<input id="title" type="text" name="title" value="<?=$row['title']?>"/><br/>
 <label for="tags"><?=_('Tags')?></label>
-<input id="tags" type="text" name="tags" size="10" value="<?=$row['tags']?>"/><br/>
+<input id="tags" type="text" name="tags" value="<?=$row['tags']?>"/><br/>
 <label for="description"><?=_('Description')?></label>
-<textarea id="description" name="description" rows="10" cols="20">
+<textarea id="description" name="description" >
 <?=$row['description']?>
 </textarea><br/>
 <!--
@@ -67,21 +46,47 @@ if($session['role'] == "admin" or $session['account_id'] == $row['account_id']){
 <input id="submit" type="submit" value="<?=_('Submit')?>"/><br/>
 
 </form>
-</div><!--form-->
+<div id="frame">
 
-<!--
-<form action="<?=BASE?><?=$row['id']?>" method="post">
-<input type="hidden" name="_method" value="delete">
-<input type="submit" value="<?=_('Delete')?>">
-</form>
--->
-<?php } ?>
-
-
-
+<h1>
+<?=$row['title']?>
+</h1>
+<?php
+if($row['filename']):
+	if (!file_exists("upload/large/".$row['filename'])){
+		$image = new Image();
+		$image->imageresize("upload/large/".$row['filename'],"upload/".$row['filename'],1000,1000);
+	}
+?>
+<a href="<?=BASE?>upload/<?=$row['filename']?>"><img src="<?=BASE?>upload/large/<?=$row['filename']?>"></a>
+<?php
+endif;
+?>
+<div id="twitter">
+<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div><!--twitter-->
+<p>
+<?=_('Tags')?>:
+<?php
+foreach (explode(" ",$row['tags']) as $tag){
+?>
+<a href="<?=BASE?>?tag=<?=$tag?>"><?=$tag?></a>
+<?php
+}
+?>
+</p>
+<p>
+<?=$row['description']?>
+</p>
+</div><!--frame-->
+</div><!--main-->
+<div id="sub">
+<?php include("sub.php")?>
 </div><!--sub-->
 </div><!--container-->
 </div><!--wrapper-->
+
 <?php include("footer.php")?>
 </body>
 </html>

@@ -87,8 +87,10 @@ class IndexModel extends Model {
                 $param = $req['post'];
                 $param['id'] = $id;
                 if ($count) {
-                        $this->dbh->update($this->table,$id,$req['post']);
+			$param['modified'] = date('Y-m-d H:i:s');
+                        $this->dbh->update($this->table,$id,$param);
                 } else {
+			$param['created'] = date('Y-m-d H:i:s');
                         $this->dbh->insert($this->table,$param);
                 }
         }

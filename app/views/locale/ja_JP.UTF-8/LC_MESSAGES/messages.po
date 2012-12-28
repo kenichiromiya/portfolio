@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-27 02:25+0900\n"
+"POT-Creation-Date: 2012-12-28 22:58+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,49 +16,49 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: /home/miyaa/git/portfolio/app/views/index.edit.php:30
-#: /home/miyaa/git/portfolio/app/views/detail.edit.php:30
+#: /home/miyaa/git/portfolio/app/views/detail.edit.php:32
 #: /home/miyaa/git/portfolio/app/views/detail.jpg.edit.php:46
 msgid "Type"
 msgstr ""
 
 #: /home/miyaa/git/portfolio/app/views/index.edit.php:32
-#: /home/miyaa/git/portfolio/app/views/detail.edit.php:32
+#: /home/miyaa/git/portfolio/app/views/detail.edit.php:34
 #: /home/miyaa/git/portfolio/app/views/detail.jpg.edit.php:48
 msgid "Image"
 msgstr "画像"
 
 #: /home/miyaa/git/portfolio/app/views/index.edit.php:33
 #: /home/miyaa/git/portfolio/app/views/index.edit.php:44
-#: /home/miyaa/git/portfolio/app/views/detail.edit.php:33
-#: /home/miyaa/git/portfolio/app/views/detail.edit.php:44
+#: /home/miyaa/git/portfolio/app/views/detail.edit.php:35
+#: /home/miyaa/git/portfolio/app/views/detail.edit.php:46
 #: /home/miyaa/git/portfolio/app/views/detail.jpg.edit.php:49
 #: /home/miyaa/git/portfolio/app/views/detail.jpg.edit.php:61
 msgid "Text"
 msgstr ""
 
 #: /home/miyaa/git/portfolio/app/views/index.edit.php:36
-#: /home/miyaa/git/portfolio/app/views/detail.edit.php:36
+#: /home/miyaa/git/portfolio/app/views/detail.edit.php:38
 #: /home/miyaa/git/portfolio/app/views/detail.jpg.edit.php:52
 msgid "Title"
 msgstr "タイトル"
 
 #: /home/miyaa/git/portfolio/app/views/index.edit.php:39
-#: /home/miyaa/git/portfolio/app/views/detail.edit.php:39
+#: /home/miyaa/git/portfolio/app/views/detail.edit.php:41
 #: /home/miyaa/git/portfolio/app/views/detail.jpg.edit.php:56
 msgid "Description"
 msgstr "説明"
 
 #: /home/miyaa/git/portfolio/app/views/index.edit.php:48
 #: /home/miyaa/git/portfolio/app/views/index.edit.php:49
-#: /home/miyaa/git/portfolio/app/views/sessions/index.php:25
+#: /home/miyaa/git/portfolio/app/views/sessions/index.php:26
 #: /home/miyaa/git/portfolio/app/views/sessions/edit.php:11
 #: /home/miyaa/git/portfolio/app/views/sessions/edit.php:12
-#: /home/miyaa/git/portfolio/app/views/detail.edit.php:48
-#: /home/miyaa/git/portfolio/app/views/detail.edit.php:49
+#: /home/miyaa/git/portfolio/app/views/detail.edit.php:50
+#: /home/miyaa/git/portfolio/app/views/detail.edit.php:51
 #: /home/miyaa/git/portfolio/app/views/accounts/detail.php:63
 #: /home/miyaa/git/portfolio/app/views/accounts/detail.php:64
-#: /home/miyaa/git/portfolio/app/views/accounts/index.php:29
 #: /home/miyaa/git/portfolio/app/views/accounts/index.php:30
+#: /home/miyaa/git/portfolio/app/views/accounts/index.php:31
 #: /home/miyaa/git/portfolio/app/views/accounts/detail.confirm.php:25
 #: /home/miyaa/git/portfolio/app/views/detail.jpg.edit.php:66
 #: /home/miyaa/git/portfolio/app/views/detail.jpg.edit.php:67
@@ -67,25 +67,25 @@ msgstr "送信"
 
 #: /home/miyaa/git/portfolio/app/views/index.edit.php:56
 #: /home/miyaa/git/portfolio/app/views/index.php:71
-#: /home/miyaa/git/portfolio/app/views/detail.edit.php:56
+#: /home/miyaa/git/portfolio/app/views/detail.edit.php:58
 #: /home/miyaa/git/portfolio/app/views/list.php:21
 #: /home/miyaa/git/portfolio/app/views/detail.jpg.edit.php:75
 msgid "Delete"
 msgstr "削除"
 
-#: /home/miyaa/git/portfolio/app/views/sessions/index.php:18
+#: /home/miyaa/git/portfolio/app/views/sessions/index.php:19
 #: /home/miyaa/git/portfolio/app/views/sessions/edit.php:5
 msgid "Id"
 msgstr ""
 
-#: /home/miyaa/git/portfolio/app/views/sessions/index.php:20
+#: /home/miyaa/git/portfolio/app/views/sessions/index.php:21
 #: /home/miyaa/git/portfolio/app/views/sessions/edit.php:7
 #: /home/miyaa/git/portfolio/app/views/accounts/detail.php:45
-#: /home/miyaa/git/portfolio/app/views/accounts/index.php:25
+#: /home/miyaa/git/portfolio/app/views/accounts/index.php:26
 msgid "Password"
 msgstr "パスワード"
 
-#: /home/miyaa/git/portfolio/app/views/sessions/index.php:22
+#: /home/miyaa/git/portfolio/app/views/sessions/index.php:23
 #: /home/miyaa/git/portfolio/app/views/sessions/edit.php:9
 msgid "Persistent"
 msgstr "ログイン状態を記憶する"
@@ -106,7 +106,19 @@ msgstr ""
 msgid "Next"
 msgstr "次のページ"
 
-#: /home/miyaa/git/portfolio/app/views/index.php:98
+#: /home/miyaa/git/portfolio/app/views/sub.php:2
+msgid "Uploaded by"
+msgstr "投稿者"
+
+#: /home/miyaa/git/portfolio/app/views/sub.php:21
+msgid "Created at"
+msgstr "作成日"
+
+#: /home/miyaa/git/portfolio/app/views/sub.php:27
+msgid "Modified at"
+msgstr "更新日"
+
+#: /home/miyaa/git/portfolio/app/views/sub.php:34
 msgid "Trends"
 msgstr "トレンド"
 
@@ -130,9 +142,10 @@ msgstr "ヘルプ"
 msgid "Contact"
 msgstr "お問い合わせ"
 
-#: /home/miyaa/git/portfolio/app/views/detail.jpg.php:51
-msgid "Uploaded by"
-msgstr "投稿者"
+#: /home/miyaa/git/portfolio/app/views/detail.jpg.php:42
+#: /home/miyaa/git/portfolio/app/views/detail.jpg.edit.php:54
+msgid "Tags"
+msgstr "タグ"
 
 #: /home/miyaa/git/portfolio/app/views/pagination.php:6
 #: /home/miyaa/git/portfolio/app/views/pagination.php:8
@@ -161,12 +174,12 @@ msgid "Create an account"
 msgstr "アカウント作成"
 
 #: /home/miyaa/git/portfolio/app/views/accounts/detail.php:38
-#: /home/miyaa/git/portfolio/app/views/accounts/index.php:19
+#: /home/miyaa/git/portfolio/app/views/accounts/index.php:20
 msgid "Username"
 msgstr "ユーザー名"
 
 #: /home/miyaa/git/portfolio/app/views/accounts/detail.php:48
-#: /home/miyaa/git/portfolio/app/views/accounts/index.php:27
+#: /home/miyaa/git/portfolio/app/views/accounts/index.php:28
 msgid "Email"
 msgstr "Email"
 
@@ -186,7 +199,7 @@ msgstr "プロフィール"
 msgid "Icon"
 msgstr "アイコン"
 
-#: /home/miyaa/git/portfolio/app/views/accounts/index.send.php:14
+#: /home/miyaa/git/portfolio/app/views/accounts/index.send.php:15
 msgid "Send Email"
 msgstr "メールを送信しました"
 
@@ -195,10 +208,6 @@ msgstr "メールを送信しました"
 #: /home/miyaa/git/portfolio/app/models/accounts.php:90
 msgid "Account confirmation"
 msgstr "アカウントの確認"
-
-#: /home/miyaa/git/portfolio/app/views/detail.jpg.edit.php:54
-msgid "Tags"
-msgstr "タグ"
 
 #~ msgid "Body"
 #~ msgstr "本文"

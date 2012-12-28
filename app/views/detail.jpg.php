@@ -18,8 +18,11 @@
 
 <div id="container">
 <div id="main">
-
 <div id="frame">
+
+<h1>
+<?=$row['title']?>
+</h1>
 <?php
 if($row['filename']):
 	if (!file_exists("upload/large/".$row['filename'])){
@@ -31,18 +34,12 @@ if($row['filename']):
 <?php
 endif;
 ?>
-
-</div><!--frame-->
-</div><!--main-->
-<div id="sub">
 <div id="twitter">
 <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div><!--twitter-->
-<h1>
-<?=$row['title']?>
-</h1>
 <p>
+<?=_('Tags')?>:
 <?php
 foreach (explode(" ",$row['tags']) as $tag){
 ?>
@@ -54,24 +51,10 @@ foreach (explode(" ",$row['tags']) as $tag){
 <p>
 <?=$row['description']?>
 </p>
-<?=_('Uploaded by')?>
-<div class="account">
-<div class="icon">
-<?php
-/*
-if (!file_exists("upload/accounts/thumb/<?=$row['account_id']?>/icon.jpeg")){
-	$image = new Image();
-	$image->resize("upload/accounts/thumb/<?=$row['account_id']?>/icon.jpeg","images/pic_noimage110_dgray.jpg",50,50);
-}
-*/
-?>
-<a href="<?=BASE?>accounts/<?=$row['account_id']?>"><img src="<?=BASE?>upload/accounts/thumb/<?=$row['account_id']?>/icon.jpeg"></a>
-</div>
-<div class="account_id">
-<a href="<?=BASE?>accounts/<?=$row['account_id']?>"><?=$row['account_id']?></a>
-</div>
-
-</div><!--account-->
+</div><!--frame-->
+</div><!--main-->
+<div id="sub">
+<?php include("sub.php")?>
 </div><!--sub-->
 </div><!--container-->
 </div><!--wrapper-->
