@@ -54,6 +54,17 @@ include_once "app/functions/markdown.php";
 </form>
 <div class="page">
 <?php
+if($filename):
+        if (!file_exists("upload/large/".$filename)){
+                $image = new Image();
+                $image->imageresize("upload/large/".$filename,"upload/".$filename,1000,1000);
+        }
+?>
+<a href="<?=BASE?>upload/<?=$filename?>"><img src="<?=BASE?>upload/large/<?=$filename?>"></a>
+<?php
+endif;
+?>
+<?php
 echo Markdown($text);
 //$markdown = new Markdown();
 //echo $markdown->parse($row['text']);

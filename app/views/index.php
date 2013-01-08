@@ -48,7 +48,7 @@ foreach($rows as $row) :
 <?php if($row['title']){ ?>
 <p><?=$row['title']?></p>
 <?php } ?>
-<?php if($row['type'] == 'image') :?>
+<?php if($row['filename']) :?>
 <?php
 if (!file_exists("upload/thumb/".$row['filename'])){
 	$image = new Image();

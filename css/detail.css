@@ -1,7 +1,18 @@
+#wrapper {
+        width:750px;
+        margin-right:auto;
+        margin-left:auto;
+        text-align: center;
+        min-height:700px;
+}
+
+#container {
+        clear: both;
+        text-align:left;
+}
 #main {
-	width:850px;
+	width:600px;
 	margin-bottom:10px; /*上下の間隔をあける*/
-	text-align:left;
 	float:left;
 }
 #sub {
@@ -10,7 +21,15 @@
 	text-align:center;
 	float:left;
 }
-
+#text {
+	text-align:left;
+}
+#image {
+	text-align:center;
+}
+#twitter {
+	text-align:left;
+}
 form label {
 	display: block;
 	width: 100px;
@@ -22,5 +41,5 @@ form label {
 
 textarea {
 	width:100%;
-	height:700px;
+	height:300px;
 }

@@ -23,13 +23,29 @@ include_once "app/functions/markdown.php";
 
 <div id="container">
 <div id="main">
-<div class="page">
+<h1>
+<?=$title?>
+</h1>
+<div id="image">
+<?php
+if($filename):
+        //if (!file_exists("upload/large/".$filename)){
+                $image = new Image();
+                $image->imageresize("upload/large/".$filename,"upload/".$filename,900,900);
+        //}
+?>
+<a href="<?=BASE?>upload/<?=$filename?>"><img src="<?=BASE?>upload/large/<?=$filename?>"></a>
+<?php
+endif;
+?>
+</div><!--image-->
+<div id="text">
 <?php
 echo Markdown($text);
 //$markdown = new Markdown();
 //echo $markdown->parse($row['text']);
 ?>
-</div><!--page-->
+</div><!--text-->
 <div id="twitter">
 <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>

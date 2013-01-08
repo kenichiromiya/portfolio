@@ -126,7 +126,9 @@ class IndexModel extends Model {
 				$image = new Image();
 				$image->imageresize($upload_thumb_file,$upload_file,200);
 				$image->imageresize($upload_large_file,$upload_file,1000,1000);
-				$id = $req['id'].$file["name"];
+				//$id = $req['id'].$file["name"];
+				$pathinfo = pathinfo($file["name"]);
+				$id = $req['id'].$pathinfo['filename'];
 				$type = 'image';
 				//$sql = "DELETE FROM {$this->table} WHERE id = ?";
 				//$this->dbh->query($sql,array($id));
