@@ -15,7 +15,7 @@
 ?>
 <div id="container">
 <div id="main">
-<form action="<?=$base?>accounts/?mode=send" method="post">
+<form action="<?=$base?>accounts/?view=send" method="post">
 <input type="hidden" name="_method" value="put">
 <label for="id"><?=_('Username')?></label>
 <?php if ($id) { ?>

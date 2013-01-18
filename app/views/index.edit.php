@@ -33,6 +33,11 @@ if($session['role'] == "admin" or preg_match("/^".$session['account_id']."/",$re
 -->
 <label for="title"><?=_('Title')?></label>
 <input id="title" type="text" name="title" size="60" value="<?=$title?>"/><br/>
+<label for="view"><?=_('View')?></label>
+<select id="view" name="view">
+<option value="" <?php if($view == ''){ echo 'selected';}?>></option>
+<option value="large" <?php if($view == 'large'){ echo 'selected';}?>><?=_('large')?></option>
+</select><br/>
 <label for="tags"><?=_('Tags')?></label>
 <input id="tags" type="text" name="tags" value="<?=$tags?>"/><br/>
 <!--

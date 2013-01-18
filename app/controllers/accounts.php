@@ -17,11 +17,11 @@ class AccountsController extends CommonController
 		$this->validator->rule = $rule;
 		if ($this->validator->validate($this->req['post'])) {
 			$this->model->put($this->req);
-			if($this->req['mode'] == 'send') {
+			if($this->req['view'] == 'send') {
 				$this->view = new View("accounts/index.send.php");
 				$contents = $this->view->getcontents($this->var);
 				echo $contents;
-			} elseif($this->req['mode'] == 'complete') {
+			} elseif($this->req['view'] == 'complete') {
 				header("Location:".BASE."sessions/?account_id=".$this->req['id']);
 			} else {
 				header("Location:".BASE."accounts/".$this->req['id']);

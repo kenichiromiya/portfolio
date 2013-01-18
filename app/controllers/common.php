@@ -15,6 +15,7 @@ class CommonController extends Controller
                 $var = $this->model->get($this->req);
 		$this->var = $this->var + $var;
                 //$file = $this->req['controller'].'.php';
+		/*
 		if (preg_match("#\.(.*?)$#",$this->req['id'],$m)) {
 			if(preg_match("/jpeg|jpg/",$m[1])){
 				$extention = ".jpg";
@@ -22,17 +23,25 @@ class CommonController extends Controller
 		} else {
 			$extention = "";
 		}
-		if ($this->req['mode']) {
-			$mode = ".".$this->req['mode'];
-		} else {
-			$mode = "";
+		*/
+		if ($this->req['view']) {
+			$view = ".".$this->req['view'];
+		} elseif ($var['view']) {
+                        $view = ".".$var['view'];
+                } else  {
+			$view = "";
 		}
 		if (preg_match("#[^/]$#",$this->req['id'])) {
-			$file = 'detail'.$extention.$mode.'.php';
+			$template = 'detail';
+		} else {
+			$template = 'index';
+		}
+		if (preg_match("#[^/]$#",$this->req['id'])) {
+			$file = $template.$view.'.php';
 		} else {
 			$page = isset($this->req['page']) ? $this->req['page'] : 1;
 			$this->var['next'] = $page+1;
-			$file = 'index'.$mode.'.php';
+			$file = $template.$view.'.php';
 		}
 		if($this->req['controller'] != 'index'){
 			$file = $this->req['controller']."/".$file;
@@ -53,7 +62,7 @@ class CommonController extends Controller
                 header("Location:".BASE.$this->controller.$this->dirname);
         }
         public function delete() {
-                $this->model->delete($this->req);
+		$this->model->delete($this->req);
                 header("Location:".BASE.$this->controller.$this->dirname);
         }
 }

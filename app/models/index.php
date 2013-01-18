@@ -30,12 +30,14 @@ class IndexModel extends Model {
 			$sql .= "WHERE id = ? ";
 			array_push($values,$id);
 			if ($row = $this->dbh->getRow($sql,$values)) {
-				$var = $var + $row;
+				//$var = $var + $row;
+				$var = $row;
 			}
 
 			$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM {$this->table} ";
 			$values = array();
-			$sql .= "WHERE id != ? AND id LIKE ? ";
+			//$sql .= "WHERE id != ? AND id LIKE ? ";
+			$sql .= "WHERE id != ? AND id REGEXP ? ";
 			$sql .= "ORDER BY createtime DESC ";
 			if ($req['page']) {
 				$start = ($req['page']-1) * PER_PAGE;
@@ -43,7 +45,8 @@ class IndexModel extends Model {
 			} else {
 				$sql .= "LIMIT ".PER_PAGE;
 			}
-			array_push($values,$id,$req['id']."%");
+			//array_push($values,$id,$req['id']."%");
+			array_push($values,$id,"^".$req['id']."[^/]+/?$");
 			$var['rows'] = $this->dbh->getAll($sql,$values);
 			$var['count'] = $this->dbh->rowCount();
 /*
@@ -63,7 +66,8 @@ class IndexModel extends Model {
 			$sql .= "WHERE id = ? ";
 			array_push($values,$req['id']);
 			if ($row = $this->dbh->getRow($sql,$values)) {
-				$var = $var + $row;
+				//$var = $var + $row;
+				$var = $row;
 			}
 		} else {
 			$sql = "SELECT * FROM {$this->table} ";
@@ -81,6 +85,7 @@ class IndexModel extends Model {
         }
 
         public function put($req){
+		// TODO $req['post']['ids']
 		$id = ($req['id']) ? $req['id'] : 'index';
                 $values = array();
                 $sql = "SELECT COUNT(*) FROM {$this->table} WHERE id = ?";
@@ -148,11 +153,37 @@ class IndexModel extends Model {
 	}
 
         public function delete($req) {
-                $sql = "SELECT * FROM {$this->table} WHERE id = ?";
-                $row = $this->dbh->getRow($sql,array($req['id']));
-                unlink("upload/{$row['filename']}");
-                unlink("upload/thumb/{$row['filename']}");
-                $this->dbh->delete($this->table,$req['id']);
+		// TODO $req['post']['ids']
+/*
+		if($req['ids']){
+			foreach($req['ids'] as $id) {
+				$sql = "SELECT * FROM {$this->table} WHERE id = ?";
+				$row = $this->dbh->getRow($sql,array($id));
+				unlink("upload/{$row['filename']}");
+				unlink("upload/thumb/{$row['filename']}");
+			}
+			$this->dbh->delete($this->table,$req['ids']);
+		} else {
+			$sql = "SELECT * FROM {$this->table} WHERE id = ?";
+			$row = $this->dbh->getRow($sql,array($req['id']));
+			unlink("upload/{$row['filename']}");
+			unlink("upload/thumb/{$row['filename']}");
+			$this->dbh->delete($this->table,$req['id']);
+		}
+*/
+		$rows = $this->dbh->get($this->table,$req['id']);
+		foreach ($rows as $row) {
+			if(is_file("upload/{$row['filename']}")){
+				unlink("upload/{$row['filename']}");
+			}
+			if(is_file("upload/large/{$row['filename']}")){
+				unlink("upload/large/{$row['filename']}");
+			}
+			if(is_file("upload/thumb/{$row['filename']}")){
+				unlink("upload/thumb/{$row['filename']}");
+			}
+		}
+		$this->dbh->delete($this->table,array($req['id']));
                 //$sql = "DELETE FROM {$this->table} WHERE id = ?";
                 //$this->dbh->query($sql,array($req['id']));
 

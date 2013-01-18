@@ -4,7 +4,7 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <title><?=$config['title']?></title>
 <link rel="stylesheet" type="text/css" href="<?=BASE?>css/style.css"/>
-<link rel="stylesheet" type="text/css" href="<?=BASE?>css/index.thumb.css"/>
+<link rel="stylesheet" type="text/css" href="<?=BASE?>css/index.css"/>
 <script type="text/javascript" src="<?=BASE?>js/jquery-1.7.1.min.js"></script>
 <!--script type="text/javascript" src="<?=BASE?>js/jquery.masonry.min.js"></script-->
 <!--<script type="text/javascript" src="<?=BASE?>js/jquery.infinitescroll.min.js"></script>-->
@@ -47,30 +47,29 @@ foreach($page['rows'] as $row) :
 foreach($rows as $row) :
 ?>
 <div class="item">
-<div class="thumb">
 <?php if($row['title']){ ?>
 <p><?=$row['title']?></p>
 <?php } ?>
 <?php if($row['filename']) :?>
 <?php
-if (!file_exists("upload/thumb/".$row['filename'])){
+if (!file_exists("upload/large/".$row['filename'])){
 	$image = new Image();
-	$image->resize("upload/thumb/".$row['filename'],"upload/".$row['filename'],200,300);
+	$image->resize("upload/large/".$row['filename'],"upload/".$row['filename'],1000,1000);
 }
 $ratio = $row['width']/$row['height'];
 
-$width = 200;
-$height = round(200/$ratio);
+$width = 600;
+$height = round(600/$ratio);
 
 ?>
-<a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>upload/thumb/<?=$row['filename']?>" width="<?=$width?>" height="<?=$height?>"></a>
+<a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>upload/large/<?=$row['filename']?>" width="<?=$width?>" height="<?=$height?>"></a>
 <?php elseif(preg_match("#/$#",$row['id'])) :?>
 <?php 
-$images = array_diff( scandir("upload/thumb/".$row['id']), array(".", "..") );
+$images = array_diff( scandir("upload/large/".$row['id']), array(".", "..") );
 $image = array_pop($images);
 if ($image){
 ?>
-<a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>upload/thumb/<?=$image?>"></a>
+<a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>upload/large/<?=$image?>"></a>
 <?php
 } else {
 ?>
@@ -91,7 +90,6 @@ if ($image){
 <input type="submit" value="<?=_('Delete')?>">
 </form>
 <?php endif; ?>
-</div><!--thumb-->
 </div><!--item-->
 <?php endforeach; ?>
 <!--

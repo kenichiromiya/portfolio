@@ -8,7 +8,7 @@
 <div class="navi">
 <?php if($session['id']) { ?>
 <a href="<?=BASE?>accounts/<?=$session['account_id']?>"><?=$session['account_id']?></a>
-<a href="?mode=edit"><?=_('Edit')?></a>
+<a href="?view=edit"><?=_('Edit')?></a>
 <form action="<?=BASE?>sessions/<?=$session['id']?>" method="post">
 <input type="hidden" name="_method" value="delete">
 <input type="submit" value="<?=_('Sign Out')?>">

@@ -56,10 +56,14 @@ print_r($return);
 	//return $var;
     }
     /**
-     * @depends testPOST
+     * @depends testGet
      */
     public function testDelete($var)
     {
+	    $url = "http://www26145ue.sakura.ne.jp/portfolio/";
+
+	    $array = array("_method"=>"delete","id"=>"test/lena256","account_id"=>"test");
+	    $return = curl_post($url,$array);
 /*
 	$this->object->delete(array("id"=>"test"));
 */

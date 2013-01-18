@@ -88,7 +88,7 @@ class AccountsModel extends Model {
 		} else {
 			$code = rand();
 			$subject = _("Account confirmation");
-			$message = BASE."accounts/".$req['id']."?code=".$code."&mode=confirm";
+			$message = BASE."accounts/".$req['id']."?code=".$code."&view=confirm";
 			mail($req['email'], $subject, $message);
 			$param['code'] = $code;
 			$this->dbh->insert($this->table,$param);
