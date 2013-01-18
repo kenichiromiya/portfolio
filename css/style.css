@@ -78,7 +78,6 @@ img {
 
 #container {
 	clear: both;
-	text-align:left;
 }
 #frame {
 	text-align:center;
@@ -114,17 +113,6 @@ br { clear: left; }
 	padding:0px;
 	float: left;
 }
-.item {
-	border: 1px;
-	border-style:solid;
-	margin: 5px;
-	padding:0px;
-	width: 200px;
-	height: 300px;
-	float: left;
-	-moz-box-shadow: 3px 3px 3px #AAA;    /* firefox　*/
-	-webkit-box-shadow: 3px 3px 3px #AAA;  /* safari、chorme */
-}
 .page {
 	margin-left: 10px;
 	padding:0px;
@@ -136,7 +124,7 @@ br { clear: left; }
 	border: 1px;
 	border-style:solid;
 	border-color:blue;
-	margin: 5px;
+	margin-bottom:10px;
 	text-align:center;
 }
 

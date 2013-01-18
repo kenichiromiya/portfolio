@@ -5,6 +5,14 @@ if ($_POST['_method']) {
 	unset($_POST['_method']);
 }
 /*
+if ($_POST['put']){
+	$_SERVER["REQUEST_METHOD"] = "PUT";
+}
+if ($_POST['delete']){
+	$_SERVER["REQUEST_METHOD"] = "DELETE";
+}
+*/
+/*
 foreach ($_GET as $key => $value) {
 	if(preg_match("/id$/",$key)) {
 		$_POST[$key] = $value;

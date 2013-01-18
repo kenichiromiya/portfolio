@@ -5,6 +5,34 @@ class MyPDO extends PDO
 //                                $sth = $this->dbh->prepare($sql);
 //                                $sth->execute(array($session_id,$req['id']));
 
+        public function get($table,$id) {
+
+                if (is_array($id)) {
+			$places = array();
+			$values = array();
+                        $sql = "SELECT * FROM $table ";
+                        //$sql .= "ORDER BY id ";
+                        //if ($req['limit']) {
+                        //        $sql .= "LIMIT {$req['limit']}";
+                        //}
+
+                        foreach ($id as $value) {
+				array_push($places,"?");
+				array_push($values,$value);
+                        }
+                        $place = implode(",", $places);
+                        $sql .= "WHERE id IN ($place) ";
+                        $rows = $this->getAll($sql,$values);
+                } else {
+                        $sql = "SELECT * FROM $table ";
+                        $values = array();
+                        $sql .= "WHERE id = ? ";
+                        array_push($values,$id);
+                        $rows = $this->getAll($sql,$values);
+                }
+                return $rows;
+        }
+
 	public function insert($table,$param) {
 		$colnames = array();
 		$places = array();
@@ -42,8 +70,20 @@ class MyPDO extends PDO
 	}
 
 	public function delete($table,$id) {
-		$sql = "DELETE FROM $table WHERE id = ?";
-		$sth = $this->query($sql,array($id));
+		if(is_array($id)){
+			$places = array();
+			$values = array();
+                        foreach ($id as $value) {
+				array_push($places,"?");
+				array_push($values,$value);
+                        }
+                        $place = implode(",", $places);
+			$sql = "DELETE FROM $table WHERE id IN ($place)";
+			$sth = $this->query($sql,$values);
+		} else {
+			$sql = "DELETE FROM $table WHERE id = ?";
+			$sth = $this->query($sql,$id);
+		}
 	}
 	public function query($query,$params = array()){
 		$sth = $this->prepare($query);

@@ -99,7 +99,6 @@ class Image {
 				}
 			}
 		} elseif($max_width) {
-			error_log($width."#".$max_width);
 			if ($width > $max_width) {
 				$new_width = $max_width;
 				$new_height = $max_width/$ratio;

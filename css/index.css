@@ -1,5 +1,5 @@
 #main {
-	width:850px;
+	width:750px;
 	margin-bottom:10px; /*上下の間隔をあける*/
 	text-align:left;
 	float:left;
@@ -18,4 +18,11 @@ li {
 	/*list-style:none; /*リストの●を消す*/
 	list-style:none; 
 }
+.item {
 
+        border: 1px;
+        border-style:solid;
+	margin-bottom:10px; /*上下の間隔をあける*/
+        width: 750px;
+        float: left;
+}
