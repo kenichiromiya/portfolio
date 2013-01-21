@@ -73,7 +73,7 @@ $images = array_filter($images,"image");
 $image = array_pop($images);
 if ($image){
 ?>
-<a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>upload/thumb/<?=$image?>"></a>
+<a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>upload/thumb/<?=$row['id']?><?=$image?>"></a>
 <?php
 } else {
 ?>
