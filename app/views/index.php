@@ -29,7 +29,7 @@ echo $markdown->parse($text);
 </div><!--page-->
 <?php if($editable){?>
 <input id="location" type="text" size="15">
-<button onclick='location.href="<?=BASE?><?=$id?>"+$("#location").val()+"?view=edit"'><?=_('Add')?></button>
+<button onclick='location.href="<?=BASE?><?php echo preg_replace("#[^/]+$#","",$id)?>"+$("#location").val()+"?view=edit"'><?=_('Add')?></button>
 <div id="drag" draggable="true">
 <?=_('Drag to add a photo')?>
 </div><!--drag-->
@@ -63,6 +63,13 @@ foreach($rows as $row) :
 <?php elseif(preg_match("#/$#",$row['id'])) :?>
 <?php 
 $images = array_diff( scandir("upload/thumb/".$row['id']), array(".", "..") );
+function image($var)
+{
+	if(preg_match("/jpg|jpeg/",$var)){
+		return true;
+	} 
+}
+$images = array_filter($images,"image");
 $image = array_pop($images);
 if ($image){
 ?>
