@@ -1,3 +1,11 @@
+<?php
+function image($var)
+{
+        if(preg_match("/jpg|jpeg/",$var)){
+                return true;
+        }
+}
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -53,22 +61,16 @@ foreach($rows as $row) :
 <?php } ?>
 <?php if($row['filename']) :?>
 <?php
-//if (!file_exists("upload/thumb/".$row['filename'])){
+if (!file_exists("upload/thumb/".$row['filename'])){
 	$image = new Image();
 	$image->resize("upload/thumb/".$row['filename'],"upload/".$row['filename'],200,300);
-//}
+}
 
 ?>
 <a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>upload/thumb/<?=$row['filename']?>" ></a>
 <?php elseif(preg_match("#/$#",$row['id'])) :?>
 <?php 
 $images = array_diff( scandir("upload/thumb/".$row['id']), array(".", "..") );
-function image($var)
-{
-	if(preg_match("/jpg|jpeg/",$var)){
-		return true;
-	} 
-}
 $images = array_filter($images,"image");
 $image = array_pop($images);
 if ($image){
