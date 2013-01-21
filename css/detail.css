@@ -1,19 +1,8 @@
-#wrapper {
-        width:750px;
-        margin-right:auto;
-        margin-left:auto;
-        text-align: center;
-        min-height:700px;
-}
-
-#container {
-        clear: both;
-        text-align:left;
-}
 #main {
-	width:600px;
+	width:700px;
 	margin-bottom:10px; /*上下の間隔をあける*/
 	float:left;
+	text-align:left;
 }
 #sub {
 	width:150px;
@@ -42,4 +31,9 @@ form label {
 textarea {
 	width:100%;
 	height:300px;
+}
+
+.image {
+        width:100%;
+        text-align:center;
 }

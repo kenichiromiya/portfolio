@@ -23,10 +23,9 @@ include_once "app/functions/markdown.php";
 
 <div id="container">
 <div id="main">
-<h1>
+<h1 class="title">
 <?=$title?>
 </h1>
-<div id="image">
 <?php
 if($filename):
         //if (!file_exists("upload/large/".$filename)){
@@ -34,11 +33,12 @@ if($filename):
                 $image->imageresize("upload/large/".$filename,"upload/".$filename,900,900);
         //}
 ?>
+<div class="image">
 <a href="<?=BASE?>upload/<?=$filename?>"><img src="<?=BASE?>upload/large/<?=$filename?>"></a>
+</div><!--image-->
 <?php
 endif;
 ?>
-</div><!--image-->
 <div id="text">
 <?php
 echo Markdown($text);

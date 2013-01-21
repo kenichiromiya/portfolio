@@ -4,7 +4,7 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <title><?=$config['title']?></title>
 <link rel="stylesheet" type="text/css" href="<?=BASE?>css/style.css"/>
-<link rel="stylesheet" type="text/css" href="<?=BASE?>css/index.thumb.css"/>
+<link rel="stylesheet" type="text/css" href="<?=BASE?>css/index.css"/>
 <script type="text/javascript" src="<?=BASE?>js/jquery-1.7.1.min.js"></script>
 <!--script type="text/javascript" src="<?=BASE?>js/jquery.masonry.min.js"></script-->
 <!--<script type="text/javascript" src="<?=BASE?>js/jquery.infinitescroll.min.js"></script>-->
@@ -53,17 +53,13 @@ foreach($rows as $row) :
 <?php } ?>
 <?php if($row['filename']) :?>
 <?php
-if (!file_exists("upload/thumb/".$row['filename'])){
+//if (!file_exists("upload/thumb/".$row['filename'])){
 	$image = new Image();
 	$image->resize("upload/thumb/".$row['filename'],"upload/".$row['filename'],200,300);
-}
-$ratio = $row['width']/$row['height'];
-
-$width = 200;
-$height = round(200/$ratio);
+//}
 
 ?>
-<a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>upload/thumb/<?=$row['filename']?>" width="<?=$width?>" height="<?=$height?>"></a>
+<a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>upload/thumb/<?=$row['filename']?>" ></a>
 <?php elseif(preg_match("#/$#",$row['id'])) :?>
 <?php 
 $images = array_diff( scandir("upload/thumb/".$row['id']), array(".", "..") );
@@ -74,12 +70,12 @@ if ($image){
 <?php
 } else {
 ?>
-<a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>images/folder_org_t256.png" width="200" height="200"></a>
+<a href="<?=BASE?><?=$row['id']?>"><img class="icon" src="<?=BASE?>images/folder_org_t256.png" ></a>
 <?php
 }
 ?>
 <?php else: ?>
-<a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>images/docu_txt.png" width="200" height="200"></a>
+<a href="<?=BASE?><?=$row['id']?>"><img class="icon" src="<?=BASE?>images/docu_txt.png" ></a>
 <?php endif; ?>
 <?php if($editable): ?>
 <!--
@@ -118,9 +114,6 @@ if ($image){
 <?php } ?>
 </div>
 -->
-<div id="sub">
-<?php include("meta.php")?>
-</div><!--sub-->
 </div><!--container-->
 </div><!--wrapper-->
 <?php include("footer.php")?>

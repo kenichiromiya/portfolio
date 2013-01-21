@@ -4,7 +4,7 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <title><?=$config['title']?></title>
 <link rel="stylesheet" type="text/css" href="<?=BASE?>css/style.css"/>
-<link rel="stylesheet" type="text/css" href="<?=BASE?>css/index.css"/>
+<link rel="stylesheet" type="text/css" href="<?=BASE?>css/index.large.css"/>
 <script type="text/javascript" src="<?=BASE?>js/jquery-1.7.1.min.js"></script>
 <!--script type="text/javascript" src="<?=BASE?>js/jquery.masonry.min.js"></script-->
 <!--<script type="text/javascript" src="<?=BASE?>js/jquery.infinitescroll.min.js"></script>-->
@@ -21,12 +21,15 @@
 
 <div id="container">
 <div id="main">
-<div class="page">
+<?php if($title){ ?>
+<h1 class="title"><?=$title?></h1>
+<?php } ?>
+<div class="markdown">
 <?php
 $markdown = new Markdown();
 echo $markdown->parse($text);
 ?>
-</div><!--page-->
+</div><!--markdown-->
 <?php if($editable){?>
 <input id="location" type="text" size="15">
 <button onclick='location.href="<?=BASE?><?=$id?>"+$("#location").val()+"?view=edit"'><?=_('Add')?></button>
@@ -48,37 +51,28 @@ foreach($rows as $row) :
 ?>
 <div class="item">
 <?php if($row['title']){ ?>
-<p><?=$row['title']?></p>
+<h1 class="title"><a href="<?=BASE?><?=$row['id']?>"><?=$row['title']?></a></h1>
 <?php } ?>
 <?php if($row['filename']) :?>
 <?php
 if (!file_exists("upload/large/".$row['filename'])){
 	$image = new Image();
-	$image->resize("upload/large/".$row['filename'],"upload/".$row['filename'],1000,1000);
+	$image->resize("upload/large/".$row['filename'],"upload/".$row['filename'],900,900);
 }
-$ratio = $row['width']/$row['height'];
-
-$width = 600;
-$height = round(600/$ratio);
 
 ?>
-<a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>upload/large/<?=$row['filename']?>" width="<?=$width?>" height="<?=$height?>"></a>
-<?php elseif(preg_match("#/$#",$row['id'])) :?>
-<?php 
-$images = array_diff( scandir("upload/large/".$row['id']), array(".", "..") );
-$image = array_pop($images);
-if ($image){
-?>
-<a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>upload/large/<?=$image?>"></a>
+<div class="image">
+<a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>upload/large/<?=$row['filename']?>" ></a>
+</div>
+<?php endif; ?>
+<div class="markdown">
 <?php
-} else {
+$markdown = new Markdown();
+echo $markdown->parse($row['text']);
 ?>
-<a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>images/folder_org_t256.png" width="200" height="200"></a>
-<?php
-}
-?>
-<?php else: ?>
-<a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>images/docu_txt.png" width="200" height="200"></a>
+</div><!--markdown-->
+<?php if(preg_match("#/$#",$row['id'])) :?>
+<a href="<?=BASE?><?=$row['id']?>"><img class="icon" src="<?=BASE?>images/folder_org_t256.png"></a>
 <?php endif; ?>
 <?php if($editable): ?>
 <!--

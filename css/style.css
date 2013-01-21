@@ -69,7 +69,7 @@ img {
 }
 
 #wrapper {
-	width:1000px;
+	width:850px;
 	margin-right:auto;
 	margin-left:auto;
 	text-align: center;
@@ -105,6 +105,7 @@ img {
 br { clear: left; }
 
 
+/*
 .image {
 	border: 1px;
 	border-style:solid;
@@ -117,6 +118,7 @@ br { clear: left; }
 	margin-left: 10px;
 	padding:0px;
 }
+*/
 
 #drag {
 	height:100px;
@@ -126,39 +128,4 @@ br { clear: left; }
 	border-color:blue;
 	margin-bottom:10px;
 	text-align:center;
-}
-
-.test {
-}
-.thumb {
-	position: relative;  /* 基点を設定 */
-	width: 200px;
-	height: 300px;
-	display:table-cell;
-	vertical-align:middle;
-}
-
-.thumb  img {
-	top: 0;
-	left: 0;
-	z-index: 1; /* 一番下に配置 */
-}
-
-.thumb p {
-	margin: 0;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	width: 100%;
-	position: absolute;  /* 親要素を基点に配置 */
-	bottom: 0;
-	left: 0;
-	background-color: rgba(0, 0, 0, 0.5); /* 背景黒で透明度50% */
-	color: white;
-	z-index: 2;  /* 画像の上に配置 */
-	font-size: 100%;
-	text-align:left;
-}
-.thumb form {
-	position: absolute;  /* 親要素を基点に配置 */
-	top:0;
 }

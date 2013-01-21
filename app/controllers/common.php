@@ -14,16 +14,6 @@ class CommonController extends Controller
         public function get() {
                 $var = $this->model->get($this->req);
 		$this->var = $this->var + $var;
-                //$file = $this->req['controller'].'.php';
-		/*
-		if (preg_match("#\.(.*?)$#",$this->req['id'],$m)) {
-			if(preg_match("/jpeg|jpg/",$m[1])){
-				$extention = ".jpg";
-			}
-		} else {
-			$extention = "";
-		}
-		*/
 		if ($this->req['view']) {
 			$view = ".".$this->req['view'];
 		} elseif ($var['view']) {
@@ -32,16 +22,11 @@ class CommonController extends Controller
 			$view = "";
 		}
 		if (preg_match("#[^/]$#",$this->req['id'])) {
-			$template = 'detail';
-		} else {
-			$template = 'index';
-		}
-		if (preg_match("#[^/]$#",$this->req['id'])) {
-			$file = $template.$view.'.php';
+			$file = "detail".$view.'.php';
 		} else {
 			$page = isset($this->req['page']) ? $this->req['page'] : 1;
 			$this->var['next'] = $page+1;
-			$file = $template.$view.'.php';
+			$file = "index".$view.'.php';
 		}
 		if($this->req['controller'] != 'index'){
 			$file = $this->req['controller']."/".$file;
