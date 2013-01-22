@@ -23,12 +23,35 @@ class IndexModel extends Model {
 			array_push($values,"%".$req['tag']."%");
 			$var['rows'] = $this->dbh->getAll($sql,$values);
 			$var['count'] = $this->dbh->rowCount();
-		} elseif (preg_match("#/$|^$#",$req['id'])) {
-			$id = ($req['id']) ? $req['id'] : 'index';
+		} elseif ($req['id'] == "") {
+			$sql = "SELECT * FROM {$this->table} ";
+			$values = array();
+			$sql .= "WHERE id = 'index' ";
+			if ($row = $this->dbh->getRow($sql,$values)) {
+				//$var = $var + $row;
+				$var = $row;
+			}
+
+			$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM {$this->table} ";
+			$values = array();
+			//$sql .= "WHERE id != ? AND id LIKE ? ";
+			$sql .= "WHERE id != 'index' AND id REGEXP '^[^/]+/[^/]+/?$'";
+			$sql .= "ORDER BY createtime DESC ";
+			if ($req['page']) {
+				$start = ($req['page']-1) * PER_PAGE;
+				$sql .= "LIMIT ".$start.",".PER_PAGE;
+			} else {
+				$sql .= "LIMIT ".PER_PAGE;
+			}
+			$var['rows'] = $this->dbh->getAll($sql,$values);
+			$var['count'] = $this->dbh->rowCount();
+			$var['documents'] = array();
+			$var['folders'] = array();
+		}elseif (preg_match("#/$#",$req['id'])) {
 			$sql = "SELECT * FROM {$this->table} ";
 			$values = array();
 			$sql .= "WHERE id = ? ";
-			array_push($values,$id);
+			array_push($values,$req['id']);
 			if ($row = $this->dbh->getRow($sql,$values)) {
 				//$var = $var + $row;
 				$var = $row;
@@ -46,18 +69,10 @@ class IndexModel extends Model {
 				$sql .= "LIMIT ".PER_PAGE;
 			}
 			//array_push($values,$id,$req['id']."%");
-			array_push($values,$id,"^".$req['id']."[^/]+/?$");
+			array_push($values,$req['id'],"^".$req['id']."[^/]+/?$");
 			$var['rows'] = $this->dbh->getAll($sql,$values);
 			$var['count'] = $this->dbh->rowCount();
-/*
-
-			$sql = "SELECT * FROM {$this->table} ";
-			$values = array();
-			$sql .= "WHERE id != ? AND id LIKE ? AND type = 'page' ";
-			$sql .= "ORDER BY createtime DESC ";
-			array_push($values,$id,$req['id']."%");
-			$var['page']['rows'] = $this->dbh->getAll($sql,$values);
-*/
+			error_log(print_r($values,true));
 			$var['documents'] = array();
 			$var['folders'] = array();
 		} elseif ($req['id']) {
