@@ -23,6 +23,9 @@ class Dispatcher {
                         case "GET";
                                 $controller->get();
                                 break;
+                        case "MOVE";
+                                $controller->move();
+                                break;
                 }
 	}
 }

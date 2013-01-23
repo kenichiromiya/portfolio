@@ -62,6 +62,16 @@ class Model
                 //$sth = $this->dbh->prepare($sql);
 		//$sth->execute(array($req['id']));
         }
+        public function move($req){
+		//$this->dbh->delete($this->table,$req['id']);
+		$param = $req['post'];
+		$param['id'] = preg_replace("#".BASE."#","",$param['Destination']);
+		error_log($param['id']);
+		unset($param['Destination']);	
+		$this->dbh->update($this->table,$req['id'],$param);
+                //$sth = $this->dbh->prepare($sql);
+		//$sth->execute(array($req['id']));
+        }
 
 
 }

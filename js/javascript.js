@@ -140,5 +140,18 @@ $(document).ready(function () {
 	e.preventDefault();
     });
 
+    /*
+I was able to fix the problem I was having by preventing the default action on a 'dragover' or a 'dragenter' event. This allows the 'drop' event. 
 
+This is not a hack fix it is per the spec. 
+More information can be found here: 
+https://developer.mozilla.org/en-US/docs/Mozilla_event_reference/dragenter
+    */
+    $("#drag").bind("dragover", function (e) {
+	e.preventDefault();
+    });
+
+    $("#drag").bind("dragenter", function (e) {
+	e.preventDefault();
+    });
 });

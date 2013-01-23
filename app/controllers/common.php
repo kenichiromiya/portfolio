@@ -50,5 +50,11 @@ class CommonController extends Controller
 		$this->model->delete($this->req);
                 header("Location:".BASE.$this->controller.$this->dirname);
         }
+	// http://support.microsoft.com/kb/290197/ja
+	public function move() {
+		$this->model->move($this->req);
+                header("Location:".BASE.$this->controller.$this->dirname);
+	}
+
 }
 ?>

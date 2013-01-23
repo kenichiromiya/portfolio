@@ -52,6 +52,13 @@ include_once "app/functions/markdown.php";
 <input id="submit" type="submit" value="<?=_('Submit')?>"/><br/>
 
 </form>
+<form action="<?=BASE?><?=$id?>" method="post">
+<input type="hidden" name="_method" value="move">
+<label for="Destination"><?=_('Destination')?></label>
+<input id="Destination" type="text" name="Destination" value=""><br/>
+<label for="submit"><?=_('Submit')?></label>
+<input id="submit" type="submit" value="<?=_('Submit')?>"/><br/>
+</form>
 <div class="page">
 <?php
 if($filename):
