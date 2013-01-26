@@ -60,7 +60,8 @@ class Request
 				$get[$key] = strip_tags($value);
 			}
 		}
-		$this->req = array_merge($get,$post);
+		//$this->req = array_merge($get,$post);
+		$this->req = array_merge($post,$get);
 		$this->req['get'] = $get;
 		/*
 		if (!isset($post['id'])) {

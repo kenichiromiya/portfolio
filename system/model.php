@@ -41,11 +41,11 @@ class Model
 		array_push($values,$req['id']);
 		$count = $this->dbh->getOne($sql,$values);
 		$param = $req['post'];
-		$param['id'] = $req['id'];
+		//$param['id'] = $req['id'];
 		// TODO ここでbodyとtitle加工
 		//	error_log(print_r($req['post'],true));
 		if ($count) {
-			$this->dbh->update($this->table,$req['id'],$req['post']);
+			$this->dbh->update($this->table,$req['id'],$param);
 		} else {
 			$this->dbh->insert($this->table,$param);
 		}

@@ -31,6 +31,8 @@ if($session['role'] == "admin" or preg_match("/^".$session['account_id']."/",$re
 <option value="text"><?=_('Text')?></option>
 </select><br/>
 -->
+<label for="id"><?=_('Id')?></label>
+<?=BASE?><input id="id" type="text" name="id" value="<?=$id?>"/><br/>
 <label for="title"><?=_('Title')?></label>
 <input id="title" type="text" name="title" size="60" value="<?=$title?>"/><br/>
 <label for="view"><?=_('View')?></label>
@@ -38,6 +40,8 @@ if($session['role'] == "admin" or preg_match("/^".$session['account_id']."/",$re
 <option value="" <?php if($view == ''){ echo 'selected';}?>></option>
 <option value="large" <?php if($view == 'large'){ echo 'selected';}?>><?=_('large')?></option>
 </select><br/>
+<label for="filename"><?=_('Filename')?></label>
+<input id="filename" type="text" name="filename" value="<?=$filename?>"/><br/>
 <label for="tags"><?=_('Tags')?></label>
 <input id="tags" type="text" name="tags" value="<?=$tags?>"/><br/>
 <!--

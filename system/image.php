@@ -56,8 +56,9 @@ class Image {
 
 
 		// 出力
+
 		if (!is_dir(dirname($newfilename))) {
-			mkdir(dirname($newfilename));
+			mkdir(dirname($newfilename),0777,true);
 		}
 		if ($format == "jpeg" or preg_match("/jpg|jpeg/i",$newfilename,$m)) {
 			imagejpeg($image_p, $newfilename,90);

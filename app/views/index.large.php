@@ -55,11 +55,12 @@ foreach($rows as $row) :
 <?php } ?>
 <?php if($row['filename']) :?>
 <?php
+/*
 if (!file_exists("upload/large/".$row['filename'])){
 	$image = new Image();
 	$image->resize("upload/large/".$row['filename'],"upload/".$row['filename'],900,900);
 }
-
+*/
 ?>
 <div class="image">
 <a href="<?=BASE?><?=$row['id']?>"><img src="<?=BASE?>upload/large/<?=$row['filename']?>" ></a>

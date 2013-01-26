@@ -72,9 +72,6 @@ class IndexModel extends Model {
 			array_push($values,$req['id'],"^".$req['id']."[^/]+/?$");
 			$var['rows'] = $this->dbh->getAll($sql,$values);
 			$var['count'] = $this->dbh->rowCount();
-			error_log(print_r($values,true));
-			$var['documents'] = array();
-			$var['folders'] = array();
 		} elseif ($req['id']) {
 			$sql = "SELECT * FROM {$this->table} ";
 			$values = array();
@@ -84,17 +81,6 @@ class IndexModel extends Model {
 				//$var = $var + $row;
 				$var = $row;
 			}
-		} else {
-			$sql = "SELECT * FROM {$this->table} ";
-			$sql .= "ORDER BY createtime DESC ";
-			$values = array();
-			// $sql .= "ORDER BY id ";
-			if ($req['start']) {
-				$sql .= "LIMIT {$req['start']},12";
-			} else {
-				$sql .= "LIMIT 12";
-			}
-			$var['rows'] = $this->dbh->getAll($sql,$values);
 		}
                 return $var;
         }
@@ -107,7 +93,7 @@ class IndexModel extends Model {
                 array_push($values,$id);
                 $count = $this->dbh->getOne($sql,$values);
                 $param = $req['post'];
-                $param['id'] = $id;
+                //$param['id'] = $id;
                 if ($count) {
 			$param['modified'] = date('Y-m-d H:i:s');
                         $this->dbh->update($this->table,$id,$param);
@@ -115,6 +101,17 @@ class IndexModel extends Model {
 			$param['created'] = date('Y-m-d H:i:s');
                         $this->dbh->insert($this->table,$param);
                 }
+		if ($req['id'] != $req['post']['id']){
+			$sql = "SELECT * FROM {$this->table} ";
+			$values = array();
+			$sql .= "WHERE id != ? AND id REGEXP ? ";
+			array_push($values,$req['id'],"^".$req['id']);
+			$rows = $this->dbh->getAll($sql,$values);
+			foreach($rows as $row) {
+				$id = preg_replace("#".$req['id']."#",$req['post']['id'],$row['id']);
+				$this->dbh->update($this->table,$row['id'],array("id"=>$id));
+			}
+		}
         }
 
 	public function post($req){
@@ -129,23 +126,18 @@ class IndexModel extends Model {
                                 if (!is_dir(dirname($upload_file))){
                                         mkdir(dirname($upload_file),0777,true);
                                 }
-                                $thumb_dirname = "upload/thumb";
-                                $upload_thumb_file = "$thumb_dirname/$filename";
-                                if (!is_dir(dirname($upload_thumb_file))){
-                                        mkdir(dirname($upload_thumb_file),0777,true);
-                                }
-                                $large_dirname = "upload/large";
-                                $upload_large_file = "$large_dirname/$filename";
-                                if (!is_dir(dirname($upload_large_file))){
-                                        mkdir(dirname($upload_large_file),0777,true);
-                                }
 				if(move_uploaded_file($file["tmp_name"],$upload_file))
 				{
 					chmod($upload_file,0644);
 				}
+				/*
 				$image = new Image();
 				$image->imageresize($upload_thumb_file,$upload_file,200);
 				$image->imageresize($upload_large_file,$upload_file,1000,1000);
+				*/
+				$image = new Image();
+				$image->resize("upload/thumb/".$filename,$upload_file,200,300);
+				$image->resize("upload/large/".$filename,$upload_file,600,900);
 				//$id = $req['id'].$file["name"];
 				$pathinfo = pathinfo($file["name"]);
 				$id = $req['id'].$pathinfo['filename'];
@@ -159,34 +151,16 @@ class IndexModel extends Model {
 				$created = date('Y-m-d H:i:s');
 				$this->dbh->insert($this->table,array("id"=>$id,"filename"=>$filename,"width"=>$width,"height"=>$height,"type"=>$type,"account_id"=>$req['account_id'],"created"=>$created));
 			}
-			//$pathinfo = pathinfo($file["name"]);
-			//$id = $req['id'].$pathinfo['filename'];
-			//$pathinfo = pathinfo($file["name"]);
-			//$sql = "INSERT INTO {$this->table} (id,filename,account_id) VALUES(?,?,?)";
-			//$this->dbh->query($sql,array($id,$filename,$req['account_id']));
 		}
 	}
 
         public function delete($req) {
+		$sql = "SELECT * FROM {$this->table} ";
+		$values = array();
+		$sql .= "WHERE id REGEXP ? ";
+		array_push($values,"^".$req['id']);
+		$rows = $this->dbh->getAll($sql,$values);
 		// TODO $req['post']['ids']
-/*
-		if($req['ids']){
-			foreach($req['ids'] as $id) {
-				$sql = "SELECT * FROM {$this->table} WHERE id = ?";
-				$row = $this->dbh->getRow($sql,array($id));
-				unlink("upload/{$row['filename']}");
-				unlink("upload/thumb/{$row['filename']}");
-			}
-			$this->dbh->delete($this->table,$req['ids']);
-		} else {
-			$sql = "SELECT * FROM {$this->table} WHERE id = ?";
-			$row = $this->dbh->getRow($sql,array($req['id']));
-			unlink("upload/{$row['filename']}");
-			unlink("upload/thumb/{$row['filename']}");
-			$this->dbh->delete($this->table,$req['id']);
-		}
-*/
-		$rows = $this->dbh->get($this->table,$req['id']);
 		foreach ($rows as $row) {
 			if(is_file("upload/{$row['filename']}")){
 				unlink("upload/{$row['filename']}");
@@ -197,8 +171,8 @@ class IndexModel extends Model {
 			if(is_file("upload/thumb/{$row['filename']}")){
 				unlink("upload/thumb/{$row['filename']}");
 			}
+			$this->dbh->delete($this->table,array($row['id']));
 		}
-		$this->dbh->delete($this->table,array($req['id']));
                 //$sql = "DELETE FROM {$this->table} WHERE id = ?";
                 //$this->dbh->query($sql,array($req['id']));
 

@@ -34,6 +34,8 @@ include_once "app/functions/markdown.php";
 <option value="text"><?=_('Text')?></option>
 </select><br/>
 -->
+<label for="id"><?=_('Id')?></label>
+<?=BASE?><input id="id" type="text" name="id" value="<?=$id?>"/><br/>
 <label for="title"><?=_('Title')?></label>
 <input id="title" type="text" name="title" value="<?=$title?>"/><br/>
 <label for="tags"><?=_('Tags')?></label>
@@ -52,6 +54,7 @@ include_once "app/functions/markdown.php";
 <input id="submit" type="submit" value="<?=_('Submit')?>"/><br/>
 
 </form>
+<!--
 <form action="<?=BASE?><?=$id?>" method="post">
 <input type="hidden" name="_method" value="move">
 <label for="Destination"><?=_('Destination')?></label>
@@ -59,13 +62,16 @@ include_once "app/functions/markdown.php";
 <label for="submit"><?=_('Submit')?></label>
 <input id="submit" type="submit" value="<?=_('Submit')?>"/><br/>
 </form>
+-->
 <div class="page">
 <?php
 if($filename):
+/*
         if (!file_exists("upload/large/".$filename)){
                 $image = new Image();
                 $image->imageresize("upload/large/".$filename,"upload/".$filename,1000,1000);
         }
+*/
 ?>
 <a href="<?=BASE?>upload/<?=$filename?>"><img src="<?=BASE?>upload/large/<?=$filename?>"></a>
 <?php
