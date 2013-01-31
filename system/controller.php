@@ -25,6 +25,11 @@ class Controller
                 } else {
                         $this->dirname = "";
                 }
+                if (preg_match("/\//",$this->req['id'])){
+                        $this->parent_id = dirname($this->req['id']);
+                } else {
+                        $this->parent_id = "";
+                }
         }
 
         public function get() {

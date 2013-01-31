@@ -15,23 +15,65 @@
 <!--script type="text/javascript" src="<?=BASE?>js/bottom.js"></script-->
 </head>
 <body>
+<?php
+include_once "app/functions/markdown.php";
+?>
 
 <div id="wrapper">
 <?php include("header.php")?>
 
 <div id="container">
 <div id="main">
-<div class="page">
+<?php if($id5):?>
+<a href="<?=BASE?><?=$id5?>"><?=$title5?></a> &gt;
+<?php endif;?>
+<?php if($id4):?>
+<a href="<?=BASE?><?=$id4?>"><?=$title4?></a> &gt;
+<?php endif;?>
+<?php if($id3):?>
+<a href="<?=BASE?><?=$id3?>"><?=$title3?></a> &gt;
+<?php endif;?>
+<?php if($id2):?>
+<a href="<?=BASE?><?=$id2?>"><?=$title2?></a> &gt;
+<?php endif;?>
+<?php if($id1):?>
+<a href="<?=BASE?><?=$id1?>"><?=$title1?></a>
+<?php endif;?>
+<h1 class="title">
+<?=$title?>
+</h1>
 <?php
-$markdown = new Markdown();
-echo $markdown->parse($text);
+if($filename):
+        //if (!file_exists("upload/large/".$filename)){
+                $image = new Image();
+                $image->imageresize("upload/large/".$filename,"upload/".$filename,900,900);
+        //}
 ?>
-</div><!--page-->
+<div class="image">
+<a href="<?=BASE?>upload/<?=$filename?>"><img src="<?=BASE?>upload/large/<?=$filename?>"></a>
+</div><!--image-->
+<?php
+endif;
+?>
+<div id="text">
+<?php
+echo Markdown($text);
+//$markdown = new Markdown();
+//echo $markdown->parse($row['text']);
+?>
+</div><!--text-->
+<div id="twitter">
+<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div><!--twitter-->
+
 <?php if($editable){?>
+<!--
 <input id="location" type="text" size="15">
 <button onclick='location.href="<?=BASE?><?php echo preg_replace("#[^/]+$#","",$id)?>"+$("#location").val()+"?view=edit"'><?=_('Add')?></button>
+-->
 <div id="drag" draggable="true">
-<?=_('Drag to add a photo')?>
+<?=_('Drag to add files')?>
 </div><!--drag-->
 <?php } ?>
 <div id="items" >

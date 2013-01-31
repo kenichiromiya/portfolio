@@ -18,6 +18,7 @@
 <div id="main">
 <?php
 if($session['role'] == "admin" or preg_match("/^".$session['account_id']."/",$req['id'])){
+$_method = "post";
 include("form.php");
 } ?>
 <!--
